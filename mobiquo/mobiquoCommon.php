@@ -62,6 +62,19 @@ Abstract Class MbqMain extends MbqBaseMain {
         }
     }
     
+    /**
+     * do something before output
+     */
+    public static function beforeOutPut() {
+        parent::beforeOutput();
+        @ ob_end_clean();
+        if (self::hasLogin()) {
+            header('Mobiquo_is_login: true');
+        } else {
+            header('Mobiquo_is_login: false');
+        }
+    }
+    
 }
 
 ?>

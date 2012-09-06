@@ -81,12 +81,6 @@ Abstract Class MbqBaseMain {
      * do something before output
      */
     public static function beforeOutPut() {
-        @ ob_end_clean();
-        if (self::hasLogin()) {
-            header('Mobiquo_is_login: true');
-        } else {
-            header('Mobiquo_is_login: false');
-        }
     }
     
     /**
