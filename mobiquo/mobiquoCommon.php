@@ -1,7 +1,7 @@
 <?php
 
 define('MBQ_IN_IT', true);  /* is in mobiquo flag */
-define('MBQ_DEBUG', true);  /* is in debug mode flag */
+define('MBQ_DEBUG', false);  /* is in debug mode flag */
 define('MBQ_REG_SHUTDOWN', true);  /* regist shutdown function flag */
 
 if (MBQ_DEBUG) {

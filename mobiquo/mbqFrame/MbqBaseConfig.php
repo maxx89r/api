@@ -2,6 +2,7 @@
 
 defined('MBQ_IN_IT') or exit;
 
+define('MBQ_FRAMEWORK_VERSION', '0.1');
 /* error constant */
 define('MBQ_ERR_TOP', 1);   /* the worst error that must stop the program immediately.we often use this constant in plugin development. */
 define('MBQ_ERR_HIGH', 3);  /* serious error that must stop the program immediately for display in html page.we need not use this constant in plugin development,but can use it in other projects development perhaps. */
