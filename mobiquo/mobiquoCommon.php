@@ -39,6 +39,10 @@ Abstract Class MbqMain extends MbqBaseMain {
         if (!self::$oMbqConfig->pluginIsOpen()) {
             MbqError::alert('', "Plugin is not in service!");
         }
+        if ($_POST['method_name']) {    //for upload_attach
+            self::$cmd = $_POST['method_name'];
+            self::$input = $_POST;
+        }
         if (self::$cmd) {
             self::$cmd = (string) self::$cmd;
             //MbqError::alert('', self::$cmd);
