@@ -41,8 +41,8 @@ Abstract Class MbqMain extends MbqBaseMain {
         }
         if ($_POST['method_name']) {    //for upload_attach and other post method
             self::$cmd = $_POST['method_name'];
-            foreach ($_POST as $v) {
-                self::$input[] = $v;
+            foreach ($_POST as $k => $v) {
+                self::$input[$k] = $v;
             }
         }
         if (self::$cmd) {
