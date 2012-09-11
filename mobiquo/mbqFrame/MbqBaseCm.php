@@ -107,19 +107,26 @@ Abstract Class MbqBaseCm {
      * return sql in  string
      *
      * @param  Mixed  $arr
+     * @param  Boolean  $addslashesFlag
      * @return  Mixed
      */
-    public function getSqlIn($arr) {
+    public function getSqlIn($arr, $addslashesFlag = true) {
         $sqlIn = '';
         if (is_array($arr)) {
             if (count($arr) > 0) {
                 $flag = true;
                 foreach ($arr as $value) {
                     if ($flag) {
-                        $sqlIn .= "'".addslashes($value)."'";
+                        if ($addslashesFlag)
+                            $sqlIn .= "'".addslashes($value)."'";
+                        else
+                            $sqlIn .= "'$value'";
                         $flag = false;
                     } else {
-                        $sqlIn .= ", '".addslashes($value)."'";
+                        if ($addslashesFlag)
+                            $sqlIn .= ", '".addslashes($value)."'";
+                        else
+                            $sqlIn .= ", '$value'";
                     }
                 }
                 return $sqlIn;
