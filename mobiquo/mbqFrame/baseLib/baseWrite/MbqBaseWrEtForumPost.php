@@ -19,6 +19,13 @@ Abstract Class MbqBaseWrEtForumPost extends MbqBaseWr {
     public function addMbqEtForumPost() {
         MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
     }
+    
+    /**
+     * modify forum post
+     */
+    public function mdfMbqEtForumPost() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
   
 }
 

@@ -104,13 +104,6 @@ Abstract Class MbqFdtForum extends MbqBaseFdt {
                     'no' => false
                 )
             ),
-            'canUpload' => array(
-                'default' => false,
-                'range' => array(
-                    'yes' => true,
-                    'no' => false
-                )
-            ),
             'canThank' => array(
                 'default' => false,
                 'range' => array(

@@ -91,11 +91,6 @@ Abstract Class MbqBaseRdEtForumTopic extends MbqBaseRd {
         if ($oMbqEtForumTopic->participatedUids->hasSetOriValue()) {
             $data['participated_uids'] = (array) MbqMain::$oMbqCm->changeArrValueToString($oMbqEtForumTopic->participatedUids->oriValue);
         }
-        if ($oMbqEtForumTopic->canUpload->hasSetOriValue()) {
-            $data['can_upload'] = (boolean) $oMbqEtForumTopic->canUpload->oriValue;
-        } else {
-            $data['can_upload'] = (boolean) MbqBaseFdt::getFdt('MbqFdtForum.MbqEtForumTopic.canUpload.default');
-        }
         if ($oMbqEtForumTopic->canThank->hasSetOriValue()) {
             $data['can_thank'] = (boolean) $oMbqEtForumTopic->canThank->oriValue;
         } else {

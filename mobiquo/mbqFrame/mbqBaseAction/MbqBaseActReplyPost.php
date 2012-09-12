@@ -40,12 +40,14 @@ Abstract Class MbqBaseActReplyPost extends MbqBaseAct {
                         $oMbqEtForumPost->parentPostId->oriValue = $oMbqEtForumTopic->oFirstMbqEtForumPost->postId->oriValue;
                         $oMbqWrEtForumPost = MbqMain::$oClk->newObj('MbqWrEtForumPost');
                         $oMbqWrEtForumPost->addMbqEtForumPost($oMbqEtForumPost);
+                        $state = $oMbqEtForumPost->state->oriValue;
                         $oMbqRdEtForumPost = MbqMain::$oClk->newObj('MbqRdEtForumPost');
                         //reload post
                         if ($oMbqEtForumPost = $oMbqRdEtForumPost->initOMbqEtForumPost($oMbqEtForumPost->postId->oriValue, array('case' => 'byPostId'))) {
                             $this->data['result'] = true;
                             $data1 = $oMbqRdEtForumPost->returnApiDataForumPost($oMbqEtForumPost, $returnHtml);
                             MbqMain::$oMbqCm->mergeApiData($this->data, $data1);
+                            $this->data['state'] = $state;
                         } else {
                             MbqError::alert('', "Can not load new post!", '', MBQ_ERR_APP);
                         }

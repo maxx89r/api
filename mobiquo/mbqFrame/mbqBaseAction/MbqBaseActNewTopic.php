@@ -35,10 +35,12 @@ Abstract Class MbqBaseActNewTopic extends MbqBaseAct {
             if ($oMbqAclEtForumTopic->canAclNewTopic($oMbqEtForum)) {    //acl judge
                 $oMbqWrEtForumTopic = MbqMain::$oClk->newObj('MbqWrEtForumTopic');
                 $oMbqWrEtForumTopic->addMbqEtForumTopic($oMbqEtForumTopic);
+                $state = $oMbqEtForumTopic->state->oriValue;
                 $oMbqRdEtForumTopic = MbqMain::$oClk->newObj('MbqRdEtForumTopic');
                 $this->data['result'] = true;
                 $data1 = $oMbqRdEtForumTopic->returnApiDataForumTopic($oMbqEtForumTopic);
                 MbqMain::$oMbqCm->mergeApiData($this->data, $data1);
+                $this->data['state'] = $oMbqEtForumTopic->state->oriValue;
             } else {
                 MbqError::alert('', '', '', MBQ_ERR_APP);
             }

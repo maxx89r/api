@@ -34,7 +34,6 @@ Class MbqEtForumTopic extends MbqBaseEntity {
     public $newPost;        /* return true if this topic contains new post since user last login */
     public $viewNumber;     /* total number of view in this topic */
     public $participatedUids;
-    public $canUpload;  /* return true if the user has authority to upload attachments in this thread. */
     public $canThank;
     public $thankCount;
     public $canLike;
@@ -86,7 +85,6 @@ Class MbqEtForumTopic extends MbqBaseEntity {
         $this->newPost = clone MbqMain::$simpleV;
         $this->viewNumber = clone MbqMain::$simpleV;
         $this->participatedUids = clone MbqMain::$simpleV;
-        $this->canUpload = clone MbqMain::$simpleV;
         $this->canThank = clone MbqMain::$simpleV;
         $this->thankCount = clone MbqMain::$simpleV;
         $this->canLike = clone MbqMain::$simpleV;

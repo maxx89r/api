@@ -39,6 +39,24 @@ Abstract Class MbqBaseAclEtForumPost extends MbqBaseAcl {
     public function canAclSearchPost() {
         MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
     }
+    
+    /**
+     * judge can get_raw_post
+     *
+     * @return  Boolean
+     */
+    public function canAclGetRawPost() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
+    
+    /**
+     * judge can save_raw_post
+     *
+     * @return  Boolean
+     */
+    public function canAclSaveRawPost() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
   
 }
 
