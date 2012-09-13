@@ -143,6 +143,20 @@ Abstract Class MbqBaseRdEtUser extends MbqBaseRd {
     }
     
     /**
+     * return user array api data
+     *
+     * @param  Array  $objsMbqEtUser
+     * @return  Array
+     */
+    public function returnApiArrDataUser($objsMbqEtUser) {
+        $data = array();
+        foreach ($objsMbqEtUser as $oMbqEtUser) {
+            $data[] = $this->returnApiDataUser($oMbqEtUser);
+        }
+        return $data;
+    }
+    
+    /**
      * login
      *
      * @return  Boolean  return true when login success.

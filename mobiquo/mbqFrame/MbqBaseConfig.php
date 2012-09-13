@@ -147,6 +147,7 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqBaseRdEtForumPost', MBQ_BASE_READ_PATH.'MbqBaseRdEtForumPost.php');
         MbqMain::$oClk->reg('MbqBaseRdEtAtt', MBQ_BASE_READ_PATH.'MbqBaseRdEtAtt.php');
         MbqMain::$oClk->reg('MbqBaseRdForumSearch', MBQ_BASE_READ_PATH.'MbqBaseRdForumSearch.php');
+        MbqMain::$oClk->reg('MbqBaseRdEtSysStatistics', MBQ_BASE_READ_PATH.'MbqBaseRdEtSysStatistics.php');
             /* read class */
         MbqMain::$oClk->reg('MbqRdEtForum', MBQ_READ_PATH.'MbqRdEtForum.php');
         MbqMain::$oClk->reg('MbqRdEtUser', MBQ_READ_PATH.'MbqRdEtUser.php');
@@ -154,6 +155,7 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqRdEtForumPost', MBQ_READ_PATH.'MbqRdEtForumPost.php');
         MbqMain::$oClk->reg('MbqRdEtAtt', MBQ_READ_PATH.'MbqRdEtAtt.php');
         MbqMain::$oClk->reg('MbqRdForumSearch', MBQ_READ_PATH.'MbqRdForumSearch.php');
+        MbqMain::$oClk->reg('MbqRdEtSysStatistics', MBQ_READ_PATH.'MbqRdEtSysStatistics.php');
             /* base write class */
         MbqMain::$oClk->reg('MbqBaseWrEtForumTopic', MBQ_BASE_WRITE_PATH.'MbqBaseWrEtForumTopic.php');
         MbqMain::$oClk->reg('MbqBaseWrEtForumPost', MBQ_BASE_WRITE_PATH.'MbqBaseWrEtForumPost.php');
@@ -167,11 +169,13 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqBaseAclEtForumTopic', MBQ_BASE_ACL_PATH.'MbqBaseAclEtForumTopic.php');
         MbqMain::$oClk->reg('MbqBaseAclEtForumPost', MBQ_BASE_ACL_PATH.'MbqBaseAclEtForumPost.php');
         MbqMain::$oClk->reg('MbqBaseAclEtAtt', MBQ_BASE_ACL_PATH.'MbqBaseAclEtAtt.php');
+        MbqMain::$oClk->reg('MbqBaseAclEtUser', MBQ_BASE_ACL_PATH.'MbqBaseAclEtUser.php');
             /* acl class */
         MbqMain::$oClk->reg('MbqAclEtForum', MBQ_ACL_PATH.'MbqAclEtForum.php');
         MbqMain::$oClk->reg('MbqAclEtForumTopic', MBQ_ACL_PATH.'MbqAclEtForumTopic.php');
         MbqMain::$oClk->reg('MbqAclEtForumPost', MBQ_ACL_PATH.'MbqAclEtForumPost.php');
         MbqMain::$oClk->reg('MbqAclEtAtt', MBQ_ACL_PATH.'MbqAclEtAtt.php');
+        MbqMain::$oClk->reg('MbqAclEtUser', MBQ_ACL_PATH.'MbqAclEtUser.php');
         /* I/O class */
         MbqMain::$oClk->reg('MbqIo', MBQ_IO_PATH.'MbqIo.php');
         MbqMain::$oClk->reg('MbqIoHandleXmlrpc', MBQ_IO_HANDLE_PATH.'MbqIoHandleXmlrpc.php');
@@ -201,6 +205,7 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqBaseActUploadAttach', MBQ_BASE_ACTION_PATH.'MbqBaseActUploadAttach.php');
         MbqMain::$oClk->reg('MbqBaseActGetRawPost', MBQ_BASE_ACTION_PATH.'MbqBaseActGetRawPost.php');
         MbqMain::$oClk->reg('MbqBaseActSaveRawPost', MBQ_BASE_ACTION_PATH.'MbqBaseActSaveRawPost.php');
+        MbqMain::$oClk->reg('MbqBaseActGetOnlineUsers', MBQ_BASE_ACTION_PATH.'MbqBaseActGetOnlineUsers.php');
         /* action class */
         MbqMain::$oClk->reg('MbqActGetConfig', MBQ_ACTION_PATH.'MbqActGetConfig.php');
         MbqMain::$oClk->reg('MbqActGetForum', MBQ_ACTION_PATH.'MbqActGetForum.php');
@@ -226,6 +231,7 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqActUploadAttach', MBQ_ACTION_PATH.'MbqActUploadAttach.php');
         MbqMain::$oClk->reg('MbqActGetRawPost', MBQ_ACTION_PATH.'MbqActGetRawPost.php');
         MbqMain::$oClk->reg('MbqActSaveRawPost', MBQ_ACTION_PATH.'MbqActSaveRawPost.php');
+        MbqMain::$oClk->reg('MbqActGetOnlineUsers', MBQ_ACTION_PATH.'MbqActGetOnlineUsers.php');
     }
     
     /**
