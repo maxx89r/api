@@ -91,6 +91,7 @@ Class MbqIoHandleXmlrpc {
         $options['base64keys'] = $this->base64Keys;
         $xmlrpcData = php_xmlrpc_encode($data, $options);
         $response = new xmlrpcresp($xmlrpcData);
+        @ ob_end_clean();
         echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n".$response->serialize('UTF-8');
         exit;
     }
