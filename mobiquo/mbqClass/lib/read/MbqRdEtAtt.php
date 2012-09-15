@@ -15,7 +15,7 @@ Class MbqRdEtAtt extends MbqBaseRdEtAtt {
     public function __construct() {
     }
     
-    protected function makeProperty(&$oMbqEtAtt, $pName, $mbqOpt = array()) {
+    public function makeProperty(&$oMbqEtAtt, $pName, $mbqOpt = array()) {
         switch ($pName) {
             default:
             MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_UNKNOWN_PNAME . ':' . $pName . '.');

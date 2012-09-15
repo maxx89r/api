@@ -15,7 +15,7 @@ Class MbqRdEtForumTopic extends MbqBaseRdEtForumTopic {
     public function __construct() {
     }
     
-    protected function makeProperty(&$oMbqEtForumTopic, $pName, $mbqOpt = array()) {
+    public function makeProperty(&$oMbqEtForumTopic, $pName, $mbqOpt = array()) {
         switch ($pName) {
             default:
             MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_UNKNOWN_PNAME . ':' . $pName . '.');
