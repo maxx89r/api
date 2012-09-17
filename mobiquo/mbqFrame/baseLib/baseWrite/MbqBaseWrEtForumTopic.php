@@ -40,6 +40,20 @@ Class MbqBaseWrEtForumTopic extends MbqBaseWr {
     public function addMbqEtForumTopic() {
         MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
     }
+    
+    /**
+     * subscribe topic
+     */
+    public function subscribeTopic() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
+    
+    /**
+     * unsubscribe topic
+     */
+    public function unsubscribeTopic() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
   
 }
 

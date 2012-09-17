@@ -52,8 +52,10 @@ Class MbqClassLink {
         foreach ($this->classes as $class) {
             if ($class['name'] == $className) {
                 require_once($class['path']);
+                return true;
             }
         }
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . "Can not find class $className!");
     }
     
     /**

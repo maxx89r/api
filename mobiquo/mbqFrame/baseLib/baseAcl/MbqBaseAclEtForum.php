@@ -21,6 +21,24 @@ Abstract Class MbqBaseAclEtForum extends MbqBaseAcl {
     public function canAclGetSubscribedForum() {
         MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
     }
+    
+    /**
+     * judge can subscribe forum
+     *
+     * @return  Boolean
+     */
+    public function canAclSubscribeForum() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
+    
+    /**
+     * judge can unsubscribe forum
+     *
+     * @return  Boolean
+     */
+    public function canAclUnsubscribeForum() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
   
 }
 

@@ -24,8 +24,23 @@ Abstract Class MbqBaseActGetUserReplyPost extends MbqBaseAct {
         if (!MbqMain::$oMbqConfig->moduleIsEnable('forum')) {
             MbqError::alert('', "Not support module forum!", '', MBQ_ERR_NOT_SUPPORT);
         }
-        /* TODO */
-        $this->data['posts'] = array();
+        $userName = MbqMain::$input[0];
+        $userId = MbqMain::$input[1];
+        $oMbqDataPage = MbqMain::$oClk->newObj('MbqDataPage');
+        $oMbqDataPage->initByStartAndLast(0, 49);
+        $oMbqRdEtUser = MbqMain::$oClk->newObj('MbqRdEtUser');
+        if ($oMbqEtUser = $oMbqRdEtUser->initOMbqEtUser($userName, array('case' => 'byLoginName'))) {
+            $oMbqAclEtForumPost = MbqMain::$oClk->newObj('MbqAclEtForumPost');
+            if ($oMbqAclEtForumPost->canAclGetUserReplyPost()) {   //acl judge
+                $oMbqRdEtForumPost = MbqMain::$oClk->newObj('MbqRdEtForumPost');
+                $oMbqDataPage = $oMbqRdEtForumPost->getObjsMbqEtForumPost($oMbqEtUser, array('case' => 'byReplyUser', 'oMbqDataPage' => $oMbqDataPage));
+                $this->data = $oMbqRdEtForumPost->returnApiArrDataForumPost($oMbqDataPage->datas);
+            } else {
+                MbqError::alert('', '', '', MBQ_ERR_APP);
+            }
+        } else {
+            MbqError::alert('', "Need valid user key!", '', MBQ_ERR_APP);
+        }
     }
   
 }

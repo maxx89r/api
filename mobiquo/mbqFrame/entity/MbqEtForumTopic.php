@@ -57,6 +57,7 @@ Class MbqEtForumTopic extends MbqBaseEntity {
     public $oMbqEtForum;
     public $oFirstMbqEtForumPost;
     public $oAuthorMbqEtUser;
+    public $oLastReplyMbqEtUser;
     public $objsMbqEtAtt;
     public $objsMbqEtForumPost;
     
@@ -108,6 +109,7 @@ Class MbqEtForumTopic extends MbqBaseEntity {
         $this->oMbqEtForum = NULL;
         $this->oFirstMbqEtForumPost = NULL;
         $this->oAuthorMbqEtUser = NULL;
+        $this->oLastReplyMbqEtUser = NULL;
         $this->objsMbqEtAtt = array();
         $this->objsMbqEtForumPost = array();
     }

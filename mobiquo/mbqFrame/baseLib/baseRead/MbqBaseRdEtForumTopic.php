@@ -50,6 +50,10 @@ Abstract Class MbqBaseRdEtForumTopic extends MbqBaseRd {
             $data['topic_author_name'] = (string) $oMbqEtForumTopic->oAuthorMbqEtUser->getDisplayName();
             $data['post_author_name'] = (string) $oMbqEtForumTopic->oAuthorMbqEtUser->getDisplayName();
         }
+        if ($oMbqEtForumTopic->oLastReplyMbqEtUser) {
+            $data['last_reply_author_name'] = (string) $oMbqEtForumTopic->oLastReplyMbqEtUser->getDisplayName();
+            $data['last_reply_author_id'] = (string) $oMbqEtForumTopic->oLastReplyMbqEtUser->userId->oriValue;
+        }
         if ($oMbqEtForumTopic->attachmentIdArray->hasSetOriValue()) {
             $data['attachment_id_array'] = (array) $oMbqEtForumTopic->attachmentIdArray->oriValue;
         }
@@ -73,8 +77,14 @@ Abstract Class MbqBaseRdEtForumTopic extends MbqBaseRd {
         if ($oMbqEtForumTopic->postTime->hasSetOriValue()) {
             $data['post_time'] = (string) MbqMain::$oMbqCm->datetimeIso8601Encode($oMbqEtForumTopic->postTime->oriValue);
         }
-        if ($oMbqEtForumTopic->authorIconUrl->hasSetOriValue()) {
-            $data['icon_url'] = (string) $oMbqEtForumTopic->authorIconUrl->oriValue;
+        if (MbqMain::$cmd == 'get_user_topic') {    //only for method get_user_topic currently
+            if ($oMbqEtForumTopic->oLastReplyMbqEtUser && $oMbqEtForumTopic->oLastReplyMbqEtUser->iconUrl->hasSetOriValue()) {
+                $data['icon_url'] = (string) $oMbqEtForumTopic->oLastReplyMbqEtUser->iconUrl->oriValue;
+            }
+        } else {
+            if ($oMbqEtForumTopic->authorIconUrl->hasSetOriValue()) {
+                $data['icon_url'] = (string) $oMbqEtForumTopic->authorIconUrl->oriValue;
+            }
         }
         if ($oMbqEtForumTopic->lastReplyTime->hasSetOriValue()) {
             $data['last_reply_time'] = (string) MbqMain::$oMbqCm->datetimeIso8601Encode($oMbqEtForumTopic->lastReplyTime->oriValue);

@@ -48,6 +48,7 @@ Abstract Class MbqBaseActGetTopic extends MbqBaseAct {
                     $oMbqRdEtForumTopic = MbqMain::$oClk->newObj('MbqRdEtForumTopic');
                     $oMbqDataPage = $oMbqRdEtForumTopic->getObjsMbqEtForumTopic($oMbqEtForum, array('case' => 'byForum', 'oMbqDataPage' => $oMbqDataPage));
                     $this->data = $oMbqRdEtForum->returnApiDataForum($oMbqEtForum);
+                    $this->data['total_topic_num'] = (int) $oMbqDataPage->totalNum;
                     $this->data['topics'] = $oMbqRdEtForumTopic->returnApiArrDataForumTopic($oMbqDataPage->datas);
                     break;
                 }

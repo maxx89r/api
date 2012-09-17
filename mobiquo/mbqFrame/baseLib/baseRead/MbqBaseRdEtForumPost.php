@@ -36,6 +36,15 @@ Abstract Class MbqBaseRdEtForumPost extends MbqBaseRd {
         }
         if ($oMbqEtForumPost->oMbqEtForumTopic) {
             $data['topic_title'] = (string) $oMbqEtForumPost->oMbqEtForumTopic->topicTitle->oriValue;
+            if ($oMbqEtForumPost->oMbqEtForumTopic->replyNumber->hasSetOriValue()) {
+                $data['reply_number'] = (int) $oMbqEtForumPost->oMbqEtForumTopic->replyNumber->oriValue;
+            }
+            if ($oMbqEtForumPost->oMbqEtForumTopic->newPost->hasSetOriValue()) {
+                $data['new_post'] = (boolean) $oMbqEtForumPost->oMbqEtForumTopic->newPost->oriValue;
+            }
+            if ($oMbqEtForumPost->oMbqEtForumTopic->viewNumber->hasSetOriValue()) {
+                $data['view_number'] = (int) $oMbqEtForumPost->oMbqEtForumTopic->viewNumber->oriValue;
+            }
         }
         if ($oMbqEtForumPost->postTitle->hasSetOriValue()) {
             $data['post_title'] = (string) $oMbqEtForumPost->postTitle->oriValue;

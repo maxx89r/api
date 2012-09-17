@@ -29,19 +29,13 @@ Abstract Class MbqBaseActGetThread extends MbqBaseAct {
         $oMbqDataPage->initByStartAndLast($startNum, $lastNum);
         $oMbqRdEtForumTopic = MbqMain::$oClk->newObj('MbqRdEtForumTopic');
         if ($oMbqEtForumTopic = $oMbqRdEtForumTopic->initOMbqEtForumTopic($topicId, array('case' => 'byTopicId'))) {
-            $oMbqRdEtForum = MbqMain::$oClk->newObj('MbqRdEtForum');
-            if ($objsMbqEtForum = $oMbqRdEtForum->getObjsMbqEtForum(array($oMbqEtForumTopic->forumId->oriValue), array('case' => 'byForumIds'))) {
-                $oMbqEtForum = $objsMbqEtForum[0];
-            } else {
-                MbqError::alert('', "Can not find valid forum!", '', MBQ_ERR_APP);
-            }
             $oMbqAclEtForumTopic = MbqMain::$oClk->newObj('MbqAclEtForumTopic');
             if ($oMbqAclEtForumTopic->canAclGetThread($oMbqEtForumTopic)) {    //acl judge
                 $oMbqRdEtForumPost = MbqMain::$oClk->newObj('MbqRdEtForumPost');
                 $oMbqDataPage = $oMbqRdEtForumPost->getObjsMbqEtForumPost($oMbqEtForumTopic, array('case' => 'byTopic', 'oMbqDataPage' => $oMbqDataPage));
                 $this->data = $oMbqRdEtForumTopic->returnApiDataForumTopic($oMbqEtForumTopic);
-                $this->data['forum_name'] = (string) $oMbqEtForum->forumName->oriValue;
-                $this->data['can_upload'] = (boolean) $oMbqEtForum->canUpload->oriValue;
+                $this->data['forum_name'] = (string) $oMbqEtForumTopic->oMbqEtForum->forumName->oriValue;
+                $this->data['can_upload'] = (boolean) $oMbqEtForumTopic->oMbqEtForum->canUpload->oriValue;
                 $this->data['posts'] = $oMbqRdEtForumPost->returnApiArrDataForumPost($oMbqDataPage->datas, $returnHtml);
                 $oMbqWrEtForumTopic = MbqMain::$oClk->newObj('MbqWrEtForumTopic');
                 /* add forum topic view num */

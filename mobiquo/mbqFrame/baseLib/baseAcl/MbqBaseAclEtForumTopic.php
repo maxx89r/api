@@ -93,6 +93,33 @@ Abstract Class MbqBaseAclEtForumTopic extends MbqBaseAcl {
     public function canAclSearchTopic() {
         MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
     }
+    
+    /**
+     * judge can subscribe_topic
+     *
+     * @return  Boolean
+     */
+    public function canAclSubscribeTopic() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
+    
+    /**
+     * judge can unsubscribe_topic
+     *
+     * @return  Boolean
+     */
+    public function canAclUnsubscribeTopic() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
+    
+    /**
+     * judge can get_user_topic
+     *
+     * @return  Boolean
+     */
+    public function canAclGetUserTopic() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
   
 }
 

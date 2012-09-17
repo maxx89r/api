@@ -59,7 +59,6 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->includeClass('MbqBaseAppEnv');
         MbqMain::$oClk->includeClass('MbqBaseCm');
         MbqMain::$oClk->includeClass('MbqBaseIo');
-        MbqMain::$oClk->includeClass('MbqBaseClass');
         MbqMain::$oClk->includeClass('MbqValue');
         MbqMain::$oClk->includeClass('MbqBaseEntity');
         MbqMain::$oClk->includeClass('MbqBaseFdt');
@@ -160,10 +159,12 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqBaseWrEtForumTopic', MBQ_BASE_WRITE_PATH.'MbqBaseWrEtForumTopic.php');
         MbqMain::$oClk->reg('MbqBaseWrEtForumPost', MBQ_BASE_WRITE_PATH.'MbqBaseWrEtForumPost.php');
         MbqMain::$oClk->reg('MbqBaseWrEtAtt', MBQ_BASE_WRITE_PATH.'MbqBaseWrEtAtt.php');
+        MbqMain::$oClk->reg('MbqBaseWrEtForum', MBQ_BASE_WRITE_PATH.'MbqBaseWrEtForum.php');
             /* write class */
         MbqMain::$oClk->reg('MbqWrEtForumTopic', MBQ_WRITE_PATH.'MbqWrEtForumTopic.php');
         MbqMain::$oClk->reg('MbqWrEtForumPost', MBQ_WRITE_PATH.'MbqWrEtForumPost.php');
         MbqMain::$oClk->reg('MbqWrEtAtt', MBQ_WRITE_PATH.'MbqWrEtAtt.php');
+        MbqMain::$oClk->reg('MbqWrEtForum', MBQ_WRITE_PATH.'MbqWrEtForum.php');
             /* base acl class */
         MbqMain::$oClk->reg('MbqBaseAclEtForum', MBQ_BASE_ACL_PATH.'MbqBaseAclEtForum.php');
         MbqMain::$oClk->reg('MbqBaseAclEtForumTopic', MBQ_BASE_ACL_PATH.'MbqBaseAclEtForumTopic.php');
@@ -206,6 +207,10 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqBaseActGetRawPost', MBQ_BASE_ACTION_PATH.'MbqBaseActGetRawPost.php');
         MbqMain::$oClk->reg('MbqBaseActSaveRawPost', MBQ_BASE_ACTION_PATH.'MbqBaseActSaveRawPost.php');
         MbqMain::$oClk->reg('MbqBaseActGetOnlineUsers', MBQ_BASE_ACTION_PATH.'MbqBaseActGetOnlineUsers.php');
+        MbqMain::$oClk->reg('MbqBaseActSubscribeForum', MBQ_BASE_ACTION_PATH.'MbqBaseActSubscribeForum.php');
+        MbqMain::$oClk->reg('MbqBaseActUnsubscribeForum', MBQ_BASE_ACTION_PATH.'MbqBaseActUnsubscribeForum.php');
+        MbqMain::$oClk->reg('MbqBaseActSubscribeTopic', MBQ_BASE_ACTION_PATH.'MbqBaseActSubscribeTopic.php');
+        MbqMain::$oClk->reg('MbqBaseActUnsubscribeTopic', MBQ_BASE_ACTION_PATH.'MbqBaseActUnsubscribeTopic.php');
         /* action class */
         MbqMain::$oClk->reg('MbqActGetConfig', MBQ_ACTION_PATH.'MbqActGetConfig.php');
         MbqMain::$oClk->reg('MbqActGetForum', MBQ_ACTION_PATH.'MbqActGetForum.php');
@@ -232,6 +237,10 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqActGetRawPost', MBQ_ACTION_PATH.'MbqActGetRawPost.php');
         MbqMain::$oClk->reg('MbqActSaveRawPost', MBQ_ACTION_PATH.'MbqActSaveRawPost.php');
         MbqMain::$oClk->reg('MbqActGetOnlineUsers', MBQ_ACTION_PATH.'MbqActGetOnlineUsers.php');
+        MbqMain::$oClk->reg('MbqActSubscribeForum', MBQ_ACTION_PATH.'MbqActSubscribeForum.php');
+        MbqMain::$oClk->reg('MbqActUnsubscribeForum', MBQ_ACTION_PATH.'MbqActUnsubscribeForum.php');
+        MbqMain::$oClk->reg('MbqActSubscribeTopic', MBQ_ACTION_PATH.'MbqActSubscribeTopic.php');
+        MbqMain::$oClk->reg('MbqActUnsubscribeTopic', MBQ_ACTION_PATH.'MbqActUnsubscribeTopic.php');
     }
     
     /**

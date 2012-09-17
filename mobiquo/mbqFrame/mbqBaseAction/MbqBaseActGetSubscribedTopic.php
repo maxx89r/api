@@ -20,6 +20,9 @@ Abstract Class MbqBaseActGetSubscribedTopic extends MbqBaseAct {
      * action implement
      */
     protected function actionImplement() {
+        if (!MbqMain::$oMbqConfig->moduleIsEnable('subscribe')) {
+            MbqError::alert('', "Not support module subscribe!", '', MBQ_ERR_NOT_SUPPORT);
+        }
         if (!MbqMain::$oMbqConfig->moduleIsEnable('forum')) {
             MbqError::alert('', "Not support module forum!", '', MBQ_ERR_NOT_SUPPORT);
         }

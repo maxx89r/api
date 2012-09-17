@@ -25,6 +25,7 @@ Abstract Class MbqBaseRdEtUser extends MbqBaseRd {
             $data['user_id'] = (string) $oMbqEtUser->userId->oriValue;
         }
         $data['username'] = (string) $oMbqEtUser->getDisplayName();
+        $data['user_name'] = (string) $oMbqEtUser->getDisplayName();
         if ($oMbqEtUser->userGroupIds->hasSetOriValue()) {
             $data['usergroup_id'] = (array) MbqMain::$oMbqCm->changeArrValueToString($oMbqEtUser->userGroupIds->oriValue);
         }
