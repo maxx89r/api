@@ -230,9 +230,94 @@ Abstract Class MbqBaseCm {
                     '#708090' => 'SlateGrey',         '#C0C0C0' => 'Silver',          '#FF1493' => 'DeepPink',
                 );
             }
-            if (isset($colorlist[strtoupper($color)])) $color = $colorlist[strtoupper($color)];
+            if (isset($colorlist[strtoupper($color)])) { 
+                $color = $colorlist[strtoupper($color)];
+            } else {
+                $r = hexdec(substr($color, 1, 2)) ? hexdec(substr($color, 1, 2)) : 1;
+                $g = hexdec(substr($color, 3, 2)) ? hexdec(substr($color, 3, 2)) : 1;
+                $b = hexdec(substr($color, 5, 2)) ? hexdec(substr($color, 5, 2)) : 1;
+                $arr = array();
+                foreach ($colorlist as $code => $colorName) {
+                    $r1 = substr($code, 1, 2) ? hexdec(substr($code, 1, 2)) : 0;
+                    $g1 = substr($code, 3, 2) ? hexdec(substr($code, 3, 2)) : 0;
+                    $b1 = substr($code, 5, 2) ? hexdec(substr($code, 5, 2)) : 0;
+                    $arr[] = array(
+                        'rRatio' => $r1 / $r,
+                        'gRatio' => $g1 / $g,
+                        'bRatio' => $b1 / $b,
+                        'colorName' => $colorName,
+                        'code' => $code
+                    );
+                }
+                $arrR = array();
+                foreach ($arr as $item) {
+                    if (!$arrR || (count($arrR) < 30)) {
+                        $arrR[] = $item;
+                    } else {
+                        $key = $this->getTheMostDifferent($arrR, 'rRatio');
+                        if (abs($item['rRatio'] - 1) < abs($arrR[$key]['rRatio'] - 1)) {
+                            $arrR[$key] = $item;
+                        }
+                    }
+                }
+                $arr = $arrR;
+                $arrG = array();
+                foreach ($arr as $item) {
+                    if (!$arrG || (count($arrG) < 15)) {
+                        $arrG[] = $item;
+                    } else {
+                        $key = $this->getTheMostDifferent($arrG, 'gRatio');
+                        if (abs($item['gRatio'] - 1) < abs($arrG[$key]['gRatio'] - 1)) {
+                            $arrG[$key] = $item;
+                        }
+                    }
+                }
+                $arr = $arrG;
+                $arrB = array();
+                foreach ($arr as $item) {
+                    if (!$arrB || (count($arrB) < 8)) {
+                        $arrB[] = $item;
+                    } else {
+                        $key = $this->getTheMostDifferent($arrB, 'bRatio');
+                        if (abs($item['bRatio'] - 1) < abs($arrB[$key]['bRatio'] - 1)) {
+                            $arrB[$key] = $item;
+                        }
+                    }
+                }
+                foreach ($arrB as $item) {
+                    if (isset($retItem)) {
+                        if (abs($retItem['rRatio'] + $retItem['gRatio'] + $retItem['bRatio'] - 3) > abs($item['rRatio'] + $item['gRatio'] + $item['bRatio'] - 3)) {
+                            $retItem = $item;
+                        }
+                    } else {
+                        $retItem = $item;
+                    }
+                }
+                $color = $retItem['colorName'];
+            }
         }
         return "<font color=\"$color\">$str</font>";
+    }
+    
+    /**
+     * get the most defferent item key with $value
+     * this method only uesed for self::mbColorConvert()
+     *
+     * @param  Array  $items
+     * @param  Array  $compareKey
+     * @param  Float  $value
+     */
+    protected function getTheMostDifferent($items, $compareKey, $value = 1) {
+        foreach ($items as $key => $item) {
+            if (isset($ret)) {
+                if (abs($item[$compareKey] - $value) > abs($items[$ret][$compareKey] - $value)) {
+                    $ret = $key;
+                }
+            } else {
+                $ret = $key;
+            }
+        }
+        return $ret;
     }
     
     /**
