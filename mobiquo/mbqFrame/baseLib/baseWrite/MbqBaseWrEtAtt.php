@@ -19,6 +19,13 @@ Abstract Class MbqBaseWrEtAtt extends MbqBaseWr {
     public function uploadAttachment() {
         MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
     }
+    
+    /**
+     * delete attachment
+     */
+    public function deleteAttachment() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
   
 }
 

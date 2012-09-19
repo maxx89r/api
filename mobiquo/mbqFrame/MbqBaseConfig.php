@@ -211,6 +211,7 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqBaseActUnsubscribeForum', MBQ_BASE_ACTION_PATH.'MbqBaseActUnsubscribeForum.php');
         MbqMain::$oClk->reg('MbqBaseActSubscribeTopic', MBQ_BASE_ACTION_PATH.'MbqBaseActSubscribeTopic.php');
         MbqMain::$oClk->reg('MbqBaseActUnsubscribeTopic', MBQ_BASE_ACTION_PATH.'MbqBaseActUnsubscribeTopic.php');
+        MbqMain::$oClk->reg('MbqBaseActRemoveAttachment', MBQ_BASE_ACTION_PATH.'MbqBaseActRemoveAttachment.php');
         /* action class */
         MbqMain::$oClk->reg('MbqActGetConfig', MBQ_ACTION_PATH.'MbqActGetConfig.php');
         MbqMain::$oClk->reg('MbqActGetForum', MBQ_ACTION_PATH.'MbqActGetForum.php');
@@ -241,6 +242,7 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqActUnsubscribeForum', MBQ_ACTION_PATH.'MbqActUnsubscribeForum.php');
         MbqMain::$oClk->reg('MbqActSubscribeTopic', MBQ_ACTION_PATH.'MbqActSubscribeTopic.php');
         MbqMain::$oClk->reg('MbqActUnsubscribeTopic', MBQ_ACTION_PATH.'MbqActUnsubscribeTopic.php');
+        MbqMain::$oClk->reg('MbqActRemoveAttachment', MBQ_ACTION_PATH.'MbqActRemoveAttachment.php');
     }
     
     /**
