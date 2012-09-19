@@ -46,7 +46,7 @@ Abstract Class MbqBaseActGetTopic extends MbqBaseAct {
                     break;
                     default:        /* returns standard topics */
                     $oMbqRdEtForumTopic = MbqMain::$oClk->newObj('MbqRdEtForumTopic');
-                    $oMbqDataPage = $oMbqRdEtForumTopic->getObjsMbqEtForumTopic($oMbqEtForum, array('case' => 'byForum', 'oMbqDataPage' => $oMbqDataPage));
+                    $oMbqDataPage = $oMbqRdEtForumTopic->getObjsMbqEtForumTopic($oMbqEtForum, array('case' => 'byForum', 'oMbqDataPage' => $oMbqDataPage, 'notIncludeTop' => true));
                     $this->data = $oMbqRdEtForum->returnApiDataForum($oMbqEtForum);
                     $this->data['total_topic_num'] = (int) $oMbqDataPage->totalNum;
                     $this->data['topics'] = $oMbqRdEtForumTopic->returnApiArrDataForumTopic($oMbqDataPage->datas);

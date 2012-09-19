@@ -35,6 +35,11 @@ Abstract Class MbqMain extends MbqBaseMain {
      */
     public static function action() {
         parent::action();
+        if (self::hasLogin()) {
+            header('Mobiquo_is_login: true');
+        } else {
+            header('Mobiquo_is_login: false');
+        }
         self::$oMbqConfig->calCfg();    /* you should do some modify within this function in multiple different type applications! */
         if (!self::$oMbqConfig->pluginIsOpen()) {
             MbqError::alert('', "Plugin is not in service!");
@@ -73,12 +78,6 @@ Abstract Class MbqMain extends MbqBaseMain {
      */
     public static function beforeOutPut() {
         parent::beforeOutput();
-        @ ob_end_clean();
-        if (self::hasLogin()) {
-            header('Mobiquo_is_login: true');
-        } else {
-            header('Mobiquo_is_login: false');
-        }
     }
     
 }

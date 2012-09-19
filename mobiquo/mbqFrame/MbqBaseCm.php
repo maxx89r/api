@@ -412,7 +412,6 @@ function mbqShutdownHandle() {
             case E_COMPILE_ERROR:
             case E_USER_ERROR:
             case E_PARSE:
-                @ ob_end_clean();
                 MbqError::alert('', $errorInfo2);
                 break;
         }

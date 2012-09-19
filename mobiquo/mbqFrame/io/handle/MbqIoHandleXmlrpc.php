@@ -108,7 +108,7 @@ Class MbqIoHandleXmlrpc {
             'result'        => new xmlrpcval($result, 'boolean'),
             'result_text'   => new xmlrpcval($message, 'base64'),
         ), 'struct'));
-        
+        @ ob_end_clean();
         echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n".$response->serialize('UTF-8');
         exit;
     }
