@@ -62,6 +62,20 @@ Abstract Class MbqBaseCm {
     }
     
     /**
+     * write memory log for debug
+     */
+    public function writeMemLog() {
+        if (defined('MBQ_PATH')) {
+            $filePath = MBQ_PATH.'mbqDebugMem.log';
+            $content = memory_get_usage().','.memory_get_usage(true).','.MbqMain::$cmd."\n";
+            if ($handle = fopen($filePath, 'ab')) {
+                fwrite($handle, $content);
+                fclose($handle);
+            }
+        }
+    }
+    
+    /**
      * change array leaf value to string
      * now only support 3 dimensional array
      *
@@ -343,7 +357,28 @@ Abstract Class MbqBaseCm {
     }
     
     /**
-     * replace some code in content
+     * replace codes in content
+     *
+     * @param  String  $content
+     * @param  String  $strNeedReplaced  separated by |
+     * @param  String  $type  replacement type.'bbcodeName' means replace bbcode name for our rules.
+     */
+    public function replaceCodes($content, $strNeedReplaced, $type = 'bbcodeName') {
+        switch ($type) {
+            case 'bbcodeName':
+                $arr = explode('|', $strNeedReplaced);
+                foreach ($arr as $v) {
+                    $content = $this->replaceCode($content, $v);
+                }
+            break;
+            default:
+            break;
+        }
+        return $content;
+    }
+    
+    /**
+     * replace code in content
      *
      * @param  String  $content
      * @param  String  $strNeedReplaced
@@ -358,6 +393,21 @@ Abstract Class MbqBaseCm {
                     $content = preg_replace('/\[quote(.*?)\]/i', ",,,,,,,,$newName$1,,,,,,,,", $content);
                     $content = preg_replace('/\[\/quote\]/i', ",,,,,,,,/$newName,,,,,,,,", $content);
                     break;
+                    case 'email':
+                    $newName = MBQ_RUNNING_NAMEPRE.'email';
+                    $content = preg_replace('/\[email\]/i', ",,,,,,,,$newName,,,,,,,,", $content);
+                    $content = preg_replace('/\[\/email\]/i', ",,,,,,,,/$newName,,,,,,,,", $content);
+                    break;
+                    case 'ebay':
+                    $newName = MBQ_RUNNING_NAMEPRE.'ebay';
+                    $content = preg_replace('/\[ebay\]/i', ",,,,,,,,$newName,,,,,,,,", $content);
+                    $content = preg_replace('/\[\/ebay\]/i', ",,,,,,,,/$newName,,,,,,,,", $content);
+                    break;
+                    case 'map':
+                    $newName = MBQ_RUNNING_NAMEPRE.'map';
+                    $content = preg_replace('/\[map\]/i', ",,,,,,,,$newName,,,,,,,,", $content);
+                    $content = preg_replace('/\[\/map\]/i', ",,,,,,,,/$newName,,,,,,,,", $content);
+                    break;
                     default:
                     break;
                 }
@@ -369,7 +419,28 @@ Abstract Class MbqBaseCm {
     }
     
     /**
-     * upreplace some code in content
+     * upreplace codes in content
+     *
+     * @param  String  $content
+     * @param  String  $strNeedReplaced  separated by |
+     * @param  String  $type  replacement type.'bbcodeName' means replace bbcode name for our rules.
+     */
+    public function unreplaceCodes($content, $strNeedReplaced, $type = 'bbcodeName') {
+        switch ($type) {
+            case 'bbcodeName':
+                $arr = explode('|', $strNeedReplaced);
+                foreach ($arr as $v) {
+                    $content = $this->unreplaceCode($content, $v);
+                }
+            break;
+            default:
+            break;
+        }
+        return $content;
+    }
+    
+    /**
+     * upreplace code in content
      *
      * @param  String  $content
      * @param  String  $strNeedReplaced
@@ -383,6 +454,21 @@ Abstract Class MbqBaseCm {
                     $curName = MBQ_RUNNING_NAMEPRE.'quote';
                     $content = preg_replace('/,,,,,,,,'.$curName.'(.*?),,,,,,,,/i', "[quote$1]", $content);
                     $content = preg_replace('/,,,,,,,,\/'.$curName.',,,,,,,,/i', "[/quote]", $content);
+                    break;
+                    case 'email':
+                    $curName = MBQ_RUNNING_NAMEPRE.'email';
+                    $content = preg_replace('/,,,,,,,,'.$curName.',,,,,,,,/i', "[email]", $content);
+                    $content = preg_replace('/,,,,,,,,\/'.$curName.',,,,,,,,/i', "[/email]", $content);
+                    break;
+                    case 'ebay':
+                    $curName = MBQ_RUNNING_NAMEPRE.'ebay';
+                    $content = preg_replace('/,,,,,,,,'.$curName.',,,,,,,,/i', "[ebay]", $content);
+                    $content = preg_replace('/,,,,,,,,\/'.$curName.',,,,,,,,/i', "[/ebay]", $content);
+                    break;
+                    case 'map':
+                    $curName = MBQ_RUNNING_NAMEPRE.'map';
+                    $content = preg_replace('/,,,,,,,,'.$curName.',,,,,,,,/i', "[map]", $content);
+                    $content = preg_replace('/,,,,,,,,\/'.$curName.',,,,,,,,/i', "[/map]", $content);
                     break;
                     default:
                     break;

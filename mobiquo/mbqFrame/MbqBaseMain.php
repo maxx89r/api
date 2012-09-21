@@ -81,6 +81,9 @@ Abstract Class MbqBaseMain {
      * do something before output
      */
     public static function beforeOutPut() {
+        if (MBQ_DEBUG) {
+            self::$oMbqCm->writeMemLog();
+        }
     }
     
     /**
