@@ -148,11 +148,17 @@ Abstract Class MbqBaseRdEtForumPost extends MbqBaseRd {
         if ($oMbqEtForumPost->deleteReason->hasSetOriValue()) {
             $data['delete_reason'] = (string) $oMbqEtForumPost->deleteReason->oriValue;
         }
+        if ($oMbqEtForumPost->canReport->hasSetOriValue()) {
+            $data['can_report'] = (boolean) $oMbqEtForumPost->canReport->oriValue;
+        } else {
+            $data['can_report'] = (boolean) MbqBaseFdt::getFdt('MbqFdtForum.MbqEtForumPost.canReport.default');
+        }
         /* attachments */
         $oMbqRdEtAtt = MbqMain::$oClk->newObj('MbqRdEtAtt');
         $data['attachments'] = (array) $oMbqRdEtAtt->returnApiArrDataAttachment($oMbqEtForumPost->objsNotInContentMbqEtAtt);
-        /* thanks_info.TODO */
-        $data['thanks_info'] = (array) array();
+        /* thanks_info */
+        $oMbqRdEtThank = MbqMain::$oClk->newObj('MbqRdEtThank');
+        $data['thanks_info'] = (array) $oMbqRdEtThank->returnApiArrDataThank($oMbqEtForumPost->objsMbqEtThank);
         /* likes_info.TODO */
         $data['likes_info'] = (array) array();
         return $data;

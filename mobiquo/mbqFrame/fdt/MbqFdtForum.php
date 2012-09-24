@@ -277,6 +277,13 @@ Abstract Class MbqFdtForum extends MbqBaseFdt {
                     'yes' => true,
                     'no' => false
                 )
+            ),
+            'canReport' => array(
+                'default' => false,
+                'range' => array(
+                    'yes' => true,
+                    'no' => false
+                )
             )
         )
     );

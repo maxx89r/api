@@ -40,14 +40,15 @@ Class MbqEtForumPost extends MbqBaseEntity {
     public $deleteByUserId; /* return the user id of the person who has previously soft-deleted this post */
     public $deleteReason;   /* return reason of deletion, if any. */
     public $authorIconUrl;  /* author icon url */
+    public $canReport;
         
     public $oMbqEtForum;
     public $oMbqEtForumTopic;
     public $oAuthorMbqEtUser;
     public $objsMbqEtAtt;           /* the all attachment objs in this post. */
     public $objsNotInContentMbqEtAtt;   /* the attachement objs not in the content of this post. */
-    public $objsMbqEtForumThank;
-    public $objsMbqEtForumLike;
+    public $objsMbqEtThank;
+    public $objsMbqEtLike;
     
     public function __construct() {
         parent::__construct();
@@ -81,13 +82,14 @@ Class MbqEtForumPost extends MbqBaseEntity {
         $this->deleteByUserId = clone MbqMain::$simpleV;
         $this->deleteReason = clone MbqMain::$simpleV;
         $this->authorIconUrl = clone MbqMain::$simpleV;
+        $this->canReport = clone MbqMain::$simpleV;
         
         $this->oMbqEtForum = NULL;
         $this->oMbqEtForumTopic = NULL;
         $this->oAuthorMbqEtUser = NULL;
         $this->objsMbqEtAtt = array();
-        $this->objsMbqEtForumThank = array();
-        $this->objsMbqEtForumLike = array();
+        $this->objsMbqEtThank = array();
+        $this->objsMbqEtLike = array();
         $this->objsNotInContentMbqEtAtt = array();
     }
   
