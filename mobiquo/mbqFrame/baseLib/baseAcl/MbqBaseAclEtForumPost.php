@@ -84,6 +84,24 @@ Abstract Class MbqBaseAclEtForumPost extends MbqBaseAcl {
     public function canAclThankPost() {
         MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
     }
+    
+    /**
+     * judge can m_delete_post
+     *
+     * @return  Boolean
+     */
+    public function canAclMDeletePost() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
+    
+    /**
+     * judge can m_undelete_post
+     *
+     * @return  Boolean
+     */
+    public function canAclMUndeletePost() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
   
 }
 

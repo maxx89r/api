@@ -82,11 +82,6 @@ Abstract Class MbqBaseRdEtForumPost extends MbqBaseRd {
         } else {
             $data['can_edit'] = (boolean) MbqBaseFdt::getFdt('MbqFdtForum.MbqEtForumPost.canEdit.default');
         }
-        if ($oMbqEtForumPost->canDelete->hasSetOriValue()) {
-            $data['can_delete'] = (boolean) $oMbqEtForumPost->canDelete->oriValue;
-        } else {
-            $data['can_delete'] = (boolean) MbqBaseFdt::getFdt('MbqFdtForum.MbqEtForumPost.canDelete.default');
-        }
         if ($oMbqEtForumPost->authorIconUrl->hasSetOriValue()) {
             $data['icon_url'] = (string) $oMbqEtForumPost->authorIconUrl->oriValue;
         }

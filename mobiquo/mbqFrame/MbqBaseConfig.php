@@ -216,6 +216,12 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqBaseActRemoveAttachment', MBQ_BASE_ACTION_PATH.'MbqBaseActRemoveAttachment.php');
         MbqMain::$oClk->reg('MbqBaseActReportPost', MBQ_BASE_ACTION_PATH.'MbqBaseActReportPost.php');
         MbqMain::$oClk->reg('MbqBaseActThankPost', MBQ_BASE_ACTION_PATH.'MbqBaseActThankPost.php');
+        MbqMain::$oClk->reg('MbqBaseActMStickTopic', MBQ_BASE_ACTION_PATH.'MbqBaseActMStickTopic.php');
+        MbqMain::$oClk->reg('MbqBaseActMCloseTopic', MBQ_BASE_ACTION_PATH.'MbqBaseActMCloseTopic.php');
+        MbqMain::$oClk->reg('MbqBaseActMDeleteTopic', MBQ_BASE_ACTION_PATH.'MbqBaseActMDeleteTopic.php');
+        MbqMain::$oClk->reg('MbqBaseActMUndeleteTopic', MBQ_BASE_ACTION_PATH.'MbqBaseActMUndeleteTopic.php');
+        MbqMain::$oClk->reg('MbqBaseActMDeletePost', MBQ_BASE_ACTION_PATH.'MbqBaseActMDeletePost.php');
+        MbqMain::$oClk->reg('MbqBaseActMUndeletePost', MBQ_BASE_ACTION_PATH.'MbqBaseActMUndeletePost.php');
         /* action class */
         MbqMain::$oClk->reg('MbqActGetConfig', MBQ_ACTION_PATH.'MbqActGetConfig.php');
         MbqMain::$oClk->reg('MbqActGetForum', MBQ_ACTION_PATH.'MbqActGetForum.php');
@@ -249,6 +255,12 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqActRemoveAttachment', MBQ_ACTION_PATH.'MbqActRemoveAttachment.php');
         MbqMain::$oClk->reg('MbqActReportPost', MBQ_ACTION_PATH.'MbqActReportPost.php');
         MbqMain::$oClk->reg('MbqActThankPost', MBQ_ACTION_PATH.'MbqActThankPost.php');
+        MbqMain::$oClk->reg('MbqActMStickTopic', MBQ_ACTION_PATH.'MbqActMStickTopic.php');
+        MbqMain::$oClk->reg('MbqActMCloseTopic', MBQ_ACTION_PATH.'MbqActMCloseTopic.php');
+        MbqMain::$oClk->reg('MbqActMDeleteTopic', MBQ_ACTION_PATH.'MbqActMDeleteTopic.php');
+        MbqMain::$oClk->reg('MbqActMUndeleteTopic', MBQ_ACTION_PATH.'MbqActMUndeleteTopic.php');
+        MbqMain::$oClk->reg('MbqActMDeletePost', MBQ_ACTION_PATH.'MbqActMDeletePost.php');
+        MbqMain::$oClk->reg('MbqActMUndeletePost', MBQ_ACTION_PATH.'MbqActMUndeletePost.php');
     }
     
     /**
