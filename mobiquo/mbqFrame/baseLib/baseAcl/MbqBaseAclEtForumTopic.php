@@ -156,6 +156,33 @@ Abstract Class MbqBaseAclEtForumTopic extends MbqBaseAcl {
     public function canAclMUndeleteTopic() {
         MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
     }
+    
+    /**
+     * judge can m_move_topic
+     *
+     * @return  Boolean
+     */
+    public function canAclMMoveTopic() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
+    
+    /**
+     * judge can m_rename_topic
+     *
+     * @return  Boolean
+     */
+    public function canAclMRenameTopic() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
+    
+    /**
+     * judge can m_approve_topic
+     *
+     * @return  Boolean
+     */
+    public function canAclMApproveTopic() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
   
 }
 

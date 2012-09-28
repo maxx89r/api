@@ -102,6 +102,24 @@ Abstract Class MbqBaseAclEtForumPost extends MbqBaseAcl {
     public function canAclMUndeletePost() {
         MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
     }
+    
+    /**
+     * judge can m_move_post
+     *
+     * @return  Boolean
+     */
+    public function canAclMMovePost() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
+    
+    /**
+     * judge can m_approve_post
+     *
+     * @return  Boolean
+     */
+    public function canAclMApprovePost() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
   
 }
 

@@ -162,11 +162,13 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqBaseWrEtForumPost', MBQ_BASE_WRITE_PATH.'MbqBaseWrEtForumPost.php');
         MbqMain::$oClk->reg('MbqBaseWrEtAtt', MBQ_BASE_WRITE_PATH.'MbqBaseWrEtAtt.php');
         MbqMain::$oClk->reg('MbqBaseWrEtForum', MBQ_BASE_WRITE_PATH.'MbqBaseWrEtForum.php');
+        MbqMain::$oClk->reg('MbqBaseWrEtUser', MBQ_BASE_WRITE_PATH.'MbqBaseWrEtUser.php');
             /* write class */
         MbqMain::$oClk->reg('MbqWrEtForumTopic', MBQ_WRITE_PATH.'MbqWrEtForumTopic.php');
         MbqMain::$oClk->reg('MbqWrEtForumPost', MBQ_WRITE_PATH.'MbqWrEtForumPost.php');
         MbqMain::$oClk->reg('MbqWrEtAtt', MBQ_WRITE_PATH.'MbqWrEtAtt.php');
         MbqMain::$oClk->reg('MbqWrEtForum', MBQ_WRITE_PATH.'MbqWrEtForum.php');
+        MbqMain::$oClk->reg('MbqWrEtUser', MBQ_WRITE_PATH.'MbqWrEtUser.php');
             /* base acl class */
         MbqMain::$oClk->reg('MbqBaseAclEtForum', MBQ_BASE_ACL_PATH.'MbqBaseAclEtForum.php');
         MbqMain::$oClk->reg('MbqBaseAclEtForumTopic', MBQ_BASE_ACL_PATH.'MbqBaseAclEtForumTopic.php');
@@ -222,6 +224,12 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqBaseActMUndeleteTopic', MBQ_BASE_ACTION_PATH.'MbqBaseActMUndeleteTopic.php');
         MbqMain::$oClk->reg('MbqBaseActMDeletePost', MBQ_BASE_ACTION_PATH.'MbqBaseActMDeletePost.php');
         MbqMain::$oClk->reg('MbqBaseActMUndeletePost', MBQ_BASE_ACTION_PATH.'MbqBaseActMUndeletePost.php');
+        MbqMain::$oClk->reg('MbqBaseActMMoveTopic', MBQ_BASE_ACTION_PATH.'MbqBaseActMMoveTopic.php');
+        MbqMain::$oClk->reg('MbqBaseActMMovePost', MBQ_BASE_ACTION_PATH.'MbqBaseActMMovePost.php');
+        MbqMain::$oClk->reg('MbqBaseActMRenameTopic', MBQ_BASE_ACTION_PATH.'MbqBaseActMRenameTopic.php');
+        MbqMain::$oClk->reg('MbqBaseActMApproveTopic', MBQ_BASE_ACTION_PATH.'MbqBaseActMApproveTopic.php');
+        MbqMain::$oClk->reg('MbqBaseActMApprovePost', MBQ_BASE_ACTION_PATH.'MbqBaseActMApprovePost.php');
+        MbqMain::$oClk->reg('MbqBaseActMBanUser', MBQ_BASE_ACTION_PATH.'MbqBaseActMBanUser.php');
         /* action class */
         MbqMain::$oClk->reg('MbqActGetConfig', MBQ_ACTION_PATH.'MbqActGetConfig.php');
         MbqMain::$oClk->reg('MbqActGetForum', MBQ_ACTION_PATH.'MbqActGetForum.php');
@@ -261,6 +269,12 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqActMUndeleteTopic', MBQ_ACTION_PATH.'MbqActMUndeleteTopic.php');
         MbqMain::$oClk->reg('MbqActMDeletePost', MBQ_ACTION_PATH.'MbqActMDeletePost.php');
         MbqMain::$oClk->reg('MbqActMUndeletePost', MBQ_ACTION_PATH.'MbqActMUndeletePost.php');
+        MbqMain::$oClk->reg('MbqActMMoveTopic', MBQ_ACTION_PATH.'MbqActMMoveTopic.php');
+        MbqMain::$oClk->reg('MbqActMMovePost', MBQ_ACTION_PATH.'MbqActMMovePost.php');
+        MbqMain::$oClk->reg('MbqActMRenameTopic', MBQ_ACTION_PATH.'MbqActMRenameTopic.php');
+        MbqMain::$oClk->reg('MbqActMApproveTopic', MBQ_ACTION_PATH.'MbqActMApproveTopic.php');
+        MbqMain::$oClk->reg('MbqActMApprovePost', MBQ_ACTION_PATH.'MbqActMApprovePost.php');
+        MbqMain::$oClk->reg('MbqActMBanUser', MBQ_ACTION_PATH.'MbqActMBanUser.php');
     }
     
     /**

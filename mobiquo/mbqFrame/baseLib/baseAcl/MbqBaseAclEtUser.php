@@ -21,6 +21,15 @@ Abstract Class MbqBaseAclEtUser extends MbqBaseAcl {
     public function canAclGetOnlineUsers() {
         MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
     }
+    
+    /**
+     * judge can m_ban_user
+     *
+     * @return  Boolean
+     */
+    public function canAclMBanUser() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
   
 }
 
