@@ -84,6 +84,7 @@ Abstract Class MbqBaseMain {
         if (MBQ_DEBUG) {
             self::$oMbqCm->writeMemLog();
         }
+        @ ob_end_clean();
     }
     
     /**
