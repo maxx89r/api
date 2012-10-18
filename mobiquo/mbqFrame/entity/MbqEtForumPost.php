@@ -41,6 +41,8 @@ Class MbqEtForumPost extends MbqBaseEntity {
     public $deleteReason;   /* return reason of deletion, if any. */
     public $authorIconUrl;  /* author icon url */
     public $canReport;
+    
+    public $isDummyForumPost;   /* boolean value(default is false),the flag to judge the dummy forum post,used for the topic when itself is the first post */
         
     public $oMbqEtForum;
     public $oMbqEtForumTopic;
@@ -83,6 +85,9 @@ Class MbqEtForumPost extends MbqBaseEntity {
         $this->deleteReason = clone MbqMain::$simpleV;
         $this->authorIconUrl = clone MbqMain::$simpleV;
         $this->canReport = clone MbqMain::$simpleV;
+        
+        $this->isDummyForumPost = clone MbqMain::$simpleV;
+        $this->isDummyForumPost->setOriValue(false);
         
         $this->oMbqEtForum = NULL;
         $this->oMbqEtForumTopic = NULL;

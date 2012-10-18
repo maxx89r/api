@@ -56,6 +56,8 @@ Class MbqEtForumTopic extends MbqBaseEntity {
     
     public $oMbqEtForum;
     public $oFirstMbqEtForumPost;
+    /* the dummy first post of this topic when the topic itself is the first post.this post id format is:topic_topicId,for example:topic_123 */
+    public $oDummyFirstMbqEtForumPost;
     public $oAuthorMbqEtUser;
     public $oLastReplyMbqEtUser;
     public $objsMbqEtAtt;
@@ -108,6 +110,7 @@ Class MbqEtForumTopic extends MbqBaseEntity {
         
         $this->oMbqEtForum = NULL;
         $this->oFirstMbqEtForumPost = NULL;
+        $this->oDummyFirstMbqEtForumPost = NULL;
         $this->oAuthorMbqEtUser = NULL;
         $this->oLastReplyMbqEtUser = NULL;
         $this->objsMbqEtAtt = array();
