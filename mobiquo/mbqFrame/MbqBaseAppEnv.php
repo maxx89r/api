@@ -23,6 +23,15 @@ Abstract Class MbqBaseAppEnv {
      * application environment init
      */
     abstract protected function init();
+    
+    /**
+     * check whether a 3rd plugin is enabled
+     *
+     * @return  Boolean
+     */
+    public function check3rdPluginEnabled() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
   
 }
 
