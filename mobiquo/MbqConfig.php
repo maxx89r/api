@@ -36,6 +36,13 @@ Class MbqConfig extends MbqBaseConfig {
     }
     
     /**
+     * check whether tapatalk is installed and enabled on this site,if not valid then pop error info.
+     */
+    public function tapatalkEnabled() {
+        MbqError::alert('', "Tapatalk is not valid on this site,please install and enable it first!");
+    }
+    
+    /**
      * calculate the final config of $this->cfg through $this->cfg default value and MbqMain::$customConfig and MbqMain::$oMbqAppEnv and the plugin support degree
      */
     public function calCfg() {

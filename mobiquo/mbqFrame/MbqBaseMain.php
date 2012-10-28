@@ -59,6 +59,7 @@ Abstract Class MbqBaseMain {
      * action
      */
     public static function action() {
+        self::$oMbqConfig->tapatalkEnabled();
     }
     
     /**
