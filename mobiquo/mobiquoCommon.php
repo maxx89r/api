@@ -63,7 +63,8 @@ Abstract Class MbqMain extends MbqBaseMain {
                     self::$oAct = self::$oClk->newObj($actionClassName);
                     self::$oAct->actionImplement();
                 } else {
-                    MbqError::alert('', "Not support action for ".self::$cmd."!", '', MBQ_ERR_NOT_SUPPORT);
+                    //MbqError::alert('', "Not support action for ".self::$cmd."!", '', MBQ_ERR_NOT_SUPPORT);
+                    MbqError::alert('', "Sorry!This feature is not available in this forum.Method name:".self::$cmd, '', MBQ_ERR_NOT_SUPPORT);
                 }
             } else {
                 MbqError::alert('', "Need valid cmd!");
