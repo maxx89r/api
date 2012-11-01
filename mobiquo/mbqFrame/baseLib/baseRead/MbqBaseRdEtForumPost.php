@@ -209,6 +209,15 @@ Abstract Class MbqBaseRdEtForumPost extends MbqBaseRd {
     public function getQuotePostContent() {
         MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
     }
+    
+    /**
+     * return raw post content
+     *
+     * @return  String
+     */
+    public function getRawPostContent() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
   
 }
 
