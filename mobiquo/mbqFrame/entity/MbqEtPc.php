@@ -14,7 +14,7 @@ Class MbqEtPc extends MbqBaseEntity {
     public $userNames;      /* To support creating a new conversation with multiple recipients, the app constructs an array and insert user_name for each recipient as an element inside the array. */
     public $convTitle;
     public $convContent;
-    public $totalMessageNum;     /* reply count */
+    public $totalMessageNum;     /* reply count + 1 */
     public $participantCount;   /* returns total number of users participated in this conversation. */
     public $startUserId;    
     public $startConvTime;  /* The time-stamp when the first message in this conversation was sent. */

@@ -148,6 +148,8 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqBaseRdForumSearch', MBQ_BASE_READ_PATH.'MbqBaseRdForumSearch.php');
         MbqMain::$oClk->reg('MbqBaseRdEtSysStatistics', MBQ_BASE_READ_PATH.'MbqBaseRdEtSysStatistics.php');
         MbqMain::$oClk->reg('MbqBaseRdEtThank', MBQ_BASE_READ_PATH.'MbqBaseRdEtThank.php');
+        MbqMain::$oClk->reg('MbqBaseRdEtPc', MBQ_BASE_READ_PATH.'MbqBaseRdEtPc.php');
+        MbqMain::$oClk->reg('MbqBaseRdEtPcMsg', MBQ_BASE_READ_PATH.'MbqBaseRdEtPcMsg.php');
             /* read class */
         MbqMain::$oClk->reg('MbqRdEtForum', MBQ_READ_PATH.'MbqRdEtForum.php');
         MbqMain::$oClk->reg('MbqRdEtUser', MBQ_READ_PATH.'MbqRdEtUser.php');
@@ -157,30 +159,40 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqRdForumSearch', MBQ_READ_PATH.'MbqRdForumSearch.php');
         MbqMain::$oClk->reg('MbqRdEtSysStatistics', MBQ_READ_PATH.'MbqRdEtSysStatistics.php');
         MbqMain::$oClk->reg('MbqRdEtThank', MBQ_READ_PATH.'MbqRdEtThank.php');
+        MbqMain::$oClk->reg('MbqRdEtPc', MBQ_READ_PATH.'MbqRdEtPc.php');
+        MbqMain::$oClk->reg('MbqRdEtPcMsg', MBQ_READ_PATH.'MbqRdEtPcMsg.php');
             /* base write class */
         MbqMain::$oClk->reg('MbqBaseWrEtForumTopic', MBQ_BASE_WRITE_PATH.'MbqBaseWrEtForumTopic.php');
         MbqMain::$oClk->reg('MbqBaseWrEtForumPost', MBQ_BASE_WRITE_PATH.'MbqBaseWrEtForumPost.php');
         MbqMain::$oClk->reg('MbqBaseWrEtAtt', MBQ_BASE_WRITE_PATH.'MbqBaseWrEtAtt.php');
         MbqMain::$oClk->reg('MbqBaseWrEtForum', MBQ_BASE_WRITE_PATH.'MbqBaseWrEtForum.php');
         MbqMain::$oClk->reg('MbqBaseWrEtUser', MBQ_BASE_WRITE_PATH.'MbqBaseWrEtUser.php');
+        MbqMain::$oClk->reg('MbqBaseWrEtPc', MBQ_BASE_WRITE_PATH.'MbqBaseWrEtPc.php');
+        MbqMain::$oClk->reg('MbqBaseWrEtPcMsg', MBQ_BASE_WRITE_PATH.'MbqBaseWrEtPcMsg.php');
             /* write class */
         MbqMain::$oClk->reg('MbqWrEtForumTopic', MBQ_WRITE_PATH.'MbqWrEtForumTopic.php');
         MbqMain::$oClk->reg('MbqWrEtForumPost', MBQ_WRITE_PATH.'MbqWrEtForumPost.php');
         MbqMain::$oClk->reg('MbqWrEtAtt', MBQ_WRITE_PATH.'MbqWrEtAtt.php');
         MbqMain::$oClk->reg('MbqWrEtForum', MBQ_WRITE_PATH.'MbqWrEtForum.php');
         MbqMain::$oClk->reg('MbqWrEtUser', MBQ_WRITE_PATH.'MbqWrEtUser.php');
+        MbqMain::$oClk->reg('MbqWrEtPc', MBQ_WRITE_PATH.'MbqWrEtPc.php');
+        MbqMain::$oClk->reg('MbqWrEtPcMsg', MBQ_WRITE_PATH.'MbqWrEtPcMsg.php');
             /* base acl class */
         MbqMain::$oClk->reg('MbqBaseAclEtForum', MBQ_BASE_ACL_PATH.'MbqBaseAclEtForum.php');
         MbqMain::$oClk->reg('MbqBaseAclEtForumTopic', MBQ_BASE_ACL_PATH.'MbqBaseAclEtForumTopic.php');
         MbqMain::$oClk->reg('MbqBaseAclEtForumPost', MBQ_BASE_ACL_PATH.'MbqBaseAclEtForumPost.php');
         MbqMain::$oClk->reg('MbqBaseAclEtAtt', MBQ_BASE_ACL_PATH.'MbqBaseAclEtAtt.php');
         MbqMain::$oClk->reg('MbqBaseAclEtUser', MBQ_BASE_ACL_PATH.'MbqBaseAclEtUser.php');
+        MbqMain::$oClk->reg('MbqBaseAclEtPc', MBQ_BASE_ACL_PATH.'MbqBaseAclEtPc.php');
+        MbqMain::$oClk->reg('MbqBaseAclEtPcMsg', MBQ_BASE_ACL_PATH.'MbqBaseAclEtPcMsg.php');
             /* acl class */
         MbqMain::$oClk->reg('MbqAclEtForum', MBQ_ACL_PATH.'MbqAclEtForum.php');
         MbqMain::$oClk->reg('MbqAclEtForumTopic', MBQ_ACL_PATH.'MbqAclEtForumTopic.php');
         MbqMain::$oClk->reg('MbqAclEtForumPost', MBQ_ACL_PATH.'MbqAclEtForumPost.php');
         MbqMain::$oClk->reg('MbqAclEtAtt', MBQ_ACL_PATH.'MbqAclEtAtt.php');
         MbqMain::$oClk->reg('MbqAclEtUser', MBQ_ACL_PATH.'MbqAclEtUser.php');
+        MbqMain::$oClk->reg('MbqAclEtPc', MBQ_ACL_PATH.'MbqAclEtPc.php');
+        MbqMain::$oClk->reg('MbqAclEtPcMsg', MBQ_ACL_PATH.'MbqAclEtPcMsg.php');
         /* I/O class */
         MbqMain::$oClk->reg('MbqIo', MBQ_IO_PATH.'MbqIo.php');
         MbqMain::$oClk->reg('MbqIoHandleXmlrpc', MBQ_IO_HANDLE_PATH.'MbqIoHandleXmlrpc.php');
@@ -230,6 +242,13 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqBaseActMApproveTopic', MBQ_BASE_ACTION_PATH.'MbqBaseActMApproveTopic.php');
         MbqMain::$oClk->reg('MbqBaseActMApprovePost', MBQ_BASE_ACTION_PATH.'MbqBaseActMApprovePost.php');
         MbqMain::$oClk->reg('MbqBaseActMBanUser', MBQ_BASE_ACTION_PATH.'MbqBaseActMBanUser.php');
+        MbqMain::$oClk->reg('MbqBaseActNewConversation', MBQ_BASE_ACTION_PATH.'MbqBaseActNewConversation.php');
+        MbqMain::$oClk->reg('MbqBaseActReplyConversation', MBQ_BASE_ACTION_PATH.'MbqBaseActReplyConversation.php');
+        MbqMain::$oClk->reg('MbqBaseActInviteParticipant', MBQ_BASE_ACTION_PATH.'MbqBaseActInviteParticipant.php');
+        MbqMain::$oClk->reg('MbqBaseActGetConversations', MBQ_BASE_ACTION_PATH.'MbqBaseActGetConversations.php');
+        MbqMain::$oClk->reg('MbqBaseActGetConversation', MBQ_BASE_ACTION_PATH.'MbqBaseActGetConversation.php');
+        MbqMain::$oClk->reg('MbqBaseActGetQuoteConversation', MBQ_BASE_ACTION_PATH.'MbqBaseActGetQuoteConversation.php');
+        MbqMain::$oClk->reg('MbqBaseActDeleteConversation', MBQ_BASE_ACTION_PATH.'MbqBaseActDeleteConversation.php');
         /* action class */
         MbqMain::$oClk->reg('MbqActGetConfig', MBQ_ACTION_PATH.'MbqActGetConfig.php');
         MbqMain::$oClk->reg('MbqActGetForum', MBQ_ACTION_PATH.'MbqActGetForum.php');
@@ -275,6 +294,13 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqActMApproveTopic', MBQ_ACTION_PATH.'MbqActMApproveTopic.php');
         MbqMain::$oClk->reg('MbqActMApprovePost', MBQ_ACTION_PATH.'MbqActMApprovePost.php');
         MbqMain::$oClk->reg('MbqActMBanUser', MBQ_ACTION_PATH.'MbqActMBanUser.php');
+        MbqMain::$oClk->reg('MbqActNewConversation', MBQ_ACTION_PATH.'MbqActNewConversation.php');
+        MbqMain::$oClk->reg('MbqActReplyConversation', MBQ_ACTION_PATH.'MbqActReplyConversation.php');
+        MbqMain::$oClk->reg('MbqActInviteParticipant', MBQ_ACTION_PATH.'MbqActInviteParticipant.php');
+        MbqMain::$oClk->reg('MbqActGetConversations', MBQ_ACTION_PATH.'MbqActGetConversations.php');
+        MbqMain::$oClk->reg('MbqActGetConversation', MBQ_ACTION_PATH.'MbqActGetConversation.php');
+        MbqMain::$oClk->reg('MbqActGetQuoteConversation', MBQ_ACTION_PATH.'MbqActGetQuoteConversation.php');
+        MbqMain::$oClk->reg('MbqActDeleteConversation', MBQ_ACTION_PATH.'MbqActDeleteConversation.php');
     }
     
     /**

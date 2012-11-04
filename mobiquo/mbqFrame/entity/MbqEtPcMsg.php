@@ -19,6 +19,8 @@ Class MbqEtPcMsg extends MbqBaseEntity {
     public $postTime;       /* timestamp. message creation time. */
     public $newPost;
     
+    public $oAuthorMbqEtUser;
+    
     public function __construct() {
         parent::__construct();
         $this->msgId = clone MbqMain::$simpleV;
@@ -29,6 +31,8 @@ Class MbqEtPcMsg extends MbqBaseEntity {
         $this->hasLeft = clone MbqMain::$simpleV;
         $this->postTime = clone MbqMain::$simpleV;
         $this->newPost = clone MbqMain::$simpleV;
+        
+        $this->oAuthorMbqEtUser = NULL;
     }
   
 }
