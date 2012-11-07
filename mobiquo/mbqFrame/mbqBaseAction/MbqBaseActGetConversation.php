@@ -37,7 +37,6 @@ Abstract Class MbqBaseActGetConversation extends MbqBaseAct {
                 $oMbqRdEtUser = MbqMain::$oClk->newObj('MbqRdEtUser');
                 $oMbqDataPage = $oMbqRdEtPcMsg->getObjsMbqEtPcMsg($oMbqEtPc, array('case' => 'byPc', 'oMbqDataPage' => $oMbqDataPage));
                 $this->data = $oMbqRdEtPc->returnApiDataPc($oMbqEtPc);
-                $this->data['participants'] = $oMbqRdEtUser->returnApiArrDataUser($oMbqEtPc->objsRecipientMbqEtUser);
                 $this->data['list'] = $oMbqRdEtPcMsg->returnApiArrDataPcMsg($oMbqDataPage->datas, $returnHtml);
                 $oMbqWrEtPc = MbqMain::$oClk->newObj('MbqWrEtPc');
                 /* mark pc read */

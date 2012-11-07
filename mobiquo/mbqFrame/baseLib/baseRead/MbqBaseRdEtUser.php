@@ -147,12 +147,17 @@ Abstract Class MbqBaseRdEtUser extends MbqBaseRd {
      * return user array api data
      *
      * @param  Array  $objsMbqEtUser
+     * @param  Boolean  $forceHash mark whether return hash data
      * @return  Array
      */
-    public function returnApiArrDataUser($objsMbqEtUser) {
+    public function returnApiArrDataUser($objsMbqEtUser, $forceHash = false) {
         $data = array();
         foreach ($objsMbqEtUser as $oMbqEtUser) {
-            $data[$oMbqEtUser->userId->oriValue] = $this->returnApiDataUser($oMbqEtUser);
+            if ($forceHash) {
+                $data[$oMbqEtUser->userId->oriValue] = $this->returnApiDataUser($oMbqEtUser);
+            } else {
+                $data[] = $this->returnApiDataUser($oMbqEtUser);
+            }
         }
         return $data;
     }

@@ -69,7 +69,7 @@ Abstract Class MbqBaseRdEtPc extends MbqBaseRd {
         }
         if ($oMbqEtPc->objsRecipientMbqEtUser) {
             $oMbqRdEtUser = MbqMain::$oClk->newObj('MbqRdEtUser');
-            $data['participants'] = $oMbqRdEtUser->returnApiArrDataUser($oMbqEtPc->objsRecipientMbqEtUser);
+            $data['participants'] = $oMbqRdEtUser->returnApiArrDataUser($oMbqEtPc->objsRecipientMbqEtUser, true);
         } else {
             $data['participants'] = array();
         }
