@@ -20,7 +20,13 @@ Abstract Class MbqBaseActGetInboxStat extends MbqBaseAct {
     protected function actionImplement() {
         /* TODO */
         if (MbqMain::$oMbqConfig->moduleIsEnable('pc') && (MbqMain::$oMbqConfig->getCfg('pc.conversation')->oriValue == MbqBaseFdt::getFdt('MbqFdtConfig.pc.conversation.range.support'))) {
-            $this->data['inbox_unread_count'] = (int) 0;
+            $oMbqAclEtPc = MbqMain::$oClk->newObj('MbqAclEtPc');
+            if ($oMbqAclEtPc->canAclGetInboxStat()) {    //acl judge
+                $oMbqRdEtPc = MbqMain::$oClk->newObj('MbqRdEtPc');
+                $this->data['inbox_unread_count'] = (int) $oMbqRdEtPc->getUnreadPcNum();
+            } else {
+                MbqError::alert('', '', '', MBQ_ERR_APP);
+            }
         } elseif (MbqMain::$oMbqConfig->moduleIsEnable('pm')) {
             $this->data['inbox_unread_count'] = (int) 0;
         } else {

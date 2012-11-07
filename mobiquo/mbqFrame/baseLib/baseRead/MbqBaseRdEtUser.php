@@ -152,7 +152,7 @@ Abstract Class MbqBaseRdEtUser extends MbqBaseRd {
     public function returnApiArrDataUser($objsMbqEtUser) {
         $data = array();
         foreach ($objsMbqEtUser as $oMbqEtUser) {
-            $data[] = $this->returnApiDataUser($oMbqEtUser);
+            $data[$oMbqEtUser->userId->oriValue] = $this->returnApiDataUser($oMbqEtUser);
         }
         return $data;
     }

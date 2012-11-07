@@ -26,8 +26,11 @@ Class MbqEtPc extends MbqBaseEntity {
     public $canClose;   /* return true if user can close this conversation. Default is "false" if this field is missing. */
     public $isClosed;   /* Returns true if this conversation has been closed. Default is "false" if this field is missing. */
     
+    public $firstMsgId; /* the first private conversation message id */
+    
     public $objsRecipientMbqEtUser;   /* users be invited to join this private conversation */
     public $objsMbqEtPcMsg;
+    public $oFirstMbqEtPcMsg;
     
     public function __construct() {
         parent::__construct();
@@ -47,8 +50,11 @@ Class MbqEtPc extends MbqBaseEntity {
         $this->canClose = clone MbqMain::$simpleV;
         $this->isClosed = clone MbqMain::$simpleV;
         
+        $this->firstMsgId = clone MbqMain::$simpleV;
+        
         $this->objsRecipientMbqEtUser = array();
         $this->objsMbqEtPcMsg = array();
+        $this->oFirstMbqEtPcMsg = NULL;
     }
   
 }

@@ -22,7 +22,20 @@ Abstract Class MbqBaseActGetConversations extends MbqBaseAct {
         } else {
             MbqError::alert('', "Not support module private conversation!", '', MBQ_ERR_NOT_SUPPORT);
         }
-        MbqError::alert('', "Sorry!This feature is not available in this forum.Method name:".MbqMain::$cmd, '', MBQ_ERR_NOT_SUPPORT);
+        $startNum = (int) MbqMain::$input[0];
+        $lastNum = (int) MbqMain::$input[1];
+        $oMbqDataPage = MbqMain::$oClk->newObj('MbqDataPage');
+        $oMbqDataPage->initByStartAndLast($startNum, $lastNum);
+        $oMbqAclEtPc = MbqMain::$oClk->newObj('MbqAclEtPc');
+        if ($oMbqAclEtPc->canAclGetConversations()) {    //acl judge
+            $oMbqRdEtPc = MbqMain::$oClk->newObj('MbqRdEtPc');
+            $oMbqDataPage = $oMbqRdEtPc->getObjsMbqEtPc(NULL, array('case' => 'all', 'oMbqDataPage' => $oMbqDataPage));
+            $this->data['conversation_count'] = (int) $oMbqDataPage->totalNum;
+            $this->data['unread_count'] = (int) $oMbqRdEtPc->getUnreadPcNum();
+            $this->data['list'] = $oMbqRdEtPc->returnApiArrDataPc($oMbqDataPage->datas);
+        } else {
+            MbqError::alert('', '', '', MBQ_ERR_APP);
+        }
     }
   
 }

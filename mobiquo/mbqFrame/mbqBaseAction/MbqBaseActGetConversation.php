@@ -22,7 +22,32 @@ Abstract Class MbqBaseActGetConversation extends MbqBaseAct {
         } else {
             MbqError::alert('', "Not support module private conversation!", '', MBQ_ERR_NOT_SUPPORT);
         }
-        MbqError::alert('', "Sorry!This feature is not available in this forum.Method name:".MbqMain::$cmd, '', MBQ_ERR_NOT_SUPPORT);
+        $convId = MbqMain::$input[0];
+        $startNum = (int) MbqMain::$input[1];
+        $lastNum = (int) MbqMain::$input[2];
+        $returnHtml = (boolean) MbqMain::$input[3];
+        $oMbqDataPage = MbqMain::$oClk->newObj('MbqDataPage');
+        $oMbqDataPage->initByStartAndLast($startNum, $lastNum);
+        $oMbqRdEtPc = MbqMain::$oClk->newObj('MbqRdEtPc');
+        if ($objsMbqEtPc = $oMbqRdEtPc->getObjsMbqEtPc(array($convId), array('case' => 'byConvIds'))) {
+            $oMbqEtPc = $objsMbqEtPc[0];
+            $oMbqAclEtPc = MbqMain::$oClk->newObj('MbqAclEtPc');
+            if ($oMbqAclEtPc->canAclGetConversation($oMbqEtPc)) {    //acl judge
+                $oMbqRdEtPcMsg = MbqMain::$oClk->newObj('MbqRdEtPcMsg');
+                $oMbqRdEtUser = MbqMain::$oClk->newObj('MbqRdEtUser');
+                $oMbqDataPage = $oMbqRdEtPcMsg->getObjsMbqEtPcMsg($oMbqEtPc, array('case' => 'byPc', 'oMbqDataPage' => $oMbqDataPage));
+                $this->data = $oMbqRdEtPc->returnApiDataPc($oMbqEtPc);
+                $this->data['participants'] = $oMbqRdEtUser->returnApiArrDataUser($oMbqEtPc->objsRecipientMbqEtUser);
+                $this->data['list'] = $oMbqRdEtPcMsg->returnApiArrDataPcMsg($oMbqDataPage->datas, $returnHtml);
+                $oMbqWrEtPc = MbqMain::$oClk->newObj('MbqWrEtPc');
+                /* mark pc read */
+                $oMbqWrEtPc->markPcRead($oMbqEtPc);
+            } else {
+                MbqError::alert('', '', '', MBQ_ERR_APP);
+            }
+        } else {
+            MbqError::alert('', "Need valid conversation id!", '', MBQ_ERR_APP);
+        }
     }
   
 }

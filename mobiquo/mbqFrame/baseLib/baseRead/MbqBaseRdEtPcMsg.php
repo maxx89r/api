@@ -17,15 +17,22 @@ Abstract Class MbqBaseRdEtPcMsg extends MbqBaseRd {
      * return private conversation message api data
      *
      * @param  Object  $oMbqEtPcMsg
+     * @param  Boolean  $returnHtml
      * @return  Array
      */
-    public function returnApiDataPcMsg($oMbqEtPcMsg) {
+    public function returnApiDataPcMsg($oMbqEtPcMsg, $returnHtml = true) {
         $data = array();
         if ($oMbqEtPcMsg->msgId->hasSetOriValue()) {
             $data['msg_id'] = (string) $oMbqEtPcMsg->msgId->oriValue;
         }
-        if ($oMbqEtPcMsg->msgContent->hasSetOriValue()) {
-            $data['msg_content'] = (string) $oMbqEtPcMsg->msgContent->oriValue;
+        if ($returnHtml) {
+            if ($oMbqEtPcMsg->msgContent->hasSetTmlDisplayValue()) {
+                $data['msg_content'] = (string) $oMbqEtPcMsg->msgContent->tmlDisplayValue;
+            }
+        } else {
+            if ($oMbqEtPcMsg->msgContent->hasSetTmlDisplayValueNoHtml()) {
+                $data['msg_content'] = (string) $oMbqEtPcMsg->msgContent->tmlDisplayValueNoHtml;
+            }
         }
         if ($oMbqEtPcMsg->msgAuthorId->hasSetOriValue()) {
             $data['msg_author_id'] = (string) $oMbqEtPcMsg->msgAuthorId->oriValue;
@@ -52,12 +59,13 @@ Abstract Class MbqBaseRdEtPcMsg extends MbqBaseRd {
      * return private conversation message array api data
      *
      * @param  Array  $objsMbqEtPcMsg
+     * @param  Boolean  $returnHtml
      * @return  Array
      */
-    public function returnApiArrDataPcMsg($objsMbqEtPcMsg) {
+    public function returnApiArrDataPcMsg($objsMbqEtPcMsg, $returnHtml = true) {
         $data = array();
         foreach ($objsMbqEtPcMsg as $oMbqEtPcMsg) {
-            $data[] = $this->returnApiDataPcMsg($oMbqEtPcMsg);
+            $data[] = $this->returnApiDataPcMsg($oMbqEtPcMsg, $returnHtml);
         }
         return $data;
     }

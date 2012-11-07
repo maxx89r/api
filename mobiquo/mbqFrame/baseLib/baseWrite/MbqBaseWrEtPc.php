@@ -12,6 +12,15 @@ Abstract Class MbqBaseWrEtPc extends MbqBaseWr {
     
     public function __construct() {
     }
+    
+    /**
+     * mark private conversation read
+     *
+     * @return  Mixed
+     */
+    public function markPcRead() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
   
 }
 

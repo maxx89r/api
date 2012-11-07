@@ -27,7 +27,7 @@ Abstract Class MbqBaseRdEtPc extends MbqBaseRd {
         if ($oMbqEtPc->convTitle->hasSetOriValue()) {
             $data['conv_subject'] = (string) $oMbqEtPc->convTitle->oriValue;
         }
-        if ($oMbqEtPc->totalMessageNum>hasSetOriValue()) {
+        if ($oMbqEtPc->totalMessageNum->hasSetOriValue()) {
             $data['total_message_num'] = (int) $oMbqEtPc->totalMessageNum->oriValue;
             $data['reply_count'] = (int) ($oMbqEtPc->totalMessageNum->oriValue - 1);
         }
@@ -52,17 +52,17 @@ Abstract Class MbqBaseRdEtPc extends MbqBaseRd {
         if ($oMbqEtPc->canInvite->hasSetOriValue()) {
             $data['can_invite'] = (boolean) $oMbqEtPc->canInvite->oriValue;
         } else {
-            $data['can_invite'] = (boolean) MbqBaseFdt::getFdt('MbqFdtForum.MbqEtPc.canInvite.default');
+            $data['can_invite'] = (boolean) MbqBaseFdt::getFdt('MbqFdtPc.MbqEtPc.canInvite.default');
         }
         if ($oMbqEtPc->canEdit->hasSetOriValue()) {
             $data['can_edit'] = (boolean) $oMbqEtPc->canEdit->oriValue;
         } else {
-            $data['can_edit'] = (boolean) MbqBaseFdt::getFdt('MbqFdtForum.MbqEtPc.canEdit.default');
+            $data['can_edit'] = (boolean) MbqBaseFdt::getFdt('MbqFdtPc.MbqEtPc.canEdit.default');
         }
         if ($oMbqEtPc->canClose->hasSetOriValue()) {
             $data['can_close'] = (boolean) $oMbqEtPc->canClose->oriValue;
         } else {
-            $data['can_close'] = (boolean) MbqBaseFdt::getFdt('MbqFdtForum.MbqEtPc.canClose.default');
+            $data['can_close'] = (boolean) MbqBaseFdt::getFdt('MbqFdtPc.MbqEtPc.canClose.default');
         }
         if ($oMbqEtPc->isClosed->hasSetOriValue()) {
             $data['is_closed'] = (string) $oMbqEtPc->isClosed->oriValue;
@@ -105,6 +105,15 @@ Abstract Class MbqBaseRdEtPc extends MbqBaseRd {
      * @return  Mixed
      */
     public function initOMbqEtPc() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
+    
+    /**
+     * get unread private conversations number
+     *
+     * @return  Integer
+     */
+    public function getUnreadPcNum() {
         MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
     }
   
