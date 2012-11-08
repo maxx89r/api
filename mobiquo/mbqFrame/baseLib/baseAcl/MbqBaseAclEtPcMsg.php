@@ -12,6 +12,15 @@ Abstract Class MbqBaseAclEtPcMsg extends MbqBaseAcl {
     
     public function __construct() {
     }
+    
+    /**
+     * judge can reply_conversation
+     *
+     * @return  Boolean
+     */
+    public function canAclReplyConversation() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
   
 }
 

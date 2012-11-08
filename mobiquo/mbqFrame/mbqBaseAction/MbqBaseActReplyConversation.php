@@ -22,7 +22,25 @@ Abstract Class MbqBaseActReplyConversation extends MbqBaseAct {
         } else {
             MbqError::alert('', "Not support module private conversation!", '', MBQ_ERR_NOT_SUPPORT);
         }
-        MbqError::alert('', "Sorry!This feature is not available in this forum.Method name:".MbqMain::$cmd, '', MBQ_ERR_NOT_SUPPORT);
+        $oMbqEtPcMsg = MbqMain::$oClk->newObj('MbqEtPcMsg');
+        $oMbqEtPcMsg->convId->setOriValue(MbqMain::$input[0]);
+        $oMbqEtPcMsg->msgContent->setOriValue(MbqMain::$input[1]);
+        $oMbqEtPcMsg->msgTitle->setOriValue(MbqMain::$input[2]);
+        $oMbqRdEtPc = MbqMain::$oClk->newObj('MbqRdEtPc');
+        if ($objsMbqEtPc = $oMbqRdEtPc->getObjsMbqEtPc(array($oMbqEtPcMsg->convId->oriValue), array('case' => 'byConvIds'))) {
+            $oMbqEtPc = $objsMbqEtPc[0];
+            $oMbqAclEtPcMsg = MbqMain::$oClk->newObj('MbqAclEtPcMsg');
+            if ($oMbqAclEtPcMsg->canAclReplyConversation($oMbqEtPcMsg, $oMbqEtPc)) {
+                $oMbqWrEtPcMsg = MbqMain::$oClk->newObj('MbqWrEtPcMsg');
+                $oMbqWrEtPcMsg->addMbqEtPcMsg($oMbqEtPcMsg, $oMbqEtPc);
+                $this->data['result'] = true;
+                $this->data['msg_id'] = (string) $oMbqEtPcMsg->msgId->oriValue;
+            } else {
+                MbqError::alert('', '', '', MBQ_ERR_APP);
+            }
+        } else {
+            MbqError::alert('', "Need valid conversation id!", '', MBQ_ERR_APP);
+        }
     }
   
 }

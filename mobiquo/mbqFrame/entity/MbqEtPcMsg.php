@@ -12,6 +12,7 @@ Class MbqEtPcMsg extends MbqBaseEntity {
     
     public $msgId;
     public $convId;         /* private conversation id */
+    public $msgTitle;
     public $msgContent;
     public $msgAuthorId;
     public $isUnread;       /* return true if this message is not yet read by the user. Useful for app to scroll to first unread when entering a conversation. */
@@ -25,6 +26,7 @@ Class MbqEtPcMsg extends MbqBaseEntity {
         parent::__construct();
         $this->msgId = clone MbqMain::$simpleV;
         $this->convId = clone MbqMain::$simpleV;
+        $this->msgTitle = clone MbqMain::$simpleV;
         $this->msgContent = clone MbqMain::$simpleV;
         $this->msgAuthorId = clone MbqMain::$simpleV;
         $this->isUnread = clone MbqMain::$simpleV;

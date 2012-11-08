@@ -12,6 +12,13 @@ Abstract Class MbqBaseWrEtPcMsg extends MbqBaseWr {
     
     public function __construct() {
     }
+    
+    /**
+     * add private conversation message
+     */
+    public function addMbqEtPcMsg() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
   
 }
 

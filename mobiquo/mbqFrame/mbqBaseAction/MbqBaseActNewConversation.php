@@ -22,7 +22,19 @@ Abstract Class MbqBaseActNewConversation extends MbqBaseAct {
         } else {
             MbqError::alert('', "Not support module private conversation!", '', MBQ_ERR_NOT_SUPPORT);
         }
-        MbqError::alert('', "Sorry!This feature is not available in this forum.Method name:".MbqMain::$cmd, '', MBQ_ERR_NOT_SUPPORT);
+        $oMbqEtPc = MbqMain::$oClk->newObj('MbqEtPc');
+        $oMbqEtPc->userNames->setOriValue((array) MbqMain::$input[0]);
+        $oMbqEtPc->convTitle->setOriValue(MbqMain::$input[1]);
+        $oMbqEtPc->convContent->setOriValue(MbqMain::$input[2]);
+        $oMbqAclEtPc = MbqMain::$oClk->newObj('MbqAclEtPc');
+        if ($oMbqAclEtPc->canAclNewConversation($oMbqEtPc)) {    //acl judge
+            $oMbqWrEtPc = MbqMain::$oClk->newObj('MbqWrEtPc');
+            $oMbqWrEtPc->addMbqEtPc($oMbqEtPc);
+            $this->data['result'] = true;
+            $this->data['conv_id'] = (string) $oMbqEtPc->convId->oriValue;
+        } else {
+            MbqError::alert('', '', '', MBQ_ERR_APP);
+        }
     }
   
 }

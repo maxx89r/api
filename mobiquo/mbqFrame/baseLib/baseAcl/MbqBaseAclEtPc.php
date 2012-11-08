@@ -39,6 +39,15 @@ Abstract Class MbqBaseAclEtPc extends MbqBaseAcl {
     public function canAclGetConversation() {
         MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
     }
+    
+    /**
+     * judge can new_conversation
+     *
+     * @return  Boolean
+     */
+    public function canAclNewConversation() {
+        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
   
 }
 
