@@ -22,7 +22,26 @@ Abstract Class MbqBaseActGetQuoteConversation extends MbqBaseAct {
         } else {
             MbqError::alert('', "Not support module private conversation!", '', MBQ_ERR_NOT_SUPPORT);
         }
-        MbqError::alert('', "Sorry!This feature is not available in this forum.Method name:".MbqMain::$cmd, '', MBQ_ERR_NOT_SUPPORT);
+        $convId = MbqMain::$input[0];
+        $msgId = MbqMain::$input[1];
+        $oMbqRdEtPc = MbqMain::$oClk->newObj('MbqRdEtPc');
+        if ($objsMbqEtPc = $oMbqRdEtPc->getObjsMbqEtPc(array($convId), array('case' => 'byConvIds'))) {
+            $oMbqEtPc = $objsMbqEtPc[0];
+            $oMbqRdEtPcMsg = MbqMain::$oClk->newObj('MbqRdEtPcMsg');
+            if ($objsMbqEtPcMsg = $oMbqRdEtPcMsg->getObjsMbqEtPcMsg($oMbqEtPc, array('case' => 'byPc', 'pcMsgIds' => array($msgId)))) {
+                $oMbqEtPcMsg = $objsMbqEtPcMsg[0];
+                $oMbqAclEtPcMsg = MbqMain::$oClk->newObj('MbqAclEtPcMsg');
+                if ($oMbqAclEtPcMsg->canAclGetQuoteConversation($oMbqEtPcMsg, $oMbqEtPc)) {
+                    $this->data['text_body'] = $oMbqRdEtPcMsg->getQuoteConversation($oMbqEtPcMsg);
+                } else {
+                    MbqError::alert('', '', '', MBQ_ERR_APP);
+                }
+            } else {
+                MbqError::alert('', "Need valid conversation message id!", '', MBQ_ERR_APP);
+            }
+        } else {
+            MbqError::alert('', "Need valid conversation id!", '', MBQ_ERR_APP);
+        }
     }
   
 }
