@@ -25,6 +25,7 @@ Class MbqEtPc extends MbqBaseEntity {
     public $canEdit;    /* return true if user can edit this conversation title. Default is false if this field is missing. */
     public $canClose;   /* return true if user can close this conversation. Default is "false" if this field is missing. */
     public $isClosed;   /* Returns true if this conversation has been closed. Default is "false" if this field is missing. */
+    public $deleteMode; /* 1 means only support soft-delete,2 means only support hard-delete,3 means support both soft-delete and hard-delete. */
     
     public $firstMsgId; /* the first private conversation message id */
     
@@ -49,6 +50,7 @@ Class MbqEtPc extends MbqBaseEntity {
         $this->canEdit = clone MbqMain::$simpleV;
         $this->canClose = clone MbqMain::$simpleV;
         $this->isClosed = clone MbqMain::$simpleV;
+        $this->deleteMode = clone MbqMain::$simpleV;
         
         $this->firstMsgId = clone MbqMain::$simpleV;
         

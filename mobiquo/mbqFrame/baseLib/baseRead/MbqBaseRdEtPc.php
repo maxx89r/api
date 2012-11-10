@@ -67,6 +67,9 @@ Abstract Class MbqBaseRdEtPc extends MbqBaseRd {
         if ($oMbqEtPc->isClosed->hasSetOriValue()) {
             $data['is_closed'] = (string) $oMbqEtPc->isClosed->oriValue;
         }
+        if ($oMbqEtPc->deleteMode->hasSetOriValue()) {
+            $data['delete_mode'] = (int) $oMbqEtPc->deleteMode->oriValue;
+        }
         if ($oMbqEtPc->objsRecipientMbqEtUser) {
             $oMbqRdEtUser = MbqMain::$oClk->newObj('MbqRdEtUser');
             $data['participants'] = $oMbqRdEtUser->returnApiArrDataUser($oMbqEtPc->objsRecipientMbqEtUser, true);

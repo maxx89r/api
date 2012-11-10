@@ -44,6 +44,13 @@ Abstract Class MbqFdtPc extends MbqBaseFdt {
                     'yes' => true,
                     'no' => false
                 )
+            ),
+            'deleteMode' => array(
+                'range' => array(
+                    'soft-delete' => 1,
+                    'hard-delete' => 2,
+                    'soft-and-hard-delete' => 3
+                )
             )
         ),
         'MbqEtPcMsg' => array(
