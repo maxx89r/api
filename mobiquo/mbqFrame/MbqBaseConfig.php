@@ -505,13 +505,6 @@ Abstract Class MbqBaseConfig {
             MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . "Invalid module name $moduleName!");
         }
     }
-    
-    /**
-     * check whether tapatalk is installed and enabled on this site,if not valid then pop error info.
-     */
-    public function tapatalkEnabled() {
-        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
-    }
   
 }
 
