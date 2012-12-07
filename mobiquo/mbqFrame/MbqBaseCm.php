@@ -408,6 +408,21 @@ Abstract Class MbqBaseCm {
                     $content = preg_replace('/\[map\]/i', ",,,,,,,,$newName,,,,,,,,", $content);
                     $content = preg_replace('/\[\/map\]/i', ",,,,,,,,/$newName,,,,,,,,", $content);
                     break;
+                    case 'code':
+                    $newName = MBQ_RUNNING_NAMEPRE.'code';
+                    $content = preg_replace('/\[code\]/i', ",,,,,,,,$newName,,,,,,,,", $content);
+                    $content = preg_replace('/\[\/code\]/i', ",,,,,,,,/$newName,,,,,,,,", $content);
+                    break;
+                    case 'html':
+                    $newName = MBQ_RUNNING_NAMEPRE.'html';
+                    $content = preg_replace('/\[html\]/i', ",,,,,,,,$newName,,,,,,,,", $content);
+                    $content = preg_replace('/\[\/html\]/i', ",,,,,,,,/$newName,,,,,,,,", $content);
+                    break;
+                    case 'php':
+                    $newName = MBQ_RUNNING_NAMEPRE.'php';
+                    $content = preg_replace('/\[php\]/i', ",,,,,,,,$newName,,,,,,,,", $content);
+                    $content = preg_replace('/\[\/php\]/i', ",,,,,,,,/$newName,,,,,,,,", $content);
+                    break;
                     default:
                     break;
                 }
@@ -469,6 +484,21 @@ Abstract Class MbqBaseCm {
                     $curName = MBQ_RUNNING_NAMEPRE.'map';
                     $content = preg_replace('/,,,,,,,,'.$curName.',,,,,,,,/i', "[map]", $content);
                     $content = preg_replace('/,,,,,,,,\/'.$curName.',,,,,,,,/i', "[/map]", $content);
+                    break;
+                    case 'code':
+                    $curName = MBQ_RUNNING_NAMEPRE.'code';
+                    $content = preg_replace('/,,,,,,,,'.$curName.',,,,,,,,/i', "[code]", $content);
+                    $content = preg_replace('/,,,,,,,,\/'.$curName.',,,,,,,,/i', "[/code]", $content);
+                    break;
+                    case 'html':
+                    $curName = MBQ_RUNNING_NAMEPRE.'html';
+                    $content = preg_replace('/,,,,,,,,'.$curName.',,,,,,,,/i', "[html]", $content);
+                    $content = preg_replace('/,,,,,,,,\/'.$curName.',,,,,,,,/i', "[/html]", $content);
+                    break;
+                    case 'php':
+                    $curName = MBQ_RUNNING_NAMEPRE.'php';
+                    $content = preg_replace('/,,,,,,,,'.$curName.',,,,,,,,/i', "[php]", $content);
+                    $content = preg_replace('/,,,,,,,,\/'.$curName.',,,,,,,,/i', "[/php]", $content);
                     break;
                     default:
                     break;
