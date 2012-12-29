@@ -24,6 +24,18 @@ Class MbqEtPmBox extends MbqBaseEntity {
         $this->unreadCount = clone MbqMain::$simpleV;
         $this->boxType = clone MbqMain::$simpleV;
     }
+    
+    /**
+     * judge is a sent box
+     *
+     * @return  Boolean
+     */
+    public function isSentBox() {
+        if ($this->boxType->hasSetOriValue() && $this->boxType->oriValue == MbqBaseFdt::getFdt('MbqFdtPm.MbqEtPmBox.boxType.range.sent')) {
+            return true;
+        }
+        return false;
+    }
   
 }
 
