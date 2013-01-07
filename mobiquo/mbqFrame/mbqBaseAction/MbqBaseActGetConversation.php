@@ -34,7 +34,6 @@ Abstract Class MbqBaseActGetConversation extends MbqBaseAct {
             $oMbqAclEtPc = MbqMain::$oClk->newObj('MbqAclEtPc');
             if ($oMbqAclEtPc->canAclGetConversation($oMbqEtPc)) {    //acl judge
                 $oMbqRdEtPcMsg = MbqMain::$oClk->newObj('MbqRdEtPcMsg');
-                $oMbqRdEtUser = MbqMain::$oClk->newObj('MbqRdEtUser');
                 $oMbqDataPage = $oMbqRdEtPcMsg->getObjsMbqEtPcMsg($oMbqEtPc, array('case' => 'byPc', 'oMbqDataPage' => $oMbqDataPage));
                 $this->data = $oMbqRdEtPc->returnApiDataPc($oMbqEtPc);
                 $this->data['list'] = $oMbqRdEtPcMsg->returnApiArrDataPcMsg($oMbqDataPage->datas, $returnHtml);
