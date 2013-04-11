@@ -21,8 +21,16 @@ Abstract Class MbqBaseActGetBoxInfo extends MbqBaseAct {
         if (MbqMain::$oMbqConfig->moduleIsEnable('pm')) {
         } else {
             MbqError::alert('', "Not support module private message!", '', MBQ_ERR_NOT_SUPPORT);
+        }        
+        $oMbqAclEtPm = MbqMain::$oClk->newObj('MbqAclEtPm');
+        if ($oMbqAclEtPm->canAclGetBoxInfo()) {    //acl judge
+            $oMbqRdEtPm = MbqMain::$oClk->newObj('MbqRdEtPm');
+            $objsMbqEtPmBox = $oMbqRdEtPm->getObjsMbqEtPmBox();
+            $this->data['result'] = true;
+            $this->data['list'] = $oMbqRdEtPm->returnApiArrDataPmBox($objsMbqEtPmBox);
+        } else {
+            MbqError::alert('', '', '', MBQ_ERR_APP);
         }
-        MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NOT_ACHIEVE);
     }
   
 }
