@@ -87,13 +87,6 @@ Abstract Class MbqFdtConfig extends MbqBaseFdt {
                     'notSupport' => 0
                 )
             ),
-            'emoji' => array(
-                'default' => 1,
-                'range' => array (
-                    'support' => 1,
-                    'notSupport' => 0
-                )
-            ),
             'support_md5' => array(
                 'default' => 0,
                 'range' => array (
