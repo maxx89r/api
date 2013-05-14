@@ -20,6 +20,7 @@ Abstract Class MbqBaseRdEtAtt extends MbqBaseRd {
      * @return  Array
      */
     public function returnApiDataAttachment($oMbqEtAtt) {
+        if (MbqMain::isJsonProtocol()) return $this->returnJsonApiDataAttachment($oMbqEtAtt);
         $data = array();
         if ($oMbqEtAtt->attId->hasSetOriValue()) {
             $data['attachment_id'] = (string) $oMbqEtAtt->attId->oriValue;
@@ -44,6 +45,33 @@ Abstract Class MbqBaseRdEtAtt extends MbqBaseRd {
         }
         if ($oMbqEtAtt->url->hasSetOriValue()) {
             $data['url'] = (string) $oMbqEtAtt->url->oriValue;
+        }
+        return $data;
+    }
+    
+    /**
+     * return attachment json api data
+     *
+     * @param  Object  $oMbqEtAtt
+     * @return  Array
+     */
+    protected function returnJsonApiDataAttachment($oMbqEtAtt) {
+        $data = array();
+        if ($oMbqEtAtt->attId->hasSetOriValue()) {
+            $data['id'] = (string) $oMbqEtAtt->attId->oriValue;
+        }
+        if ($oMbqEtAtt->uploadFileName->hasSetOriValue()) {
+            $data['name'] = (string) $oMbqEtAtt->uploadFileName->oriValue;
+            $data['type'] = (string) MbqMain::$oMbqCm->getMimeType($oMbqEtAtt->uploadFileName->oriValue);
+        }
+        if ($oMbqEtAtt->filtersSize->hasSetOriValue()) {
+            $data['size'] = (int) $oMbqEtAtt->filtersSize->oriValue;
+        }
+        if ($oMbqEtAtt->url->hasSetOriValue()) {
+            $data['url'] = (string) $oMbqEtAtt->url->oriValue;
+        }
+        if ($oMbqEtAtt->thumbnailUrl->hasSetOriValue()) {
+            $data['thumbnail'] = (string) $oMbqEtAtt->thumbnailUrl->oriValue;
         }
         return $data;
     }

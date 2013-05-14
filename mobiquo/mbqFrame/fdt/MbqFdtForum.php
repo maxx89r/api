@@ -190,6 +190,18 @@ Abstract Class MbqFdtForum extends MbqBaseFdt {
                     'yes' => true,
                     'no' => false
                 )
+            ),
+            'isHot' => array(
+                'range' => array(
+                    'yes' => true,
+                    'no' => false
+                )
+            ),
+            'isDigest' => array(
+                'range' => array(
+                    'yes' => true,
+                    'no' => false
+                )
             )
         ),
         'MbqEtForumPost' => array(
@@ -245,6 +257,12 @@ Abstract Class MbqFdtForum extends MbqBaseFdt {
                     'no' => false
                 )
             ),
+            'isThanked' => array(
+                'range' => array(
+                    'yes' => true,
+                    'no' => false
+                )
+            ),
             'canDelete' => array(
                 'default' => false,
                 'range' => array(
@@ -279,6 +297,20 @@ Abstract Class MbqFdtForum extends MbqBaseFdt {
                 )
             ),
             'canReport' => array(
+                'default' => false,
+                'range' => array(
+                    'yes' => true,
+                    'no' => false
+                )
+            ),
+            'canUnlike' => array(
+                'default' => false,
+                'range' => array(
+                    'yes' => true,
+                    'no' => false
+                )
+            ),
+            'canUnthank' => array(
                 'default' => false,
                 'range' => array(
                     'yes' => true,

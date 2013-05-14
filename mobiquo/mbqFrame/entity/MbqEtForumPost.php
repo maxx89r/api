@@ -30,6 +30,7 @@ Class MbqEtForumPost extends MbqBaseEntity {
     public $thankCount;
     public $canLike;
     public $isLiked;
+    public $isThanked;
     public $likeCount;
     public $canDelete;
     public $isDeleted;
@@ -41,6 +42,8 @@ Class MbqEtForumPost extends MbqBaseEntity {
     public $deleteReason;   /* return reason of deletion, if any. */
     public $authorIconUrl;  /* author icon url */
     public $canReport;
+    public $canUnlike;
+    public $canUnthank;
     
     public $isDummyForumPost;   /* boolean value(default is false),the flag to judge the dummy forum post,used for the topic when itself is the first post */
         
@@ -74,6 +77,7 @@ Class MbqEtForumPost extends MbqBaseEntity {
         $this->thankCount = clone MbqMain::$simpleV;
         $this->canLike = clone MbqMain::$simpleV;
         $this->isLiked = clone MbqMain::$simpleV;
+        $this->isThanked = clone MbqMain::$simpleV;
         $this->likeCount = clone MbqMain::$simpleV;
         $this->canDelete = clone MbqMain::$simpleV;
         $this->isDeleted = clone MbqMain::$simpleV;
@@ -85,6 +89,8 @@ Class MbqEtForumPost extends MbqBaseEntity {
         $this->deleteReason = clone MbqMain::$simpleV;
         $this->authorIconUrl = clone MbqMain::$simpleV;
         $this->canReport = clone MbqMain::$simpleV;
+        $this->canUnlike = clone MbqMain::$simpleV;
+        $this->canUnthank = clone MbqMain::$simpleV;
         
         $this->isDummyForumPost = clone MbqMain::$simpleV;
         $this->isDummyForumPost->setOriValue(false);

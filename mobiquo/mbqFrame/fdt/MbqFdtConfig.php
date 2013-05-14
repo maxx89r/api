@@ -11,6 +11,16 @@ defined('MBQ_IN_IT') or exit;
 Abstract Class MbqFdtConfig extends MbqBaseFdt {
     
     public static $df = array(
+        'otherDefine' => array(
+            'cfgValueType' => array(
+                /* 'xmlrpc' means used for xmlrpc type,'adv' means used for adv type,'all' means used for both xmlrpc type and adv type. */
+                'range' => array(
+                    'xmlrpc' => 'xmlrpc',
+                    'adv' => 'adv',
+                    'all' => 'all'
+                ) 
+            )
+        ),
         'base' => array(
             'is_open' => array(
                 'default' => false,         /* default value */
@@ -46,6 +56,12 @@ Abstract Class MbqFdtConfig extends MbqBaseFdt {
                     'support' => 1,
                     'notSupport' => 0
                 )
+            ),
+            'version' => array(
+                'default' => 'dev',
+            ),
+            'sys_version' => array(
+                'default' => '',
             )
         ),
         'user' => array(
@@ -347,6 +363,38 @@ Abstract Class MbqFdtConfig extends MbqBaseFdt {
                     'support' => 1,
                     'notSupport' => 0
                 )
+            ),
+            'system' => array(
+                'default' => '',
+                'cfgValueType' => 'adv'     /* this field only used to mark adv cfgValueType */
+            ),
+            'offline' => array(
+                'default' => true,
+                'range' => array (
+                    'yes' => true,
+                    'no' => false
+                ),
+                'cfgValueType' => 'adv' 
+            ),
+            'private' => array(
+                'default' => false,
+                'range' => array (
+                    'yes' => true,
+                    'no' => false
+                ),
+                'cfgValueType' => 'adv'
+            ),
+            'charset' => array(
+                'default' => 'UTF-8',
+                'cfgValueType' => 'adv'
+            ),
+            'timezone' => array(
+                'default' => 0,
+                'cfgValueType' => 'adv'
+            ),
+            'api' => array(
+                'default' => array(),
+                'cfgValueType' => 'adv'
             )
         ),
         'pm' => array(

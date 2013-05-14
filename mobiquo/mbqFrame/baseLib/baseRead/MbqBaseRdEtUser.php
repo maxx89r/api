@@ -20,6 +20,7 @@ Abstract Class MbqBaseRdEtUser extends MbqBaseRd {
      * @return  Array
      */
     public function returnApiDataUser($oMbqEtUser) {
+        if (MbqMain::isJsonProtocol()) return $this->returnJsonApiDataUser($oMbqEtUser);
         $data = array();
         if ($oMbqEtUser->userId->hasSetOriValue()) {
             $data['user_id'] = (string) $oMbqEtUser->userId->oriValue;
@@ -139,6 +140,27 @@ Abstract Class MbqBaseRdEtUser extends MbqBaseRd {
         }
         if ($oMbqEtUser->customFieldsList->hasSetOriValue()) {
             $data['custom_fields_list'] = (array) MbqMain::$oMbqCm->changeArrValueToString($oMbqEtUser->customFieldsList->oriValue);
+        }
+        return $data;
+    }
+    
+    /**
+     * return user json api data
+     *
+     * @param  Object  $oMbqEtUser
+     * @return  Array
+     */
+    protected function returnJsonApiDataUser($oMbqEtUser) {
+        $data = array();
+        if ($oMbqEtUser->userId->hasSetOriValue()) {
+            $data['id'] = (string) $oMbqEtUser->userId->oriValue;
+        }
+        $data['name'] = (string) $oMbqEtUser->getDisplayName();
+        if ($oMbqEtUser->iconUrl->hasSetOriValue()) {
+            $data['avatar'] = (string) $oMbqEtUser->iconUrl->oriValue;
+        }
+        if ($oMbqEtUser->isOnline->hasSetOriValue()) {
+            $data['online'] = (boolean) $oMbqEtUser->isOnline->oriValue;
         }
         return $data;
     }

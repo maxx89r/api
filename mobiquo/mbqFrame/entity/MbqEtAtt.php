@@ -14,7 +14,7 @@ Class MbqEtAtt extends MbqBaseEntity {
     public $groupId;
     public $forumId;
     public $postId;
-    public $filtersSize;
+    public $filtersSize;        /* Return the file size of the uploaded file after processed by the forum system. */
     public $uploadFileName;
     public $attType;    /* forum post att or user avatar */
     public $contentType;    /* return "image", "pdf" or "other" */

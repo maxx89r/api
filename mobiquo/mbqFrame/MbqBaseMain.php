@@ -12,7 +12,7 @@ Abstract Class MbqBaseMain {
     
     public static $oMbqCm;
     public static $oMbqConfig;
-    public static $customConfig;    /* user custom config,defined in customConfig.php */
+    public static $customConfig;    /* user custom config,defined in customConfig.php or customAdvConfig.php */
     public static $oMbqAppEnv;
     public static $oClk;  /* instance of class MbqClassLink */
     public static $oMbqCookie;
@@ -20,6 +20,7 @@ Abstract Class MbqBaseMain {
     public static $oMbqIo;
     public static $simpleV;   /* an empty MbqValue object for simple value initialization */
     
+    /* please always use isJsonProtocol() or isXmlRpcProtocol() in your code,instead of directly access this property */
     public static $protocol;    /* xmlrpc/json */
     public static $module;  /* module name */
     public static $cmd;   /* action command name,must unique in all action. */
@@ -39,6 +40,24 @@ Abstract Class MbqBaseMain {
         self::$oMbqCookie = self::$oClk->newObj('MbqCookie');
         self::$oMbqSession = self::$oClk->newObj('MbqSession');
         self::$oMbqIo = self::$oClk->newObj('MbqIo');
+    }
+    
+    /**
+     * judge is using json protocol
+     *
+     * @return  Boolean
+     */
+    public static function isJsonProtocol() {
+        return (self::$protocol == 'json') ? TRUE : FALSE;
+    }
+    
+    /**
+     * judge is using xmlrpc protocol
+     *
+     * @return  Boolean
+     */
+    public static function isXmlRpcProtocol() {
+        return (self::$protocol == 'xmlrpc') ? TRUE : FALSE;
     }
     
     /**

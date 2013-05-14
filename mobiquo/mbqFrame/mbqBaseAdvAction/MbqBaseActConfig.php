@@ -3,12 +3,12 @@
 defined('MBQ_IN_IT') or exit;
 
 /**
- * get_config action
+ * config action
  * 
- * @since  2012-7-30
+ * @since  2013-5-8
  * @author Wu ZeTao <578014287@qq.com>
  */
-Abstract Class MbqBaseActGetConfig extends MbqBaseAct {
+Abstract Class MbqBaseActConfig extends MbqBaseAct {
     
     public function __construct() {
         parent::__construct();
@@ -18,6 +18,7 @@ Abstract Class MbqBaseActGetConfig extends MbqBaseAct {
      * action implement
      */
     protected function actionImplement() {
+        $api = (int) MbqMain::$input['get']['api'];
         $cfg = MbqMain::$oMbqConfig->getAllCfg();
         foreach ($cfg as $moduleName => $module) {
             foreach ($module as $k => $v) {
@@ -25,13 +26,9 @@ Abstract Class MbqBaseActGetConfig extends MbqBaseAct {
                     if (isset($this->data[$k])) {
                         MbqError::alert('', "Find repeat config $k!");
                     } else {
-                        if (!$v->isAdvCfgValueType()) {
+                        if ($v->isAdvCfgValueType()|| $v->isAllCfgValueType()) {
                             if ($v->hasSetOriValue()) {
-                                if ($k == 'is_open' || $k == 'guest_okay' || $k == 'min_search_length') {
-                                    $this->data[$k] = $v->oriValue;
-                                } else {
-                                    $this->data[$k] = (string) $v->oriValue;
-                                }
+                                $this->data[$k] = $v->oriValue;
                             } else {
                                 MbqError::alert('', "Need set config $k!");
                             }

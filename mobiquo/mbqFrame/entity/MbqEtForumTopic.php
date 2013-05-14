@@ -53,15 +53,19 @@ Class MbqEtForumTopic extends MbqBaseEntity {
     public $deleteReason;   /* return reason of deletion, if any. */
     public $canReply;
     public $authorIconUrl;  /* author icon url */
+    public $isHot;          /* Topic is hot or not */
+    public $isDigest;       /* Topic is digest or not */
     
     public $oMbqEtForum;
     public $oFirstMbqEtForumPost;
+    public $oLastMbqEtForumPost;
     /* the dummy first post of this topic when the topic itself is the first post.this post id format is:topic_topicId,for example:topic_123 */
     public $oDummyFirstMbqEtForumPost;
     public $oAuthorMbqEtUser;
     public $oLastReplyMbqEtUser;
     public $objsMbqEtAtt;
     public $objsMbqEtForumPost;
+    public $objsBreadcrumbMbqEtForum;
     
     public function __construct() {
         parent::__construct();
@@ -107,14 +111,18 @@ Class MbqEtForumTopic extends MbqBaseEntity {
         $this->deleteReason = clone MbqMain::$simpleV;
         $this->canReply = clone MbqMain::$simpleV;
         $this->authorIconUrl = clone MbqMain::$simpleV;
+        $this->isHot = clone MbqMain::$simpleV;
+        $this->isDigest = clone MbqMain::$simpleV;
         
         $this->oMbqEtForum = NULL;
         $this->oFirstMbqEtForumPost = NULL;
+        $this->oLastMbqEtForumPost = NULL;
         $this->oDummyFirstMbqEtForumPost = NULL;
         $this->oAuthorMbqEtUser = NULL;
         $this->oLastReplyMbqEtUser = NULL;
         $this->objsMbqEtAtt = array();
         $this->objsMbqEtForumPost = array();
+        $this->objsBreadcrumbMbqEtForum = NULL;
     }
   
 }

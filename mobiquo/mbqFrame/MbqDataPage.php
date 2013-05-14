@@ -46,6 +46,23 @@ Class MbqDataPage {
         $this->numPerPage = $limit;
         $this->curPage = $page;
     }
+    
+    /**
+     * init by page and per page
+     *
+     * @param  Integer  $page page number
+     * @param  Integer  $perPage per page record num
+     */
+    public function initByPageAndPerPage($page, $perPage) {
+        $page = (int) $page;
+        if (!$page || $page < 0) $page = 1;
+        $perPage = (int) $perPage;
+        if (!$perPage || $perPage < 0) $perPage = 20;
+        $this->curPage = $page;
+        $this->numPerPage = $perPage;
+        $this->startNum = ($page - 1) * $perPage + 1;
+        $this->lastNum = $this->startNum + $perPage - 1;
+    }
   
 }
 

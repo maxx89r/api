@@ -14,7 +14,6 @@ Class MbqIo extends MbqBaseIo {
     
     public function __construct() {
         parent::__construct();
-        
         // identify the protocol
         $this->init();
         
@@ -26,18 +25,29 @@ Class MbqIo extends MbqBaseIo {
      * @return string default as xmlrpc
      */
     protected function init() {
-        $contentType = MbqMain::$oMbqCm->getRequestHeader('Content-Type');
-        switch ($contentType) {
-            case 'text/xml':
-                $protocol = 'xmlrpc';
-                break;
-            case 'application/json':
-                $protocol = 'json';
-                break;
-            default:
-                $protocol = 'xmlrpc';
+        if (defined('MBQ_PROTOCOL')) {
+            $protocol = MBQ_PROTOCOL;
+        } else {    //would be removed
+            $contentType = MbqMain::$oMbqCm->getRequestHeader('Content-Type');
+            switch ($contentType) {
+                case 'text/xml':
+                    $protocol = 'xmlrpc';
+                    break;
+                case 'application/json':
+                    $protocol = 'json';
+                    break;
+                default:
+                    $protocol = 'xmlrpc';
+            }
         }
-        $ioHandleClass = 'MbqIoHandle'.ucfirst($protocol);
+        //$ioHandleClass = 'MbqIoHandle'.ucfirst($protocol);
+        if ($protocol == 'xmlrpc') {
+            $ioHandleClass = 'MbqIoHandleXmlrpc';
+        } elseif ($protocol == 'json') {
+            $ioHandleClass = 'MbqIoHandleAdvJson';
+        } else {
+            MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.Unknown protocol.', '', MBQ_ERR_TOP_NOIO);
+        }
         $this->protocol = $protocol;
         $this->oHandle = MbqMain::$oClk->newObj($ioHandleClass);
         $this->cmd = $this->oHandle->getCmd();
@@ -57,8 +67,15 @@ Class MbqIo extends MbqBaseIo {
         $this->oHandle->output(MbqMain::$data);
     }
     
-    public function alert($message, $result = false) {
-        $this->oHandle->alert($message, $result);
+    /**
+     * output error/success message
+     *
+     * @param  String  $message
+     * @param  Boolean  $result
+     * @patam  Integer  $errorCode
+     */
+    public function alert($message, $result = false, $errorCode = NULL) {
+        $this->oHandle->alert($message, $result, $errorCode);
     }
 }
 

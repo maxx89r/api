@@ -2,13 +2,17 @@
 
 defined('MBQ_IN_IT') or exit;
 
-define('MBQ_FRAMEWORK_VERSION', '0.1');
+define('MBQ_FRAMEWORK_VERSION', '0.2');
+if (!defined('MBQ_PROTOCOL')) {
+    define('MBQ_PROTOCOL', 'xmlrpc');   //default
+}
 /* error constant */
 define('MBQ_ERR_TOP', 1);   /* the worst error that must stop the program immediately.we often use this constant in plugin development. */
 define('MBQ_ERR_HIGH', 3);  /* serious error that must stop the program immediately for display in html page.we need not use this constant in plugin development,but can use it in other projects development perhaps. */
 define('MBQ_ERR_NOT_SUPPORT', 5);  /* not support corresponding function error that must stop the program immediately. */
 define('MBQ_ERR_APP', 7);   /* normal error that maked by program logic can be displayed,the program can works continue or not. */
 define('MBQ_ERR_INFO', 9);  /* success info that maked by program logic can be displayed,the program can works continue or not. */
+define('MBQ_ERR_TOP_NOIO', 11);  /* the worst error that must stop the program immediately and then the MbqIo is not valid,will output error info and stop the program immediately. */
 define('MBQ_ERR_DEFAULT_INFO', 'You are not logged in or you do not have permission to do this action.');
 define('MBQ_ERR_INFO_UNKNOWN_CASE', 'Unknown case value!');
 define('MBQ_ERR_INFO_UNKNOWN_PNAME', 'Unknown property name');
@@ -32,6 +36,8 @@ define('MBQ_READ_PATH', MBQ_LIB_PATH.'read'.MBQ_DS);    /* read class path */
 define('MBQ_WRITE_PATH', MBQ_LIB_PATH.'write'.MBQ_DS);    /* write class path */
 define('MBQ_BASE_ACTION_PATH', MBQ_FRAME_PATH.'mbqBaseAction'.MBQ_DS);    /* base action class path */
 define('MBQ_ACTION_PATH', MBQ_PATH.'mbqAction'.MBQ_DS);    /* action class path */
+define('MBQ_BASE_ADV_ACTION_PATH', MBQ_FRAME_PATH.'mbqBaseAdvAction'.MBQ_DS);    /* base adv action class path */
+define('MBQ_ADV_ACTION_PATH', MBQ_PATH.'mbqAdvAction'.MBQ_DS);    /* adv action class path */
 define('MBQ_APPEXTENTION_PATH', MBQ_PATH.'appExtt'.MBQ_DS);    /* application extention path */
 define('MBQ_CUSTOM_PATH', MBQ_PATH.'custom'.MBQ_DS);    /* user custom path */
 define('MBQ_3RD_LIB_PATH', MBQ_FRAME_PATH.'3rdLib'.MBQ_DS);    /* 3rd lib path */
@@ -203,6 +209,7 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqIo', MBQ_IO_PATH.'MbqIo.php');
         MbqMain::$oClk->reg('MbqIoHandleXmlrpc', MBQ_IO_HANDLE_PATH.'MbqIoHandleXmlrpc.php');
         MbqMain::$oClk->reg('MbqIoHandleJson', MBQ_IO_HANDLE_PATH.'MbqIoHandleJson.php');
+        MbqMain::$oClk->reg('MbqIoHandleAdvJson', MBQ_IO_HANDLE_PATH.'MbqIoHandleAdvJson.php');
         /* base action class */
         MbqMain::$oClk->reg('MbqBaseActGetConfig', MBQ_BASE_ACTION_PATH.'MbqBaseActGetConfig.php');
         MbqMain::$oClk->reg('MbqBaseActGetForum', MBQ_BASE_ACTION_PATH.'MbqBaseActGetForum.php');
@@ -323,6 +330,16 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqActGetQuotePm', MBQ_ACTION_PATH.'MbqActGetQuotePm.php');
         MbqMain::$oClk->reg('MbqActDeleteMessage', MBQ_ACTION_PATH.'MbqActDeleteMessage.php');
         MbqMain::$oClk->reg('MbqActMarkPmUnread', MBQ_ACTION_PATH.'MbqActMarkPmUnread.php');
+        /* base adv action class */
+        MbqMain::$oClk->reg('MbqBaseActConfig', MBQ_BASE_ADV_ACTION_PATH.'MbqBaseActConfig.php');
+        MbqMain::$oClk->reg('MbqBaseActForums', MBQ_BASE_ADV_ACTION_PATH.'MbqBaseActForums.php');
+        MbqMain::$oClk->reg('MbqBaseActForum', MBQ_BASE_ADV_ACTION_PATH.'MbqBaseActForum.php');
+        MbqMain::$oClk->reg('MbqBaseActTopic', MBQ_BASE_ADV_ACTION_PATH.'MbqBaseActTopic.php');
+        /* adv action class */
+        MbqMain::$oClk->reg('MbqActConfig', MBQ_ADV_ACTION_PATH.'MbqActConfig.php');
+        MbqMain::$oClk->reg('MbqActForums', MBQ_ADV_ACTION_PATH.'MbqActForums.php');
+        MbqMain::$oClk->reg('MbqActForum', MBQ_ADV_ACTION_PATH.'MbqActForum.php');
+        MbqMain::$oClk->reg('MbqActTopic', MBQ_ADV_ACTION_PATH.'MbqActTopic.php');
     }
     
     /**
@@ -332,8 +349,8 @@ Abstract Class MbqBaseConfig {
         /* base/user/forum/pm/pc/like/subscribe/thank/follow/feed */
         $this->cfg['base'] = $this->cfg['user'] = $this->cfg['forum'] = $this->cfg['pm'] = $this->cfg['pc'] = $this->cfg['like'] = $this->cfg['subscribe'] = $this->cfg['thank'] = $this->cfg['follow'] = $this->cfg['like'] = $this->cfg['feed'] = array();
       /* base config includes some global setting */
-        $this->cfg['base']['sys_version'] = clone MbqMain::$simpleV;
-        $this->cfg['base']['version'] = clone MbqMain::$simpleV; /* Tapatalk plugin version. Plugin developers: Set "version=dev" in order to get your development environment verified by the Tapatalk Network. */
+        $this->cfg['base']['sys_version'] = MbqMain::$oClk->newObj('MbqValue', array('cfgValueType' => MbqBaseFdt::getFdt('MbqFdtConfig.otherDefine.cfgValueType.range.all'), 'oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.base.sys_version.default')));
+        $this->cfg['base']['version'] = MbqMain::$oClk->newObj('MbqValue', array('cfgValueType' => MbqBaseFdt::getFdt('MbqFdtConfig.otherDefine.cfgValueType.range.all'), 'oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.base.version.default'))); /* Tapatalk plugin version. Plugin developers: Set "version=dev" in order to get your development environment verified by the Tapatalk Network. */
         $this->cfg['base']['api_level'] = clone MbqMain::$simpleV;
         $this->cfg['base']['is_open'] = MbqMain::$oClk->newObj('MbqValue', array('oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.base.is_open.default')));  /* false: service is not available / true: service is available.  */
         $this->cfg['base']['inbox_stat'] = MbqMain::$oClk->newObj('MbqValue', array('oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.base.inbox_stat.default')));  /* Return "1" if the plugin support pm and subscribed topic unread number since last check time. */
@@ -385,6 +402,12 @@ Abstract Class MbqBaseConfig {
         $this->cfg['forum']['first_unread'] = MbqMain::$oClk->newObj('MbqValue', array('oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.forum.first_unread.default')));    /* returns "0" if this forum system does not support First Unread feature. Assume "1" if missing. */
         $this->cfg['forum']['max_attachment'] = MbqMain::$oClk->newObj('MbqValue', array('oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.forum.max_attachment.default')));    /* return the max attachment num can be submitted when submit topic/post. */
         $this->cfg['forum']['soft_delete'] = MbqMain::$oClk->newObj('MbqValue', array('oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.forum.soft_delete.default')));    /* support soft delete flag. */
+        $this->cfg['forum']['system'] = MbqMain::$oClk->newObj('MbqValue', array('cfgValueType' => MbqBaseFdt::getFdt('MbqFdtConfig.otherDefine.cfgValueType.range.adv'), 'oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.forum.system.default'))); /* Forum system name */
+        $this->cfg['forum']['offline'] = MbqMain::$oClk->newObj('MbqValue', array('cfgValueType' => MbqBaseFdt::getFdt('MbqFdtConfig.otherDefine.cfgValueType.range.adv'), 'oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.forum.offline.default'))); /* Forum is offline or not */
+        $this->cfg['forum']['private'] = MbqMain::$oClk->newObj('MbqValue', array('cfgValueType' => MbqBaseFdt::getFdt('MbqFdtConfig.otherDefine.cfgValueType.range.adv'), 'oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.forum.private.default'))); /* Forum is private for member only or not */
+        $this->cfg['forum']['charset'] = MbqMain::$oClk->newObj('MbqValue', array('cfgValueType' => MbqBaseFdt::getFdt('MbqFdtConfig.otherDefine.cfgValueType.range.adv'), 'oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.forum.charset.default'))); /* Forum system charset */
+        $this->cfg['forum']['timezone'] = MbqMain::$oClk->newObj('MbqValue', array('cfgValueType' => MbqBaseFdt::getFdt('MbqFdtConfig.otherDefine.cfgValueType.range.adv'), 'oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.forum.timezone.default'))); /* Forum system default timezone for guest. Sample: -1, 9.5 */
+        $this->cfg['forum']['api'] = MbqMain::$oClk->newObj('MbqValue', array('cfgValueType' => MbqBaseFdt::getFdt('MbqFdtConfig.otherDefine.cfgValueType.range.adv'), 'oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.forum.api.default'))); /* Supported API Signature. */
       /* pm */
         $this->cfg['pm']['module_name'] = clone MbqMain::$simpleV;
         $this->cfg['pm']['module_version'] = clone MbqMain::$simpleV;
@@ -424,6 +447,14 @@ Abstract Class MbqBaseConfig {
      * calculate the final config
      */
     protected function calCfg() {
+        /* include custom config */
+        if (MbqMain::isXmlRpcProtocol()) {
+            require_once(MBQ_CUSTOM_PATH.'customConfig.php');
+        } elseif (MbqMain::isJsonProtocol()) {
+            require_once(MBQ_CUSTOM_PATH.'customAdvConfig.php');
+        } else {
+            MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . "Invalid protocol.");
+        }
       /* replace part config through MbqMain::$customConfig */
         foreach (MbqMain::$customConfig as $moduleKey => $module) {
             if (isset($this->cfg[$moduleKey])) {
@@ -505,7 +536,12 @@ Abstract Class MbqBaseConfig {
      * @return  Boolean
      */
     public function pluginIsOpen() {
-        return ($this->cfg['base']['is_open']->oriValue == MbqBaseFdt::getFdt('MbqFdtConfig.base.is_open.range.yes')) ? true : false;
+        if (MbqMain::isXmlRpcProtocol())
+            return ($this->cfg['base']['is_open']->oriValue == MbqBaseFdt::getFdt('MbqFdtConfig.base.is_open.range.yes')) ? true : false;
+        elseif (MbqMain::isJsonProtocol())
+            return ($this->cfg['forum']['offline']->oriValue == MbqBaseFdt::getFdt('MbqFdtConfig.forum.offline.range.no')) ? true : false;
+        else
+            MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . "Invalid protocol.");
     }
     
     /**

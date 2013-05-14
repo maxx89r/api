@@ -24,8 +24,6 @@ Class MbqConfig extends MbqBaseConfig {
 
     public function __construct() {
         parent::__construct();
-        /* include custom config */
-        require_once(MBQ_CUSTOM_PATH.'customConfig.php');
         require_once(MBQ_CUSTOM_PATH.'customDetectJs.php');
         $this->initCfg();
     }

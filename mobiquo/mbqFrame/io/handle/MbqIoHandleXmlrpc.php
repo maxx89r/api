@@ -97,11 +97,14 @@ Class MbqIoHandleXmlrpc {
     }
     
     /**
-     * output error message
+     * output error/success message
      *
+     * @param  String  $message
+     * @param  Boolean  $result
+     * @patam  Integer  $errorCode
      * @return string default as xmlrpc
      */
-    public static function alert($message, $result = false) {
+    public static function alert($message, $result = false, $errorCode = NULL) {
         header('Content-Type: text/xml');
         self::resetGlobals();
         $response = new xmlrpcresp(new xmlrpcval(array(

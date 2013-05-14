@@ -16,7 +16,10 @@ Abstract Class MbqBaseAppEnv {
     public $config;     //application config
     public $cache;      //application cache
     
+    public $forumTree;  //forum tree
+    
     public function __construct() {
+        $this->forumTree = NULL;
     }
     
     /**
@@ -31,6 +34,19 @@ Abstract Class MbqBaseAppEnv {
      */
     public function check3rdPluginEnabled() {
         MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . MBQ_ERR_INFO_NEED_ACHIEVE_IN_INHERITED_CLASSE);
+    }
+    
+    /**
+     * return $this->forumTree,make it if it is NULL.
+     *
+     * @return  Array
+     */
+    public function returnForumTree() {
+        if (is_null($this->forumTree)) {
+            $oMbqRdEtForum = MbqMain::$oClk->newObj('MbqRdEtForum');
+            $this->forumTree = $oMbqRdEtForum->getForumTree();
+        }
+        return $this->forumTree;
     }
   
 }

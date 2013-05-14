@@ -20,7 +20,7 @@ Abstract Class MbqBaseIo {
     public function __construct() {
         $this->input = array();
         $this->data = array();
-        MbqMain::$protocol = &$this->protocol;
+        MbqMain::$protocol = MbqBaseMain::$protocol = &$this->protocol; /* fixed bug:MbqBaseMain::$protocol is invalid when call MbqMain::isXmlRpcProtocol()/MbqMain::isJsonProtocol() */
         MbqMain::$module = &$this->module;
         MbqMain::$cmd = &$this->cmd;
         MbqMain::$input = &$this->input;
