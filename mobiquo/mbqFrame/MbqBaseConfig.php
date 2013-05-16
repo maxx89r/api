@@ -357,6 +357,7 @@ Abstract Class MbqBaseConfig {
         $this->cfg['base']['announcement'] = MbqMain::$oClk->newObj('MbqValue', array('oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.base.announcement.default')));    /* This instructs the app to hide/show the "Announcement" tab in topic view */
         $this->cfg['base']['disable_bbcode'] = MbqMain::$oClk->newObj('MbqValue', array('oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.base.disable_bbcode.default')));    /* disable bbcode function flag */
         $this->cfg['base']['push'] = MbqMain::$oClk->newObj('MbqValue', array('oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.base.push.default')));
+        $this->cfg['base']['api'] = MbqMain::$oClk->newObj('MbqValue', array('cfgValueType' => MbqBaseFdt::getFdt('MbqFdtConfig.otherDefine.cfgValueType.range.adv'), 'oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.base.api.default'))); /* Supported API Signature. */
       /* user */
         $this->cfg['user']['module_enable'] = MbqMain::$oClk->newObj('MbqValue', array('oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.user.module_enable.default')));    /* enable module flag */
         $this->cfg['user']['reg_url'] = MbqMain::$oClk->newObj('MbqValue', array('oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.user.reg_url.default')));     /* regist url on web page */
@@ -407,7 +408,6 @@ Abstract Class MbqBaseConfig {
         $this->cfg['forum']['private'] = MbqMain::$oClk->newObj('MbqValue', array('cfgValueType' => MbqBaseFdt::getFdt('MbqFdtConfig.otherDefine.cfgValueType.range.adv'), 'oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.forum.private.default'))); /* Forum is private for member only or not */
         $this->cfg['forum']['charset'] = MbqMain::$oClk->newObj('MbqValue', array('cfgValueType' => MbqBaseFdt::getFdt('MbqFdtConfig.otherDefine.cfgValueType.range.adv'), 'oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.forum.charset.default'))); /* Forum system charset */
         $this->cfg['forum']['timezone'] = MbqMain::$oClk->newObj('MbqValue', array('cfgValueType' => MbqBaseFdt::getFdt('MbqFdtConfig.otherDefine.cfgValueType.range.adv'), 'oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.forum.timezone.default'))); /* Forum system default timezone for guest. Sample: -1, 9.5 */
-        $this->cfg['forum']['api'] = MbqMain::$oClk->newObj('MbqValue', array('cfgValueType' => MbqBaseFdt::getFdt('MbqFdtConfig.otherDefine.cfgValueType.range.adv'), 'oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.forum.api.default'))); /* Supported API Signature. */
       /* pm */
         $this->cfg['pm']['module_name'] = clone MbqMain::$simpleV;
         $this->cfg['pm']['module_version'] = clone MbqMain::$simpleV;

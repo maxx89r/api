@@ -62,6 +62,10 @@ Abstract Class MbqFdtConfig extends MbqBaseFdt {
             ),
             'sys_version' => array(
                 'default' => '',
+            ),
+            'api' => array(
+                'default' => array(),
+                'cfgValueType' => 'adv'
             )
         ),
         'user' => array(
@@ -390,10 +394,6 @@ Abstract Class MbqFdtConfig extends MbqBaseFdt {
             ),
             'timezone' => array(
                 'default' => 0,
-                'cfgValueType' => 'adv'
-            ),
-            'api' => array(
-                'default' => array(),
                 'cfgValueType' => 'adv'
             )
         ),

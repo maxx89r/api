@@ -23,12 +23,12 @@ Abstract Class MbqBaseActForum extends MbqBaseAct {
         }
         $forumId = MbqMain::$input['get']['fid'];
         $content = MbqMain::$input['get']['content'] ? MbqMain::$input['get']['content'] : 'both';
-        $page = MbqMain::$input['get']['page'];
-        $perpage = MbqMain::$input['get']['perpage'];
+        $page = (int) MbqMain::$input['get']['page'];
+        $perpage = (int) MbqMain::$input['get']['perpage'];
         $type = MbqMain::$input['get']['type'] ? MbqMain::$input['get']['type'] : 'normal';
         $prefix = MbqMain::$input['get']['prefix'];
         $oMbqDataPage = MbqMain::$oClk->newObj('MbqDataPage');
-        $oMbqDataPage->initByStartAndLast($page, $perpage);
+        $oMbqDataPage->initByPageAndPerPage($page, $perpage);
         $oMbqRdEtForum = MbqMain::$oClk->newObj('MbqRdEtForum');
         $objsMbqEtForum = $oMbqRdEtForum->getObjsMbqEtForum(array($forumId), array('case' => 'byForumIds'));
         if ($objsMbqEtForum && ($oMbqEtForum = $objsMbqEtForum[0])) {
