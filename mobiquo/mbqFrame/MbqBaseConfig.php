@@ -340,6 +340,8 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqActForums', MBQ_ADV_ACTION_PATH.'MbqActForums.php');
         MbqMain::$oClk->reg('MbqActForum', MBQ_ADV_ACTION_PATH.'MbqActForum.php');
         MbqMain::$oClk->reg('MbqActTopic', MBQ_ADV_ACTION_PATH.'MbqActTopic.php');
+        /* add extended classes */
+        require_once(MBQ_CUSTOM_PATH.'customAddExttClass.php');
     }
     
     /**
