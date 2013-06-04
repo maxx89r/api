@@ -7,15 +7,18 @@
  * @author Wu ZeTao <578014287@qq.com>
  */
 Class MbqSmartbanner {
-    public static $MBQ_SMARTBANNER_IS_MOBILE_SKIN = 0;  //0 or 1
-    public static $MBQ_SMARTBANNER_APP_IOS_ID = '';  //set to '' if not byo
-    public static $MBQ_SMARTBANNER_APP_ANDROID_URL = '';  //set to '' if not byo
-    public static $MBQ_SMARTBANNER_APP_KINDLE_URL = '';  //set to '' if not byo
-    public static $MBQ_SMARTBANNER_APP_BANNER_MESSAGE = '';  //set to '' if not byo
-    public static $MBQ_SMARTBANNER_APP_FORUM_NAME = '';  //required
-    public static $MBQ_SMARTBANNER_APP_LOCATION_URL = '';  //optional
+    public static $functionCallAfterWindowLoad = 0; //for those forum system which can not add js in html body, please set $functionCallAfterWindowLoad as 1
+    public static $IS_MOBILE_SKIN = 0;  //0 or 1,judge this is on a mobile skin
+    public static $APP_IOS_ID = '';  //set to '' if not byo,ios app id from byo option
+    public static $APP_ANDROID_ID = '';  //set to '' if not byo,android app id from byo option
+    public static $APP_KINDLE_URL = '';  //set to '' if not byo,kindle app url from byo option
+    public static $APP_BANNER_MESSAGE = '';  //set to '' if not byo
+    public static $APP_FORUM_NAME = '';  //required
+    public static $APP_LOCATION_URL = '';  //optional,page location url with tapatalk scheme rules
+    public static $BOARD_URL = '';  //forum url to root
     
-    public static $MBQ_SMARTBANNER_TAPATALKDIR = 'mobiquo';
+    public static $TAPATALKDIR = 'mobiquo'; //default as 'mobiquo'
+    public static $TAPATALKDIR_URL = ''; //$board_url.'/'.$tapatalk_dir
 }
 
 ?>
