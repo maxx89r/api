@@ -26,6 +26,7 @@ Abstract Class MbqBaseRdEtPc extends MbqBaseRd {
         }
         if ($oMbqEtPc->convTitle->hasSetOriValue()) {
             $data['conv_subject'] = (string) $oMbqEtPc->convTitle->oriValue;
+            $data['conv_title'] = (string) $oMbqEtPc->convTitle->oriValue;
         }
         if ($oMbqEtPc->totalMessageNum->hasSetOriValue()) {
             $data['total_message_num'] = (int) $oMbqEtPc->totalMessageNum->oriValue;
