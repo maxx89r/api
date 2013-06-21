@@ -10,5 +10,7 @@ defined('MBQ_IN_IT') or exit;
  * @author Wu ZeTao <578014287@qq.com>
  */
 MbqMain::$customConfig['base']['is_open'] = MbqBaseFdt::getFdt('MbqFdtConfig.base.is_open.range.yes');
+MbqMain::$customConfig['base']['version'] = 'dev';
+MbqMain::$customConfig['base']['api_level'] = 3;
 
 ?>
