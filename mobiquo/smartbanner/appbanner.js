@@ -162,6 +162,11 @@ function tapatalkDetect()
         }
         banner_location_url = byo_android_enable ? app_location_url_byo : app_location_url;
     }
+    else if (navigator.userAgent.match(/IEMobile|Windows Phone/i)) {
+        app_banner_message = app_banner_message.replace(/\[os_platform\]/gi, 'Windows Phone');
+        app_install_url = "http://www.windowsphone.com/s?appid=913ffd61-3ba0-435c-a894-9d3ec7e78d6e";
+        banner_location_url = app_location_url;
+    }
     else if (navigator.userAgent.match(/BlackBerry/i)) {
         app_banner_message = app_banner_message.replace(/\[os_platform\]/gi, 'BlackBerry');
         app_install_url = "http://appworld.blackberry.com/webstore/content/46654?lang=en";
