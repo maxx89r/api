@@ -13,4 +13,7 @@ MbqMain::$customConfig['base']['is_open'] = MbqBaseFdt::getFdt('MbqFdtConfig.bas
 MbqMain::$customConfig['base']['version'] = 'dev';
 MbqMain::$customConfig['base']['api_level'] = 3;
 
+MbqMain::$customConfig['user']['guest_okay'] = MbqBaseFdt::getFdt('MbqFdtConfig.user.guest_okay.range.support');
+MbqMain::$customConfig['user']['user_id'] = MbqBaseFdt::getFdt('MbqFdtConfig.user.user_id.range.support');
+
 ?>
