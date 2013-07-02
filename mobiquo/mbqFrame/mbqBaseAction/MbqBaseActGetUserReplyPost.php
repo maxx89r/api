@@ -29,7 +29,12 @@ Abstract Class MbqBaseActGetUserReplyPost extends MbqBaseAct {
         $oMbqDataPage = MbqMain::$oClk->newObj('MbqDataPage');
         $oMbqDataPage->initByStartAndLast(0, 49);
         $oMbqRdEtUser = MbqMain::$oClk->newObj('MbqRdEtUser');
-        if ($oMbqEtUser = $oMbqRdEtUser->initOMbqEtUser($userName, array('case' => 'byLoginName'))) {
+        if ($userId) {
+            $oMbqEtUser = $oMbqRdEtUser->initOMbqEtUser($userId, array('case' => 'byUserId'));
+        } else {
+            $oMbqEtUser = $oMbqRdEtUser->initOMbqEtUser($userName, array('case' => 'byLoginName'));
+        }
+        if ($oMbqEtUser) {
             $oMbqAclEtForumPost = MbqMain::$oClk->newObj('MbqAclEtForumPost');
             if ($oMbqAclEtForumPost->canAclGetUserReplyPost()) {   //acl judge
                 $oMbqRdEtForumPost = MbqMain::$oClk->newObj('MbqRdEtForumPost');

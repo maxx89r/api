@@ -29,7 +29,12 @@ Abstract Class MbqBaseActGetUserTopic extends MbqBaseAct {
         $oMbqDataPage = MbqMain::$oClk->newObj('MbqDataPage');
         $oMbqDataPage->initByStartAndLast(0, 49);
         $oMbqRdEtUser = MbqMain::$oClk->newObj('MbqRdEtUser');
-        if ($oMbqEtUser = $oMbqRdEtUser->initOMbqEtUser($userName, array('case' => 'byLoginName'))) {
+        if ($userId) {
+            $oMbqEtUser = $oMbqRdEtUser->initOMbqEtUser($userId, array('case' => 'byUserId'));
+        } else {
+            $oMbqEtUser = $oMbqRdEtUser->initOMbqEtUser($userName, array('case' => 'byLoginName'));
+        }
+        if ($oMbqEtUser) {
             $oMbqAclEtForumTopic = MbqMain::$oClk->newObj('MbqAclEtForumTopic');
             if ($oMbqAclEtForumTopic->canAclGetUserTopic()) {   //acl judge
                 $oMbqRdEtForumTopic = MbqMain::$oClk->newObj('MbqRdEtForumTopic');
