@@ -1,5 +1,7 @@
 <?php
 
+define('MBQ_PUSH_BLOCK_TIME', 60);    /* push block time(minutes) */
+
 /**
  * push class
  * 
@@ -9,14 +11,9 @@
 Class TapatalkPush extends TapatalkBasePush {
     
     //init
-    //attention!!!In other do something method,must call self::init() method to init basic properties of this class
-    static public function init() {
-        parent::init();
-        if (!self::$hasInit) {
-            //here to do init work
-            
-        }
-        self::$hasInit = true;
+    public function __construct() {
+        parent::__construct();
+        
     }
     
 }
