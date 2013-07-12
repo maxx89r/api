@@ -52,10 +52,13 @@ Abstract Class MbqFdtConfig extends MbqBaseFdt {
             ),
             'push' => array(
                 'default' => 0,
-                'range' => array (
+                'range' => array(
                     'support' => 1,
                     'notSupport' => 0
                 )
+            ),
+            'push_type' => array(
+                'default' => '',
             ),
             'version' => array(
                 'default' => 'dev',

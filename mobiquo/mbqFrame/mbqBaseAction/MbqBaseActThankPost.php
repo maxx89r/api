@@ -31,6 +31,11 @@ Abstract Class MbqBaseActThankPost extends MbqBaseAct {
                 $oMbqEtThank->userId->setOriValue(MbqMain::$oCurMbqEtUser->userId->oriValue);
                 $oMbqWrEtForumPost->thankPost($oMbqEtForumPost, $oMbqEtThank);
                 $this->data['result'] = true;
+                $oTapatalkPush = new TapatalkPush();
+                $oTapatalkPush->callMethod('doPushThank', array(
+                    'oMbqEtForumPost' => $oMbqEtForumPost,
+                    'oMbqEtThank' => $oMbqEtThank
+                ));
             } else {
                 MbqError::alert('', '', '', MBQ_ERR_APP);
             }

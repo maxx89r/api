@@ -45,6 +45,8 @@ define('MBQ_BASE_LIB_PATH', MBQ_FRAME_PATH.'baseLib'.MBQ_DS);    /* base lib cla
 define('MBQ_BASE_ACL_PATH', MBQ_BASE_LIB_PATH.'baseAcl'.MBQ_DS);    /* bas acl class path */
 define('MBQ_BASE_READ_PATH', MBQ_BASE_LIB_PATH.'baseRead'.MBQ_DS);    /* base read class path */
 define('MBQ_BASE_WRITE_PATH', MBQ_BASE_LIB_PATH.'baseWrite'.MBQ_DS);    /* base write class path */
+define('MBQ_BASE_PUSH_PATH', MBQ_FRAME_PATH.'basePush'.MBQ_DS);    /* base push class path */
+define('MBQ_PUSH_PATH', MBQ_PATH.'push'.MBQ_DS);    /* push class path */
 
 /**
  * plugin config base class
@@ -270,6 +272,7 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqBaseActGetQuotePm', MBQ_BASE_ACTION_PATH.'MbqBaseActGetQuotePm.php');
         MbqMain::$oClk->reg('MbqBaseActDeleteMessage', MBQ_BASE_ACTION_PATH.'MbqBaseActDeleteMessage.php');
         MbqMain::$oClk->reg('MbqBaseActMarkPmUnread', MBQ_BASE_ACTION_PATH.'MbqBaseActMarkPmUnread.php');
+        MbqMain::$oClk->reg('MbqBaseActGetThreadByPost', MBQ_BASE_ACTION_PATH.'MbqBaseActGetThreadByPost.php');
         /* action class */
         MbqMain::$oClk->reg('MbqActGetConfig', MBQ_ACTION_PATH.'MbqActGetConfig.php');
         MbqMain::$oClk->reg('MbqActGetForum', MBQ_ACTION_PATH.'MbqActGetForum.php');
@@ -330,6 +333,7 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqActGetQuotePm', MBQ_ACTION_PATH.'MbqActGetQuotePm.php');
         MbqMain::$oClk->reg('MbqActDeleteMessage', MBQ_ACTION_PATH.'MbqActDeleteMessage.php');
         MbqMain::$oClk->reg('MbqActMarkPmUnread', MBQ_ACTION_PATH.'MbqActMarkPmUnread.php');
+        MbqMain::$oClk->reg('MbqActGetThreadByPost', MBQ_ACTION_PATH.'MbqActGetThreadByPost.php');
         /* base adv action class */
         MbqMain::$oClk->reg('MbqBaseActConfig', MBQ_BASE_ADV_ACTION_PATH.'MbqBaseActConfig.php');
         MbqMain::$oClk->reg('MbqBaseActForums', MBQ_BASE_ADV_ACTION_PATH.'MbqBaseActForums.php');
@@ -342,6 +346,10 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqActTopic', MBQ_ADV_ACTION_PATH.'MbqActTopic.php');
         /* add extended classes */
         require_once(MBQ_CUSTOM_PATH.'customAddExttClass.php');
+        
+        /* add independent push class */
+        require_once(MBQ_BASE_PUSH_PATH.'TapatalkBasePush.php');
+        require_once(MBQ_PUSH_PATH.'TapatalkPush.php');
     }
     
     /**
@@ -359,6 +367,7 @@ Abstract Class MbqBaseConfig {
         $this->cfg['base']['announcement'] = MbqMain::$oClk->newObj('MbqValue', array('oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.base.announcement.default')));    /* This instructs the app to hide/show the "Announcement" tab in topic view */
         $this->cfg['base']['disable_bbcode'] = MbqMain::$oClk->newObj('MbqValue', array('oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.base.disable_bbcode.default')));    /* disable bbcode function flag */
         $this->cfg['base']['push'] = MbqMain::$oClk->newObj('MbqValue', array('oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.base.push.default')));
+        $this->cfg['base']['push_type'] = MbqMain::$oClk->newObj('MbqValue', array('oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.base.push_type.default')));
         $this->cfg['base']['api'] = MbqMain::$oClk->newObj('MbqValue', array('cfgValueType' => MbqBaseFdt::getFdt('MbqFdtConfig.otherDefine.cfgValueType.range.adv'), 'oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.base.api.default'))); /* Supported API Signature. */
       /* user */
         $this->cfg['user']['module_enable'] = MbqMain::$oClk->newObj('MbqValue', array('oriValue' => MbqBaseFdt::getFdt('MbqFdtConfig.user.module_enable.default')));    /* enable module flag */
@@ -451,6 +460,7 @@ Abstract Class MbqBaseConfig {
     protected function calCfg() {
         /* include custom config */
         if (MbqMain::isXmlRpcProtocol()) {
+            require_once(MBQ_CUSTOM_PATH.'commonConfig.php');
             require_once(MBQ_CUSTOM_PATH.'customConfig.php');
         } elseif (MbqMain::isJsonProtocol()) {
             require_once(MBQ_CUSTOM_PATH.'customAdvConfig.php');

@@ -27,6 +27,8 @@ Abstract Class MbqBaseActLogin extends MbqBaseAct {
             $this->data['result'] = true;
             $data1 = $oMbqRdEtUser->returnApiDataUser(MbqMain::$oCurMbqEtUser);
             MbqMain::$oMbqCm->mergeApiData($this->data, $data1);
+            $oTapatalkPush = new TapatalkPush();
+            $oTapatalkPush->callMethod('doAfterAppLogin');
         } else {
             $this->data['result'] = false;
         }
