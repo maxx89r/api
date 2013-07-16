@@ -52,6 +52,7 @@ Class MbqEtForumTopic extends MbqBaseEntity {
     public $deleteByUserId; /* return the user id of the person who has previously soft-deleted this topic */
     public $deleteReason;   /* return reason of deletion, if any. */
     public $canReply;
+    public $canReport;
     public $authorIconUrl;  /* author icon url */
     public $isHot;          /* Topic is hot or not */
     public $isDigest;       /* Topic is digest or not */
@@ -110,6 +111,7 @@ Class MbqEtForumTopic extends MbqBaseEntity {
         $this->deleteByUserId = clone MbqMain::$simpleV;
         $this->deleteReason = clone MbqMain::$simpleV;
         $this->canReply = clone MbqMain::$simpleV;
+        $this->canReport = clone MbqMain::$simpleV;
         $this->authorIconUrl = clone MbqMain::$simpleV;
         $this->isHot = clone MbqMain::$simpleV;
         $this->isDigest = clone MbqMain::$simpleV;

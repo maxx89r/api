@@ -191,6 +191,13 @@ Abstract Class MbqFdtForum extends MbqBaseFdt {
                     'no' => false
                 )
             ),
+            'canReport' => array(
+                'default' => true,  //for dummy report post
+                'range' => array(
+                    'yes' => true,
+                    'no' => false
+                )
+            ),
             'isHot' => array(
                 'range' => array(
                     'yes' => true,

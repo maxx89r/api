@@ -94,18 +94,18 @@ if (app_ios_id != '-1' && navigator.userAgent.match(/Safari/i) != null &&
     
     if (navigator.userAgent.match(/iPad/i) != null)
     {
-        document.write('<meta name="apple-itunes-app" content="app-id='+app_ios_hd_id+',app-argument="'+banner_location_url+'">');
+        document.write('<meta name="apple-itunes-app" content="app-id='+app_ios_hd_id+', app-argument='+banner_location_url+', affiliate-data=partnerId=30&siteID=w5J2vu1UnxA" />');
         native_ios_banner = true;
     }
     else if (navigator.userAgent.match(/iPod|iPhone/i) != null)
     {
-        document.write('<meta name="apple-itunes-app" content="app-id='+app_ios_id+',app-argument='+banner_location_url+'">');
+        document.write('<meta name="apple-itunes-app" content="app-id='+app_ios_id+', app-argument='+banner_location_url+', affiliate-data=partnerId=30&siteID=w5J2vu1UnxA" />');
         native_ios_banner = true;
     }
 }
 
 // for those forum system which can not add js in html body
-if (functionCallAfterWindowLoad) addWindowOnload(tapatalkDetect)
+if (!empty(functionCallAfterWindowLoad)) addWindowOnload(tapatalkDetect)
 
 var bannerLoaded = false
 

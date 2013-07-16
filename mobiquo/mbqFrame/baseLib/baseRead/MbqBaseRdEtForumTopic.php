@@ -174,6 +174,11 @@ Abstract Class MbqBaseRdEtForumTopic extends MbqBaseRd {
         } else {
             $data['can_reply'] = (boolean) MbqBaseFdt::getFdt('MbqFdtForum.MbqEtForumTopic.canReply.default');
         }
+        if ($oMbqEtForumTopic->canReport->hasSetOriValue()) {
+            $data['can_report'] = (boolean) $oMbqEtForumTopic->canReport->oriValue;
+        } else {
+            $data['can_report'] = (boolean) MbqBaseFdt::getFdt('MbqFdtForum.MbqEtForumTopic.canReport.default');
+        }
         if ($oMbqEtForumTopic->objsBreadcrumbMbqEtForum) {
             $data['navi'] = array();
             foreach ($oMbqEtForumTopic->objsBreadcrumbMbqEtForum as $oBreadcrumbMbqEtForum) {

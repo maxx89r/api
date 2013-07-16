@@ -1,5 +1,9 @@
 <?php
 
+if (!class_exists('MbqCommonConfig')) {
+    require_once(dirname(__FILE__).'/../../custom/commonConfig.php');
+}
+
 /**
  * push base class
  * 
@@ -8,11 +12,12 @@
  */
 Abstract Class TapatalkBasePush {
     
-    protected $pushStatus = false; //judged by push flag in get_config and curl_init,allow_url_fopen and push key
+    protected $pushStatus = false; //judged by push flags in config/settings and curl_init,allow_url_fopen
     protected $pushKey = '';
     protected $slugData = array();  //default is empty array
     protected $imActive = false;    //judge current user is active user by tapatalk_push_user table
     protected $siteUrl;
+    protected $supportedPushType = array();
     
     //init
     public function __construct() {

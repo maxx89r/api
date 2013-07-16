@@ -73,7 +73,7 @@ Class MbqDataPage {
     public function initByPositionAndPerPage($position, $perPage) {
         $perPage = (int) $perPage;
         if (!$perPage || $perPage < 0) $perPage = 20;
-        $page = ceil($position / $perPage);
+        $page = ceil($position + 1 / $perPage);
         $this->initByPageAndPerPage($page, $perPage);
     }
   

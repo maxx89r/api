@@ -7,7 +7,7 @@ $app_ios_id_default = '307880732';      // Tapatalk 1, 585178888 for Tapatalk 2
 $app_ios_hd_id_default = '307880732';   // Tapatalk 1, 481579541 for Tapatalk HD
 $app_android_id_default = 'com.quoord.tapatalkpro.activity';
 
-$app_location_url = isset($app_location_url) && stripos($app_location_url, 'tapatalk://') === 0 ? $app_location_url : 'tapatalk://';
+$app_location_url = isset($app_location_url) && preg_match('#^tapatalk://#i', $app_location_url) ? $app_location_url : 'tapatalk://';
 $app_location_url_byo = str_replace('tapatalk://', 'tapatalk-byo://', $app_location_url);
 $tapatalk_dir_url = isset($tapatalk_dir_url) && $tapatalk_dir_url ? $tapatalk_dir_url : './mobiquo';
 $app_forum_name = isset($app_forum_name) && $app_forum_name ? $app_forum_name : 'this forum';

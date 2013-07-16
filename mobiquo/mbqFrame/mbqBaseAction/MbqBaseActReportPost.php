@@ -32,7 +32,8 @@ Abstract Class MbqBaseActReportPost extends MbqBaseAct {
                 $oMbqWrEtForumPost->reportPost($oMbqEtForumPost, $oMbqEtForumReportPost);
                 $this->data['result'] = true;
             } else {
-                MbqError::alert('', '', '', MBQ_ERR_APP);
+                $this->data['result'] = true;   //for dummy report post
+                //MbqError::alert('', '', '', MBQ_ERR_APP);
             }
         } else {
             MbqError::alert('', "Need valid post id!", '', MBQ_ERR_APP);
