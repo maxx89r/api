@@ -58,6 +58,15 @@ Class MbqEtAtt extends MbqBaseEntity {
     public function isUserAvatar() {
         return ($this->attType->oriValue == MbqBaseFdt::getFdt('MbqFdtAtt.MbqEtAtt.attType.range.userAvatar')) ? true : false;
     }
+    
+    /**
+     * judge if this is private conversation att
+     *
+     * @return  Boolean
+     */
+    public function isPcMsgAtt() {
+        return ($this->attType->oriValue == MbqBaseFdt::getFdt('MbqFdtAtt.MbqEtAtt.attType.range.pcMsgAtt')) ? true : false;
+    }
   
 }
 

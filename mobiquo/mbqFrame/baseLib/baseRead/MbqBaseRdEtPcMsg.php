@@ -52,6 +52,9 @@ Abstract Class MbqBaseRdEtPcMsg extends MbqBaseRd {
         if ($oMbqEtPcMsg->newPost->hasSetOriValue()) {
             $data['new_post'] = (boolean) $oMbqEtPcMsg->newPost->oriValue;
         }
+        /* attachments */
+        $oMbqRdEtAtt = MbqMain::$oClk->newObj('MbqRdEtAtt');
+        $data['attachments'] = (array) $oMbqRdEtAtt->returnApiArrDataAttachment($oMbqEtPcMsg->objsNotInContentMbqEtAtt);
         return $data;
     }
     

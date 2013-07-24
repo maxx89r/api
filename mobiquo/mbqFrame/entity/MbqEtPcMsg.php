@@ -21,6 +21,8 @@ Class MbqEtPcMsg extends MbqBaseEntity {
     public $newPost;
     
     public $oAuthorMbqEtUser;
+    public $objsMbqEtAtt;           /* the all attachment objs in this post. */
+    public $objsNotInContentMbqEtAtt;   /* the attachement objs not in the content of this post. */
     
     public function __construct() {
         parent::__construct();
@@ -35,6 +37,8 @@ Class MbqEtPcMsg extends MbqBaseEntity {
         $this->newPost = clone MbqMain::$simpleV;
         
         $this->oAuthorMbqEtUser = NULL;
+        $this->objsMbqEtAtt = array();
+        $this->objsNotInContentMbqEtAtt = array();
     }
   
 }

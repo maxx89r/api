@@ -15,7 +15,8 @@ Abstract Class MbqFdtAtt extends MbqBaseFdt {
             'attType' => array(
                 'range' => array(
                     'forumPostAtt' => 'forumPostAtt',
-                    'userAvatar' => 'userAvatar'
+                    'userAvatar' => 'userAvatar',
+                    'pcMsgAtt' => 'pcMsgAtt'
                 )
             ),
             'contentType' => array(
