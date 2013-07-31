@@ -179,6 +179,7 @@ Abstract Class MbqBaseRdEtForumTopic extends MbqBaseRd {
         } else {
             $data['can_report'] = (boolean) MbqBaseFdt::getFdt('MbqFdtForum.MbqEtForumTopic.canReport.default');
         }
+        /*
         if ($oMbqEtForumTopic->objsBreadcrumbMbqEtForum) {
             $data['navi'] = array();
             foreach ($oMbqEtForumTopic->objsBreadcrumbMbqEtForum as $oBreadcrumbMbqEtForum) {
@@ -188,6 +189,7 @@ Abstract Class MbqBaseRdEtForumTopic extends MbqBaseRd {
                 );
             }
         }
+        */
         return $data;
     }
     
