@@ -25,24 +25,24 @@ if ($app_ios_id != -1 || $app_android_id != -1)
     $twitter_card_head .= '
         <!-- twitter app card start-->
         <!-- https://dev.twitter.com/docs/cards/types/app-card -->
-        <meta name="twitter:card" content="app">
+        <meta name="twitter:card" content="app" />
     ';
     
     if ($app_ios_id != '-1')
     {
         $twitter_card_head .= '
-        <meta name="twitter:app:id:iphone" content="'.$app_ios_id.'">
-        <meta name="twitter:app:url:iphone" content="'.($app_ios_id != $app_ios_id_default ? 'tapatalk-byo://' : 'tapatalk://').'">
+        <meta name="twitter:app:id:iphone" content="'.$app_ios_id.'" />
+        <meta name="twitter:app:url:iphone" content="'.($app_ios_id != $app_ios_id_default ? 'tapatalk-byo://' : 'tapatalk://').'" />
         <meta name="twitter:app:id:ipad" content="'.$app_ios_hd_id.'">
-        <meta name="twitter:app:url:ipad" content="'.($app_ios_hd_id != $app_ios_id_default ? 'tapatalk-byo://' : 'tapatalk://').'">
+        <meta name="twitter:app:url:ipad" content="'.($app_ios_hd_id != $app_ios_id_default ? 'tapatalk-byo://' : 'tapatalk://').'" />
         ';
     };
         
     if ($app_android_id != '-1')
     {
         $twitter_card_head .= '
-        <meta name="twitter:app:id:googleplay" content="'.$app_android_id.'">
-        <meta name="twitter:app:url:googleplay" content="'.($app_android_id != $app_android_id_default ? $app_location_url_byo : $app_location_url).'">
+        <meta name="twitter:app:id:googleplay" content="'.$app_android_id.'" />
+        <meta name="twitter:app:url:googleplay" content="'.($app_android_id != $app_android_id_default ? $app_location_url_byo : $app_location_url).'" />
         ';
     };
     
