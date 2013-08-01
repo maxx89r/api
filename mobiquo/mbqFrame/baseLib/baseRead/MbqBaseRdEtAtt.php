@@ -36,7 +36,7 @@ Abstract Class MbqBaseRdEtAtt extends MbqBaseRd {
         }
         if ($oMbqEtAtt->filtersSize->hasSetOriValue()) {
             $data['filters_size'] = (int) $oMbqEtAtt->filtersSize->oriValue;
-            $data['filesize'] = (int) $oMbqEtAtt->filtersSize->oriValue;
+            //$data['filesize'] = (int) $oMbqEtAtt->filtersSize->oriValue;
         }
         if ($oMbqEtAtt->contentType->hasSetOriValue()) {
             $data['content_type'] = (string) $oMbqEtAtt->contentType->oriValue;
