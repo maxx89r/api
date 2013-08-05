@@ -273,6 +273,7 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqBaseActDeleteMessage', MBQ_BASE_ACTION_PATH.'MbqBaseActDeleteMessage.php');
         MbqMain::$oClk->reg('MbqBaseActMarkPmUnread', MBQ_BASE_ACTION_PATH.'MbqBaseActMarkPmUnread.php');
         MbqMain::$oClk->reg('MbqBaseActGetThreadByPost', MBQ_BASE_ACTION_PATH.'MbqBaseActGetThreadByPost.php');
+        MbqMain::$oClk->reg('MbqBaseActGetThreadByUnread', MBQ_BASE_ACTION_PATH.'MbqBaseActGetThreadByUnread.php');
         /* action class */
         MbqMain::$oClk->reg('MbqActGetConfig', MBQ_ACTION_PATH.'MbqActGetConfig.php');
         MbqMain::$oClk->reg('MbqActGetForum', MBQ_ACTION_PATH.'MbqActGetForum.php');
@@ -334,6 +335,7 @@ Abstract Class MbqBaseConfig {
         MbqMain::$oClk->reg('MbqActDeleteMessage', MBQ_ACTION_PATH.'MbqActDeleteMessage.php');
         MbqMain::$oClk->reg('MbqActMarkPmUnread', MBQ_ACTION_PATH.'MbqActMarkPmUnread.php');
         MbqMain::$oClk->reg('MbqActGetThreadByPost', MBQ_ACTION_PATH.'MbqActGetThreadByPost.php');
+        MbqMain::$oClk->reg('MbqActGetThreadByUnread', MBQ_ACTION_PATH.'MbqActGetThreadByUnread.php');
         /* base adv action class */
         MbqMain::$oClk->reg('MbqBaseActConfig', MBQ_BASE_ADV_ACTION_PATH.'MbqBaseActConfig.php');
         MbqMain::$oClk->reg('MbqBaseActForums', MBQ_BASE_ADV_ACTION_PATH.'MbqBaseActForums.php');

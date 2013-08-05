@@ -60,8 +60,8 @@ Class MbqDataPage {
         if (!$perPage || $perPage < 0) $perPage = 20;
         $this->curPage = $page;
         $this->numPerPage = $perPage;
-        $this->startNum = ($page - 1) * $perPage + 1;
-        $this->lastNum = $this->startNum + $perPage - 1;
+        $this->startNum = ($page - 1) * $perPage;
+        $this->lastNum = $this->startNum + $perPage;
     }
     
     /**
@@ -71,9 +71,10 @@ Class MbqDataPage {
      * @param  Integer  $perPage per page record num
      */
     public function initByPositionAndPerPage($position, $perPage) {
+        $position = (int) $position;
         $perPage = (int) $perPage;
         if (!$perPage || $perPage < 0) $perPage = 20;
-        $page = ceil($position + 1 / $perPage);
+        $page = ceil($position / $perPage);
         $this->initByPageAndPerPage($page, $perPage);
     }
   

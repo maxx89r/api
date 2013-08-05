@@ -56,9 +56,15 @@ Abstract Class MbqBaseFdt {
                 default:
                 break;
             }
-            MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . "Can not find field definition $fdtPath!");
+            if (defined('MPF_IN_IT') && MPF_IN_IT)
+                Error::alert('mpf', __METHOD__ . ',line:' . __LINE__ . '.' . "Can not find field definition $fdtPath!", ERR_TOP);   //for mpf
+            else
+                MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . "Can not find field definition $fdtPath!");
         } else {
-            MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . "Can not find field definition $fdtPath!");
+            if (defined('MPF_IN_IT') && MPF_IN_IT)
+                Error::alert('mpf', __METHOD__ . ',line:' . __LINE__ . '.' . "Can not find field definition $fdtPath!", ERR_TOP);   //for mpf
+            else
+                MbqError::alert('', __METHOD__ . ',line:' . __LINE__ . '.' . "Can not find field definition $fdtPath!");
         }
     }
   
