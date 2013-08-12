@@ -58,7 +58,7 @@ date_default_timezone_set(MPF_C_TIMEZONE);
 /* 其他 */
 
 /* 包含翻译文件 */
-define('MPF_C_LANG', 'cn');    /* 语言 */
+define('MPF_C_LANG', 'en');    /* 语言 */
 require_once('../lang/'.MPF_C_LANG.'/cm.php');  /* 公共翻译 */
 require_once('../lang/'.MPF_C_LANG.'/'.strtolower(MPF_C_APPNAME).'.php');  /* 模块翻译 */
 
