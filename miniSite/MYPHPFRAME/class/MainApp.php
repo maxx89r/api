@@ -110,7 +110,8 @@ Abstract Class MainApp {
         self::assign('title', self::$title);
         self::assign('theme', self::$theme);
         self::assign('rewriteMethod', self::$rewriteMethod);
-        self::assign('ajaxSec', time());
+        $tempTime = time();
+        self::assign('ajaxSec', $tempTime);
         self::assign('oAppConfig', self::$oAppConfig);
         self::assign('mpfLangCm', self::$oCf->mpfLangCm);   /* 公共翻译 */
         self::assign('mpfLang', self::$oCf->mpfLang);   /* 模块翻译 */
