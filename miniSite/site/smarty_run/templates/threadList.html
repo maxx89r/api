@@ -1,42 +1,34 @@
 {* thread list *}
 {* 页首 *}
 {include file="public_header.html"}
-<script language="javascript">
-{literal}
-{/literal}
-</script>
 <body id="vanilla_discussions_index" class="Vanilla Discussions index">
 <div id="Frame">
     <div class="Banner">
 		<ul>
-		  <li><a href="http://192.168.0.101/vanilla_2-0-18-8/discussions" class="">Discussions</a></li>
+		  <li><a href="{tplEchoUrl mainName='MainForum.php' cmd='forumList'}" class="">Forum List</a></li>
 		  
 		  
 		  
-		  
-		  			 <li class="SignInItem"><a href="http://192.168.0.101/vanilla_2-0-18-8/entry/signin" class="SignIn">Sign In</a></li>
 		  		</ul>
 	 </div>
 	 <div id="Body">
 		<div id="Content">
 		  <ul class="DataList Discussions">
+		    {foreach from=$data.topics item=oMnEtForumTopic}
 <li class="Item">
       <div class="ItemContent Discussion">
-      <a href="http://192.168.0.101/vanilla_2-0-18-8/discussion/10/test-#Item_1" class="Title">Test @</a>            <div class="Meta">
-         <span class="Author">admin</span>
-         <span class="Counts">1</span><span class="LastCommentDate">June 6</span>       </div>
+      <a href="{tplEchoUrl mainName='MainTopic.php' cmd='getThread' vName='tid' vValue=$oMnEtForumTopic->topicId->oriValue}" class="Title">{$oMnEtForumTopic->topicTitle->oriValue|escape:html}</a>            <div class="Meta">
+        {if $oMnEtForumTopic->oAuthorMnEtUser}
+         <span class="Author">{$oMnEtForumTopic->oAuthorMnEtUser->userName->oriValue|escape:html}</span>
+        {/if} 
+         <span class="Counts">{$oMnEtForumTopic->totalPostNum->oriValue}</span><span class="LastCommentDate">{$oMnEtForumTopic->postTime->oriValue|date_format}</span>
+      </div>
    </div>
 </li>
-<li class="Item">
-      <div class="ItemContent Discussion">
-      <a href="http://192.168.0.101/vanilla_2-0-18-8/discussion/10/test-#Item_1" class="Title">Test @</a>            <div class="Meta">
-         <span class="Author">admin</span>
-         <span class="Counts">1</span><span class="LastCommentDate">June 6</span>       </div>
-   </div>
-</li>
+		    {/foreach}
 </ul>
-
 		</div>
+{$data.oMnDataPage->echoPage()}
 	 </div>
 	 <div id="Foot">
 		<div class="FootMenu">

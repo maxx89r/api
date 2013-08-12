@@ -10,8 +10,12 @@ MainApp::$oClk->includeClass('MbqEtThank');
  */
 Class MnEtThank extends MbqEtThank {
     
+    public $oMnEtUser; /* user who thanked this */
+    
     public function __construct() {
         parent::__construct();
+        
+        $this->oMnEtUser = NULL;
     }
   
 }

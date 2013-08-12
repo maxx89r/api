@@ -10,8 +10,12 @@ MainApp::$oClk->includeClass('MbqEtLike');
  */
 Class MnEtLike extends MbqEtLike {
     
+    public $oMnEtUser; /* user who like this */
+    
     public function __construct() {
         parent::__construct();
+        
+        $this->oMnEtUser = NULL;
     }
   
 }

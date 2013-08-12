@@ -21,6 +21,7 @@ Class MbqEtAtt extends MbqBaseEntity {
     public $thumbnailUrl;   /* if content type = "image", use absolute path (optional: if not presented, use "url" to load thumbnail instead) */
     public $url;    /* URL of the attachment source. */
     public $userId;     /* user id who submit this attachment */
+    public $mimeType;   /* Attachment file MIME type. Example value: image/png */
     
     public $oMbqEtUser; /* user who submit this attachment */
     
@@ -37,6 +38,7 @@ Class MbqEtAtt extends MbqBaseEntity {
         $this->thumbnailUrl = clone MbqMain::$simpleV;
         $this->url = clone MbqMain::$simpleV;
         $this->userId = clone MbqMain::$simpleV;
+        $this->mimeType = clone MbqMain::$simpleV;
         
         $this->oMbqEtUser = NULL;
     }

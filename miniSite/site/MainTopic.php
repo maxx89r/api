@@ -22,10 +22,21 @@ Class MainTopic extends MainBase {
     public function threadList() {
         self::$cmd = 'threadList';
         /* init */
-        self::$title = "thread list";
         /* verify */
         /* acl */
         /* do */
+        $param = array(
+            'fid' => $_GET['fid'],
+            'content' => $_GET['content'] ? $_GET['content'] : 'topic',
+            'page' => $_GET['page'] ? $_GET['page'] : MPF_SITE_DEFAULT_PAGE_NUM,
+            'perpage' => $_GET['perpage'] ? $_GET['perpage'] : MPF_SITE_DEFAULT_PER_PAGE_NUM,
+            'type' => $_GET['type'] ? $_GET['type'] : 'normal',
+            'prefix' => $_GET['prefix'] ? $_GET['prefix'] : 0
+        );
+        $oMnEtForumTopicRd = MainApp::$oClk->newObj('MnEtForumTopicRd');
+        $data = $oMnEtForumTopicRd->doThreadList($param);
+        self::$title = $data['forum']->forumName->oriValue;
+        self::assign('data', $data);
         /* end */
         $this->setTpl('threadList.html');
     }
@@ -40,6 +51,19 @@ Class MainTopic extends MainBase {
         /* verify */
         /* acl */
         /* do */
+        $param = array(
+            'pid' => $_GET['pid'],
+            'tid' => $_GET['tid'],
+            'uid' => $_GET['uid'],
+            'goto' => $_GET['goto'],
+            'page' => $_GET['page'] ? $_GET['page'] : MPF_SITE_DEFAULT_PAGE_NUM,
+            'perpage' => $_GET['perpage'] ? $_GET['perpage'] : MPF_SITE_DEFAULT_PER_PAGE_NUM,
+            'order' => $_GET['order'] ? $_GET['order'] : 'asc'
+        );
+        $oMnEtForumTopicRd = MainApp::$oClk->newObj('MnEtForumTopicRd');
+        $data = $oMnEtForumTopicRd->doGetThread($param);
+        self::$title = $data['topic']->topicTitle->oriValue;
+        self::assign('data', $data);
         /* end */
         $this->setTpl('getThread.html');
     }

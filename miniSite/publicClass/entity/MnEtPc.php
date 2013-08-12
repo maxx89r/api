@@ -10,8 +10,16 @@ MainApp::$oClk->includeClass('MbqEtPc');
  */
 Class MnEtPc extends MbqEtPc {
     
+    public $objsRecipientMnEtUser;   /* users be invited to join this private conversation */
+    public $objsMnEtPcMsg;
+    public $oFirstMnEtPcMsg;
+    
     public function __construct() {
         parent::__construct();
+        
+        $this->objsRecipientMnEtUser = array();
+        $this->objsMnEtPcMsg = array();
+        $this->oFirstMnEtPcMsg = NULL;
     }
   
 }

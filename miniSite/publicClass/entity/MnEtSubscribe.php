@@ -10,8 +10,12 @@ MainApp::$oClk->includeClass('MbqEtSubscribe');
  */
 Class MnEtSubscribe extends MbqEtSubscribe {
     
+    public $oMnEtUser; /* user who subscribed this */
+    
     public function __construct() {
         parent::__construct();
+        
+        $this->oMnEtUser = NULL;
     }
   
 }

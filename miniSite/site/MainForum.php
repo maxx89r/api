@@ -22,10 +22,13 @@ Class MainForum extends MainBase {
     public function forumList() {
         self::$cmd = 'forumList';
         /* init */
-        self::$title = "forum list";
+        self::$title = "Forum List";
         /* verify */
         /* acl */
         /* do */
+        $oMnEtForumRd = MainApp::$oClk->newObj('MnEtForumRd');
+        $objsMnEtForum = $oMnEtForumRd->getForumTree();
+        self::assign('objsMnEtForum', $objsMnEtForum);
         /* end */
         $this->setTpl('forumList.html');
     }

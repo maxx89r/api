@@ -10,8 +10,12 @@ MainApp::$oClk->includeClass('MbqEtAtt');
  */
 Class MnEtAtt extends MbqEtAtt {
     
+    public $oMnEtUser; /* user who submit this attachment */
+    
     public function __construct() {
         parent::__construct();
+        
+        $this->oMnEtUser = NULL;
     }
   
 }

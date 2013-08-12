@@ -10,8 +10,16 @@ MainApp::$oClk->includeClass('MbqEtPcMsg');
  */
 Class MnEtPcMsg extends MbqEtPcMsg {
     
+    public $oAuthorMnEtUser;
+    public $objsMnEtAtt;           /* the all attachment objs in this post. */
+    public $objsNotInContentMnEtAtt;   /* the attachement objs not in the content of this post. */
+    
     public function __construct() {
         parent::__construct();
+        
+        $this->oAuthorMnEtUser = NULL;
+        $this->objsMnEtAtt = array();
+        $this->objsNotInContentMnEtAtt = array();
     }
   
 }

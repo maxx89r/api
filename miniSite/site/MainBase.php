@@ -1,21 +1,6 @@
 <?php
 require_once('./AppConfig.php');
 
-/* constants and classes for mobiquo */
-define('MBQ_IN_IT', true);  /* is in mobiquo flag */
-define('MBQ_DS', DIRECTORY_SEPARATOR);
-define('MBQ_PATH', dirname(__FILE__).MBQ_DS.'..'.MBQ_DS.'..'.MBQ_DS.'mobiquo'.MBQ_DS);    /* mobiquo path */
-define('MBQ_FRAME_PATH', MBQ_PATH.'mbqFrame'.MBQ_DS);    /* frame path */
-/* error constant */
-define('MBQ_ERR_TOP', 1);   /* the worst error that must stop the program immediately.we often use this constant in plugin development. */
-define('MBQ_ERR_HIGH', 3);  /* serious error that must stop the program immediately for display in html page.we need not use this constant in plugin development,but can use it in other projects development perhaps. */
-define('MBQ_ERR_NOT_SUPPORT', 5);  /* not support corresponding function error that must stop the program immediately. */
-define('MBQ_ERR_APP', 7);   /* normal error that maked by program logic can be displayed,the program can works continue or not. */
-define('MBQ_ERR_INFO', 9);  /* success info that maked by program logic can be displayed,the program can works continue or not. */
-define('MBQ_ERR_TOP_NOIO', 11);  /* the worst error that must stop the program immediately and then the MbqIo is not valid,will output error info and stop the program immediately. */
-define('MBQ_ENTITY_PATH', MBQ_FRAME_PATH.'entity'.MBQ_DS);    /* entity class path */
-define('MBQ_FDT_PATH', MBQ_FRAME_PATH.'fdt'.MBQ_DS);    /* fdt class path */
-
 /** 
  * 主程序基类 
  * 
@@ -49,6 +34,7 @@ Abstract Class MainBase extends MainApp {
         self::$oClk->includeClass('MbqFdtFeed');
         self::$oClk->includeClass('MbqFdtAtt');
         self::$oClk->includeClass('MbqMain');
+        self::$oClk->includeClass('MnDataPage');
     }
     
     /**
@@ -122,6 +108,7 @@ Abstract Class MainBase extends MainApp {
             /* 客户端接口类 */
             /* other class */
         self::$oClk->reg($type, 'MbqMain', self::$oCf->getPath(MPF_C_APP_CLASS_PATH_ET).'MbqMain.php');
+        self::$oClk->reg($type, 'MnDataPage', self::$oCf->getPath(MPF_C_APP_CLASS_PATH_ET).'MnDataPage.php');
     }
     
     /**
@@ -131,10 +118,49 @@ Abstract Class MainBase extends MainApp {
         parent::regAppClass();
         $type = self::$oCt->getApp();
         /* 实体读/写/初始化类 */
+        self::$oClk->reg($type, 'MnEtAttInit', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtAttInit.php');
+        self::$oClk->reg($type, 'MnEtAttRd', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtAttRd.php');
+        self::$oClk->reg($type, 'MnEtFeedInit', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtFeedInit.php');
+        self::$oClk->reg($type, 'MnEtFeedRd', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtFeedRd.php');
+        self::$oClk->reg($type, 'MnEtFollowInit', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtFollowInit.php');
+        self::$oClk->reg($type, 'MnEtFollowRd', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtFollowRd.php');
+        self::$oClk->reg($type, 'MnEtForumInit', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtForumInit.php');
+        self::$oClk->reg($type, 'MnEtForumRd', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtForumRd.php');
+        self::$oClk->reg($type, 'MnEtForumPostInit', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtForumPostInit.php');
+        self::$oClk->reg($type, 'MnEtForumPostRd', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtForumPostRd.php');
+        self::$oClk->reg($type, 'MnEtForumReportPostInit', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtForumReportPostInit.php');
+        self::$oClk->reg($type, 'MnEtForumReportPostRd', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtForumReportPostRd.php');
+        self::$oClk->reg($type, 'MnEtForumSmilieInit', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtForumSmilieInit.php');
+        self::$oClk->reg($type, 'MnEtForumSmilieRd', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtForumSmilieRd.php');
+        self::$oClk->reg($type, 'MnEtForumTopicInit', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtForumTopicInit.php');
+        self::$oClk->reg($type, 'MnEtForumTopicRd', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtForumTopicRd.php');
+        self::$oClk->reg($type, 'MnEtLikeInit', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtLikeInit.php');
+        self::$oClk->reg($type, 'MnEtLikeRd', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtLikeRd.php');
+        self::$oClk->reg($type, 'MnEtPcInit', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtPcInit.php');
+        self::$oClk->reg($type, 'MnEtPcRd', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtPcRd.php');
+        self::$oClk->reg($type, 'MnEtPcInviteParticipantInit', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtPcInviteParticipantInit.php');
+        self::$oClk->reg($type, 'MnEtPcInviteParticipantRd', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtPcInviteParticipantRd.php');
+        self::$oClk->reg($type, 'MnEtPcMsgInit', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtPcMsgInit.php');
+        self::$oClk->reg($type, 'MnEtPcMsgRd', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtPcMsgRd.php');
+        self::$oClk->reg($type, 'MnEtPmBoxInit', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtPmBoxInit.php');
+        self::$oClk->reg($type, 'MnEtPmBoxRd', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtPmBoxRd.php');
+        self::$oClk->reg($type, 'MnEtPmInit', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtPmInit.php');
+        self::$oClk->reg($type, 'MnEtPmRd', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtPmRd.php');
+        self::$oClk->reg($type, 'MnEtReportPmInit', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtReportPmInit.php');
+        self::$oClk->reg($type, 'MnEtReportPmRd', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtReportPmRd.php');
+        self::$oClk->reg($type, 'MnEtSubscribeInit', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtSubscribeInit.php');
+        self::$oClk->reg($type, 'MnEtSubscribeRd', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtSubscribeRd.php');
+        self::$oClk->reg($type, 'MnEtSysStatisticsInit', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtSysStatisticsInit.php');
+        self::$oClk->reg($type, 'MnEtSysStatisticsRd', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtSysStatisticsRd.php');
+        self::$oClk->reg($type, 'MnEtThankInit', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtThankInit.php');
+        self::$oClk->reg($type, 'MnEtThankRd', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtThankRd.php');
+        self::$oClk->reg($type, 'MnEtUserInit', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtUserInit.php');
+        self::$oClk->reg($type, 'MnEtUserRd', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnEtUserRd.php');
         /* 权限判断类 */
         /* 实体校验类 */
         /* 主程序代理类 */
         /* 工具类 */
+        self::$oClk->reg($type, 'MnCommon', self::$oCf->getPath(MPF_C_APP_CLASS_PATH) . 'MnCommon.php');
         /* 服务端接口类 */
     }
     

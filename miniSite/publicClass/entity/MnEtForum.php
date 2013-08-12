@@ -10,8 +10,14 @@ MainApp::$oClk->includeClass('MbqEtForum');
  */
 Class MnEtForum extends MbqEtForum {
     
+    public $oParentMnEtForum;  /* parent forum */
+    public $objsSubMnEtForum;  /* sub forums */
+    
     public function __construct() {
         parent::__construct();
+        
+        $this->oParentMnEtForum = NULL;
+        $this->objsSubMnEtForum = array();
     }
   
 }

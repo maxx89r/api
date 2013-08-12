@@ -18,12 +18,14 @@ Class MbqValue {
     private $hasSetAppDisplayValue;   /* has set appDisplayValue flag */
     private $hasSetTmlDisplayValue;   /* has set tmlDisplayValue flag */
     private $hasSetTmlDisplayValueNoHtml;   /* has set tmlDisplayValueNoHtml flag */
+    private $hasSetMnDisplayValue;      /* has set mnDisplayValue */
     
     /* you should set values by set method!!!because the set method will do more work on flag instead of only assignment. */
     public $oriValue;   /* original value saved in application */
     public $appDisplayValue;    /* handled internally by application and displayed in application */
     public $tmlDisplayValue;    /* handled by tapatalk and displayed in terminal application,mobile etc.return_html = true. */
     public $tmlDisplayValueNoHtml;    /* handled by tapatalk and displayed in terminal application,mobile etc.return_html = false. */
+    public $mnDisplayValue;         /* mini site display value */
     
     /**
      * @param  Array  $p  params for create the object.
@@ -113,6 +115,15 @@ Class MbqValue {
     }
     
     /**
+     * judge the mnDisplayValue has been set
+     *
+     * @return  Boolean
+     */
+    public function hasSetMnDisplayValue() {
+        return $this->hasSetMnDisplayValue;
+    }
+    
+    /**
      * set oriValue
      *
      * @param  Mixed  $v
@@ -150,6 +161,16 @@ Class MbqValue {
     public function setTmlDisplayValueNoHtml($v) {
         $this->tmlDisplayValueNoHtml = $v;
         $this->hasSetTmlDisplayValueNoHtml = true;
+    }
+    
+    /**
+     * set mnDisplayValue
+     *
+     * @param  Mixed  $v
+     */
+    public function setMnDisplayValue($v) {
+        $this->mnDisplayValue = $v;
+        $this->hasSetMnDisplayValue = true;
     }
   
 }

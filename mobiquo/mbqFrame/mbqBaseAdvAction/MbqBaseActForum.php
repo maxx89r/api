@@ -41,7 +41,7 @@ Abstract Class MbqBaseActForum extends MbqBaseAct {
                         case 'sticky':     /* returns sticky topics. */
                         $oMbqRdEtForumTopic = MbqMain::$oClk->newObj('MbqRdEtForumTopic');
                         $oMbqDataPage = $oMbqRdEtForumTopic->getObjsMbqEtForumTopic($oMbqEtForum, array('case' => 'byForum', 'oMbqDataPage' => $oMbqDataPage, 'top' => true));
-                        //$this->data['total'] = (int) $oMbqDataPage->totalNum;
+                        $this->data['total'] = (int) $oMbqDataPage->totalNum;   //!!! must
                         $this->data['forum'] = $oMbqRdEtForum->returnApiDataForum($oMbqEtForum);
                         $this->data['forums'] = array();
                         $this->data['topics'] = $oMbqRdEtForumTopic->returnApiArrDataForumTopic($oMbqDataPage->datas);
@@ -49,7 +49,7 @@ Abstract Class MbqBaseActForum extends MbqBaseAct {
                         case 'normal':        /* returns standard topics */
                         $oMbqRdEtForumTopic = MbqMain::$oClk->newObj('MbqRdEtForumTopic');
                         $oMbqDataPage = $oMbqRdEtForumTopic->getObjsMbqEtForumTopic($oMbqEtForum, array('case' => 'byForum', 'oMbqDataPage' => $oMbqDataPage, 'notIncludeTop' => true));
-                        //$this->data['total'] = (int) $oMbqDataPage->totalNum;
+                        $this->data['total'] = (int) $oMbqDataPage->totalNum;   //!!! must
                         $this->data['forum'] = $oMbqRdEtForum->returnApiDataForum($oMbqEtForum);
                         $this->data['forums'] = array();
                         $this->data['topics'] = $oMbqRdEtForumTopic->returnApiArrDataForumTopic($oMbqDataPage->datas);

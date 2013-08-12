@@ -61,7 +61,7 @@ Class MbqDataPage {
         $this->curPage = $page;
         $this->numPerPage = $perPage;
         $this->startNum = ($page - 1) * $perPage;
-        $this->lastNum = $this->startNum + $perPage;
+        $this->lastNum = $this->startNum + $perPage - 1;
     }
     
     /**

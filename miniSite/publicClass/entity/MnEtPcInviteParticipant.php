@@ -10,8 +10,14 @@ MainApp::$oClk->includeClass('MbqEtPcInviteParticipant');
  */
 Class MnEtPcInviteParticipant extends MbqEtPcInviteParticipant {
     
+    public $oMnEtPc;
+    public $objsMnEtUser;
+    
     public function __construct() {
         parent::__construct();
+        
+        $this->oMnEtPc = NULL;
+        $this->objsMnEtUser = array();
     }
   
 }
