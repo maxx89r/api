@@ -20,8 +20,7 @@ Class MnEtUser extends MbqEtUser {
      * @return  String
      */
     public function getDisplayName() {
-        //TODO
-        die('TODO:getDisplayName()');
+        return $this->userName->oriValue;
     }
   
 }
