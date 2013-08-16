@@ -13,7 +13,7 @@ Class MainTopic extends MainBase {
         parent::__construct();
         self::selectRewrite('none');
         
-        $this->initSession();
+        //$this->initSession();
     }
     
     /**
