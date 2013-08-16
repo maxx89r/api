@@ -33,30 +33,35 @@ Class MnCommon Extends AppDo {
             else $getUrl = "$k=".urlencode($v);
         }
         $apiUrl = $tapatalkPluginApiConfig['url']."?$getUrl";
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $apiUrl);
-        curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($ch, CURLOPT_AUTOREFERER, true);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 15);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $param['post']);
-        if ($_COOKIE) {
-            foreach($_COOKIE as $k => $v) {
-                if( $cookies) {
-                    $cookies .= ";".$k."=".urlencode($v);
-                } else {
-                    $cookies = $k."=".urlencode($v);
+        if (function_exists('curl_init')) { //curl
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $apiUrl);
+            curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+            curl_setopt($ch, CURLOPT_AUTOREFERER, TRUE);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+            curl_setopt($ch, CURLOPT_POST, TRUE);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $param['post']);
+            if ($_COOKIE) {
+                foreach($_COOKIE as $k => $v) {
+                    if( $cookies) {
+                        $cookies .= ";".$k."=".urlencode($v);
+                    } else {
+                        $cookies = $k."=".urlencode($v);
+                    }
                 }
+                curl_setopt($ch, CURLOPT_COOKIE, $cookies);
             }
-            curl_setopt($ch, CURLOPT_COOKIE, $cookies);
+            if ($ip = MainApp::$oCf->getIp()) {
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip));
+            }
+            $strRet = curl_exec($ch);
+            curl_close ($ch);
+        } else {
+            
         }
-        if ($ip = MainApp::$oCf->getIp()) {
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip));
-        }
-        $strRet = curl_exec($ch);
-        curl_close ($ch);
         return $strRet;
     }
     
