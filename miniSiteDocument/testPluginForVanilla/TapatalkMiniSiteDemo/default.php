@@ -32,15 +32,21 @@ class TapatalkMiniSiteDemoPlugin extends Gdn_Plugin {
             $url = $base.'miniSite/site/';
             $controllerName = strtolower(property_exists($Sender, 'ControllerName') ? $Sender->ControllerName : '');
             $methodName = property_exists($Sender, 'RequestMethod') ? $Sender->RequestMethod : '';
-            $params = property_exists($Sender, 'RequestArgs') ? $Sender->RequestArgs : '';
-            if ($controllerName == 'discussionscontroller' && $methodName == 'index') { //all discussions
+            $params = property_exists($Sender, 'RequestArgs') ? $Sender->RequestArgs : array();
+            if ($controllerName == 'discussionscontroller' && $methodName == 'index') { //all discussions,backend home page setting
                 $url .= "MainForum.php";
-            } elseif ($controllerName == 'categoriescontroller' && $methodName == 'all') {   //all categories
+            } elseif ($controllerName == 'categoriescontroller' && $methodName == 'all') {   //all categories,backend home page setting
+                $url .= "MainForum.php";
+            } elseif ($controllerName == 'categoriescontroller' && $methodName == 'discussions') {   //categories & discussions,backend home page setting
+                $url .= "MainForum.php";
+            } elseif ($controllerName == 'activitycontroller' && $methodName == 'index') {   //activity,backend home page setting
                 $url .= "MainForum.php";
             } elseif ($controllerName == 'discussionscontroller' && $methodName == 'Index' && property_exists($Sender, 'CategoryID') && $Sender->CategoryID && property_exists($Sender, 'Category') && $Sender->Category) {   //get discussions of a category
                 $url .= "MainTopic.php?cmd=threadList&fid=$Sender->CategoryID";
             } elseif ($controllerName == 'discussioncontroller' && $methodName == 'Index' && property_exists($Sender, 'DiscussionID') && $Sender->DiscussionID && property_exists($Sender, 'Discussion') && $Sender->Discussion) {   //get thread
                 $url .= "MainTopic.php?cmd=getThread&tid=$Sender->DiscussionID";
+            } else {
+                $url = '';
             }
             if ($url) {
                 header( "HTTP/1.1 301 Moved Permanently" ) ;
