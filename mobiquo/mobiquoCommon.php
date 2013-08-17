@@ -2,7 +2,7 @@
 
 define('MBQ_IN_IT', true);  /* is in mobiquo flag */
 define('MBQ_DEBUG', false);  /* is in debug mode flag */
-define('MBQ_REG_SHUTDOWN', true);  /* regist shutdown function flag */
+define('MBQ_REG_SHUTDOWN', true);  /* register shutdown function flag */
 
 if (MBQ_DEBUG) {
     ini_set('display_errors','1');
