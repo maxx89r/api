@@ -9,6 +9,8 @@ require_once('./AppConfig.php');
  */
 Abstract Class MainBase extends MainApp {
     
+    public static $tapatalkPluginApiConfig;
+    
     public function __construct() {
         parent::__construct();
         $this->regClass();
@@ -35,6 +37,10 @@ Abstract Class MainBase extends MainApp {
         self::$oClk->includeClass('MbqFdtAtt');
         self::$oClk->includeClass('MbqMain');
         self::$oClk->includeClass('MnDataPage');
+        
+        global $tapatalkPluginApiConfig;
+        self::$tapatalkPluginApiConfig = $tapatalkPluginApiConfig;
+        self::assign('tapatalkPluginApiConfig', self::$tapatalkPluginApiConfig);
     }
     
     /**

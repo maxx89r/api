@@ -25,7 +25,7 @@ Class MnCommon Extends AppDo {
      * @return  String
      */
     public function callApi($param) {
-        global $tapatalkPluginApiConfig;
+        $tapatalkPluginApiConfig = MainBase::$tapatalkPluginApiConfig;
         if (!$param['get']) $param['get'] = array();
         if (!$param['post']) $param['post'] = array();
         foreach ($param['get'] as $k => $v) {
