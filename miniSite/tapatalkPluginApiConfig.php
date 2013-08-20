@@ -4,6 +4,8 @@
 $tapatalkPluginApiConfig = array(
     /* native site url */
     'nativeSiteUrl' => 'http://192.168.0.101/vanilla_2-0-18-8/',
+    /* native site PC mode url */
+    'nativeSitePcModeUrl' => 'http://192.168.0.101/vanilla_2-0-18-8/profile/nomobile',
     /* api script file url */
     'url' => 'http://192.168.0.101/vanilla_2-0-18-8/mobiquo/tapatalk.php'
 );

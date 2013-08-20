@@ -30,7 +30,18 @@
                   <div class="CommentInfo">
                      </div>
                </div>
-      <div class="Message">{$oMnEtForumPost->postContent->mnDisplayValue}</div>
+      <div class="Message" id="mnMsg_{$oMnEtForumPost->postId->oriValue}">
+        {$oMnEtForumPost->postContent->mnDisplayValue}
+        {if $oMnEtForumPost->objsNotInContentMbqEtAtt}
+        <br /><br />
+        <div><b>Attachments</b></div>
+        {foreach from=$oMnEtForumPost->objsNotInContentMbqEtAtt item=oNotInContentMbqEtAtt}
+        <div>
+            <a href="{$oNotInContentMbqEtAtt->url->oriValue}" target="_blank">{$oNotInContentMbqEtAtt->uploadFileName->oriValue|escape:html}</a>
+        </div>
+        {/foreach}
+        {/if}
+      </div>
    </div>
 </li>
 {/foreach}
@@ -46,7 +57,7 @@
 	 </div>
 	 <div id="Foot">
 		<div class="FootMenu">
-        <span><a href="{$tapatalkPluginApiConfig.nativeSiteUrl}profile/nomobile" class="">Full Site</a></span>
+        <span><a href="{$tapatalkPluginApiConfig.nativeSitePcModeUrl}" class="">Full Site</a></span>
 		</div>
 		<div>
 		  <a href="http://tapatalk.com/"><span>Powered by Tapatalk</span></a>
@@ -54,6 +65,18 @@
 	 </div>
   </div>
 
+<script>
+{literal}
+function exttResizeImage() {
+    var tempDivs = document.getElementsByTagName('div');
+    for (var i = 0;i < tempDivs.length;i ++) {
+        var tempDiv = tempDivs[i];
+        if (tempDiv.id.indexOf('mnMsg_') == 0) {
+        }
+    }
+}
+{/literal}
+</script>
 
 </body>
 {* 页尾 *}

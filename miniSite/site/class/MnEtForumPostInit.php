@@ -113,9 +113,9 @@ Class MnEtForumPostInit Extends AppDo {
     private function makeMnDisplayValue($content) { //TODO
         $retStr = $content;
         $retStr = preg_replace('/\[url=([^\]]*?)\]([^\[]*?)\[\/url\]/i', '<a href="$1">$2</a>', $retStr);  //convert url bbcode
-        $retStr = preg_replace('/\[img\]([^\[]*?)\[\/img\]/i', '<img src="$1" />', $retStr);  //convert img bbcode
-        $retStr = preg_replace('/\[quote\]/i', '<br />[', $retStr);  //convert quote bbcode
-        $retStr = preg_replace('/\[\/quote\]/i', ']', $retStr);  //convert quote bbcode
+        $retStr = preg_replace('/\[img\]([^\[]*?)\[\/img\]/i', '<a href="$1" target="_blank"><img src="$1" /></a>', $retStr);  //convert img bbcode
+        $retStr = preg_replace('/\[quote\]/i', '<br />&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;', $retStr);  //convert quote bbcode
+        $retStr = preg_replace('/\[\/quote\]/i', '<br />&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;', $retStr);  //convert quote bbcode
         return $retStr;
     }
     
