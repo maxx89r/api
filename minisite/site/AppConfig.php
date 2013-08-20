@@ -15,7 +15,7 @@ require_once('../tapatalkPluginApiConfig.php');
 /* constants and classes for mobiquo */
 define('MBQ_IN_IT', true);  /* is in mobiquo flag */
 define('MBQ_DS', DIRECTORY_SEPARATOR);
-define('MBQ_PATH', dirname(__FILE__).MBQ_DS.'..'.MBQ_DS.'..'.MBQ_DS.'mobiquo'.MBQ_DS);    /* mobiquo path */
+define('MBQ_PATH', dirname(__FILE__).MBQ_DS.'..'.MBQ_DS.'..'.MBQ_DS);    /* mobiquo path */
 define('MBQ_FRAME_PATH', MBQ_PATH.'mbqFrame'.MBQ_DS);    /* frame path */
 /* error constant */
 define('MBQ_ERR_TOP', 1);   /* the worst error that must stop the program immediately.we often use this constant in plugin development. */

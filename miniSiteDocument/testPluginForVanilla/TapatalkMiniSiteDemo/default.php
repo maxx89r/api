@@ -29,7 +29,7 @@ class TapatalkMiniSiteDemoPlugin extends Gdn_Plugin {
         $phpSelf = $_SERVER['PHP_SELF'] ? $_SERVER['PHP_SELF'] : $_SERVER['SCRIPT_NAME'];
         $base = $protocol.'://'.$_SERVER['SERVER_NAME'].preg_replace('/index\.php.*/i', '', $phpSelf);
         if (IsMobile()) {
-            $url = $base.'miniSite/site/';
+            $url = $base.'mobiquo/minisite/site/';
             $controllerName = strtolower(property_exists($Sender, 'ControllerName') ? $Sender->ControllerName : '');
             $methodName = property_exists($Sender, 'RequestMethod') ? $Sender->RequestMethod : '';
             $params = property_exists($Sender, 'RequestArgs') ? $Sender->RequestArgs : array();
