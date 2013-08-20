@@ -3,11 +3,14 @@
 /* tapatalk plugin api config */
 $tapatalkPluginApiConfig = array(
     /* native site url */
-    'nativeSiteUrl' => 'http://192.168.0.101/vanilla_2-0-18-8/',
+    //'nativeSiteUrl' => 'http://www.xxx.com/vanilla_2-0-18-8/',
+    'nativeSiteUrl' => '',
     /* native site PC mode url */
-    'nativeSitePcModeUrl' => 'http://192.168.0.101/vanilla_2-0-18-8/profile/nomobile',
+    //'nativeSitePcModeUrl' => 'http://www.xxx.com/vanilla_2-0-18-8/profile/nomobile',
+    'nativeSiteUrl' => '',
     /* api script file url */
-    'url' => 'http://192.168.0.101/vanilla_2-0-18-8/mobiquo/tapatalk.php'
+    //'url' => 'http://www.xxx.com/vanilla_2-0-18-8/mobiquo/tapatalk.php'
+    'url' => ''
 );
 
 ?>

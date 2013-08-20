@@ -39,6 +39,16 @@ Abstract Class MainBase extends MainApp {
         self::$oClk->includeClass('MnDataPage');
         
         global $tapatalkPluginApiConfig;
+        /* culculate $tapatalkPluginApiConfig */
+        if (!$tapatalkPluginApiConfig['nativeSiteUrl']) {
+            $tapatalkPluginApiConfig['nativeSiteUrl'] = preg_replace('/(.*?)mobiquo\/minisite\/site/i', '$1', self::$oCf->currProtocol.'://'.MPF_C_MAIN_HOMEDOMAIN.MPF_C_PREURL);
+        }
+        if (!$tapatalkPluginApiConfig['nativeSitePcModeUrl']) {
+            $tapatalkPluginApiConfig['nativeSitePcModeUrl'] = $tapatalkPluginApiConfig['nativeSiteUrl'].'profile/nomobile';
+        }
+        if (!$tapatalkPluginApiConfig['url']) {
+            $tapatalkPluginApiConfig['url'] = $tapatalkPluginApiConfig['nativeSiteUrl'].'mobiquo/tapatalk.php';
+        }
         self::$tapatalkPluginApiConfig = $tapatalkPluginApiConfig;
         self::assign('tapatalkPluginApiConfig', self::$tapatalkPluginApiConfig);
     }
