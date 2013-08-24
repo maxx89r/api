@@ -32,8 +32,9 @@ Class MnCommon Extends AppDo {
             if ($getUrl) $getUrl .= "&$k=".urlencode($v);
             else $getUrl = "$k=".urlencode($v);
         }
+        $debugCallType = isset($_GET['debugCallType']) ? $_GET['debugCallType'] : '';
         $apiUrl = $tapatalkPluginApiConfig['url']."?$getUrl";
-        if (function_exists('curl_init')) { //curl
+        if (function_exists('curl_init') || $debugCallType == 1) { //curl
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $apiUrl);
             curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
@@ -60,9 +61,9 @@ Class MnCommon Extends AppDo {
             }
             $strRet = curl_exec($ch);
             curl_close ($ch);
-        } elseif (@ini_get('allow_url_fopen')) {    //fsocket
+        } elseif (@ini_get('allow_url_fopen') || $debugCallType == 2) {    //socket
             $strRet = $this->_getContentsWithSocket($apiUrl, $param['post']);
-        } elseif (function_exists('file_get_contents')) {   //file_get_contents,only support get parameters
+        } elseif (function_exists('file_get_contents') || $debugCallType == 3) {   //file_get_contents,only support get parameters
             $strRet = @file_get_contents($apiUrl);
         } else {
             
