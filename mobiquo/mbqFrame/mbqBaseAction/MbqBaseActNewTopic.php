@@ -41,6 +41,10 @@ Abstract Class MbqBaseActNewTopic extends MbqBaseAct {
                 $data1 = $oMbqRdEtForumTopic->returnApiDataForumTopic($oMbqEtForumTopic);
                 MbqMain::$oMbqCm->mergeApiData($this->data, $data1);
                 $this->data['state'] = $oMbqEtForumTopic->state->oriValue;
+                $oTapatalkPush = new TapatalkPush();
+                $oTapatalkPush->callMethod('doPushNewtopic', array(
+                    'oMbqEtForumTopic' => $oMbqEtForumTopic
+                ));
             } else {
                 MbqError::alert('', '', '', MBQ_ERR_APP);
             }
