@@ -5,7 +5,7 @@
 <div id="Frame">
     <div class="Banner">
 		<ul>
-		  <li><a href="{tplEchoUrl mainName='MainForum.php' cmd='forumList'}" class="">Forum List</a></li>
+		  <li><a href="{tplEchoUrl mainName='MainForum.php' cmd='forumList'}" class="">All Forums</a></li>
 		  
 		  
 		  
@@ -16,6 +16,9 @@
 		  <ul class="DataList Discussions">
 		    {foreach from=$data.topics item=oMnEtForumTopic}
 <li class="Item">
+      {if $oMnEtForumTopic->oAuthorMnEtUser->iconUrl->hasSetOriValue()}
+      <a title="{$oMnEtForumTopic->oAuthorMnEtUser->getDisplayName()}" href="#" class="ProfileLink"><img src="{$oMnEtForumTopic->oAuthorMnEtUser->iconUrl->oriValue}" alt="{$oMnEtForumTopic->oAuthorMnEtUser->getDisplayName()}" class="ProfilePhotoMedium" /></a>
+      {/if}
       <div class="ItemContent Discussion">
       <a href="{tplEchoUrl mainName='MainTopic.php' cmd='getThread' vName='tid' vValue=$oMnEtForumTopic->topicId->oriValue}" class="Title">{$oMnEtForumTopic->topicTitle->oriValue|escape:html}</a>            <div class="Meta">
         {if $oMnEtForumTopic->oAuthorMnEtUser}

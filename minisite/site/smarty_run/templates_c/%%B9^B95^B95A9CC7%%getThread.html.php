@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2013-08-24 20:54:18
+<?php /* Smarty version 2.6.27, created on 2013-08-31 10:33:03
          compiled from getThread.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'tplEchoUrl', 'getThread.html', 8, false),array('modifier', 'escape', 'getThread.html', 16, false),array('modifier', 'date_format', 'getThread.html', 28, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'tplEchoUrl', 'getThread.html', 9, false),array('modifier', 'escape', 'getThread.html', 9, false),array('modifier', 'date_format', 'getThread.html', 31, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "public_header.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -11,11 +11,15 @@ unset($_smarty_tpl_vars);
   <div id="Frame">
 	 <div class="Banner">
 		<ul>
-		  <li><a href="<?php echo smarty_function_tplEchoUrl(array('mainName' => 'MainForum.php','cmd' => 'forumList'), $this);?>
-" class="">Forum List</a></li>
-		  
-		  
-		  		</ul>
+		  <li>
+		    <a href="<?php echo smarty_function_tplEchoUrl(array('mainName' => 'MainForum.php','cmd' => 'forumList'), $this);?>
+" style="display:inline-block;">All Forums</a><?php if ($this->_tpl_vars['data']['navi']): ?><?php $_from = $this->_tpl_vars['data']['navi']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['oNaviMnEtForum']):
+?><a href="#" style="display:inline-block;">&gt;</a><a href="<?php echo smarty_function_tplEchoUrl(array('mainName' => 'MainTopic.php','cmd' => 'threadList','vName' => 'fid','vValue' => $this->_tpl_vars['oNaviMnEtForum']->forumId->oriValue), $this);?>
+" style="display:inline-block;"><?php echo ((is_array($_tmp=$this->_tpl_vars['oNaviMnEtForum']->forumName->oriValue)) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
+</a><?php endforeach; endif; unset($_from); ?><?php endif; ?>
+		  </li>
+		</ul>
 	 </div>
 	 <div id="Body">
 		<div id="Content">
@@ -33,6 +37,10 @@ unset($_smarty_tpl_vars);
       <div class="Meta">
         <?php if ($this->_tpl_vars['oMnEtForumPost']->oAuthorMnEtUser): ?>
                   <span class="Author">
+            <?php if ($this->_tpl_vars['oMnEtForumPost']->oAuthorMnEtUser->iconUrl->hasSetOriValue()): ?>
+            <a title="admin" href="#"><img src="<?php echo $this->_tpl_vars['oMnEtForumPost']->oAuthorMnEtUser->iconUrl->oriValue; ?>
+" alt="admin" class="ProfilePhotoMedium" /></a>
+            <?php endif; ?>
             <a href="#"><?php echo ((is_array($_tmp=$this->_tpl_vars['oMnEtForumPost']->oAuthorMnEtUser->userName->oriValue)) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
 </a>         </span>
         <?php endif; ?>
@@ -53,11 +61,17 @@ unset($_smarty_tpl_vars);
         <?php $_from = $this->_tpl_vars['oMnEtForumPost']->objsNotInContentMbqEtAtt; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['oNotInContentMbqEtAtt']):
 ?>
-        <div>
-            <a href="<?php echo $this->_tpl_vars['oNotInContentMbqEtAtt']->url->oriValue; ?>
+            <?php if ($this->_tpl_vars['oNotInContentMbqEtAtt']->isImage()): ?>
+                <a href="<?php echo $this->_tpl_vars['oNotInContentMbqEtAtt']->url->oriValue; ?>
+" target="_blank"><img src="<?php echo $this->_tpl_vars['oNotInContentMbqEtAtt']->thumbnailUrl->oriValue; ?>
+" style="height:100px;width:100px;" /></a>
+            <?php else: ?>
+            <div>
+                <a href="<?php echo $this->_tpl_vars['oNotInContentMbqEtAtt']->url->oriValue; ?>
 " target="_blank"><?php echo ((is_array($_tmp=$this->_tpl_vars['oNotInContentMbqEtAtt']->uploadFileName->oriValue)) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
 </a>
-        </div>
+            </div>
+            <?php endif; ?>
         <?php endforeach; endif; unset($_from); ?>
         <?php endif; ?>
       </div>

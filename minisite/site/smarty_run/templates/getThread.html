@@ -5,10 +5,10 @@
   <div id="Frame">
 	 <div class="Banner">
 		<ul>
-		  <li><a href="{tplEchoUrl mainName='MainForum.php' cmd='forumList'}" class="">Forum List</a></li>
-		  
-		  
-		  		</ul>
+		  <li>
+		    <a href="{tplEchoUrl mainName='MainForum.php' cmd='forumList'}" style="display:inline-block;">All Forums</a>{if $data.navi}{foreach from=$data.navi item=oNaviMnEtForum}<a href="#" style="display:inline-block;">&gt;</a><a href="{tplEchoUrl mainName='MainTopic.php' cmd='threadList' vName='fid' vValue=$oNaviMnEtForum->forumId->oriValue}" style="display:inline-block;">{$oNaviMnEtForum->forumName->oriValue|escape:"html"}</a>{/foreach}{/if}
+		  </li>
+		</ul>
 	 </div>
 	 <div id="Body">
 		<div id="Content">
@@ -22,6 +22,9 @@
       <div class="Meta">
         {if $oMnEtForumPost->oAuthorMnEtUser}
                   <span class="Author">
+            {if $oMnEtForumPost->oAuthorMnEtUser->iconUrl->hasSetOriValue()}
+            <a title="admin" href="#"><img src="{$oMnEtForumPost->oAuthorMnEtUser->iconUrl->oriValue}" alt="admin" class="ProfilePhotoMedium" /></a>
+            {/if}
             <a href="#">{$oMnEtForumPost->oAuthorMnEtUser->userName->oriValue|escape:html}</a>         </span>
         {/if}
          <span class="DateCreated">
@@ -36,9 +39,13 @@
         <br /><br />
         <div><b>Attachments</b></div>
         {foreach from=$oMnEtForumPost->objsNotInContentMbqEtAtt item=oNotInContentMbqEtAtt}
-        <div>
-            <a href="{$oNotInContentMbqEtAtt->url->oriValue}" target="_blank">{$oNotInContentMbqEtAtt->uploadFileName->oriValue|escape:html}</a>
-        </div>
+            {if $oNotInContentMbqEtAtt->isImage()}
+                <a href="{$oNotInContentMbqEtAtt->url->oriValue}" target="_blank"><img src="{$oNotInContentMbqEtAtt->thumbnailUrl->oriValue}" style="height:100px;width:100px;" /></a>
+            {else}
+            <div>
+                <a href="{$oNotInContentMbqEtAtt->url->oriValue}" target="_blank">{$oNotInContentMbqEtAtt->uploadFileName->oriValue|escape:html}</a>
+            </div>
+            {/if}
         {/foreach}
         {/if}
       </div>

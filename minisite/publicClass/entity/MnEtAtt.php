@@ -17,6 +17,19 @@ Class MnEtAtt extends MbqEtAtt {
         
         $this->oMnEtUser = NULL;
     }
+    
+    /**
+     * judge is image
+     *
+     * @return  Boolean
+     */
+    public function isImage() {
+        $suffix = strtolower(substr($this->uploadFileName->oriValue, strrpos($this->uploadFileName->oriValue, '.') + 1));
+        if ($suffix == 'jpg' || $suffix == 'jpeg' || $suffix == 'png' || $suffix == 'bmp' || $suffix == 'gif') {
+            return true;
+        }
+        return false;
+    }
   
 }
 

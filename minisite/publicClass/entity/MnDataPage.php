@@ -30,18 +30,30 @@ Class MnDataPage extends MbqDataPage {
      * echo page
      */
     public function echoPage() {
-        if ($this->totalNum) {
+        if ($this->totalPage > 1) {
             $ret = '<div style="width:100%;text-align:right;">';
-            if ($this->curPage > 1) {
-                $ret .= '<a href="'.$this->getPageUrl($this->curPage - 1).'">PrePage</a>';
+            if ($this->curPage == 1) {
+                $ret .= 'First';
             } else {
-                $ret .= 'PrePage';
+                $ret .= '<a href="'.$this->getPageUrl(1).'">First</a>';
             }
-            $ret .= ' ';
-            if ($this->curPage < $this->totalPage) {
-                $ret .= '<a href="'.$this->getPageUrl($this->curPage + 1).'">NextPage</a>';
+            $ret .= ',';
+            if ($this->curPage > 1) {
+                $ret .= '<a href="'.$this->getPageUrl($this->curPage - 1).'">Pre</a>';
             } else {
-                $ret .= 'NextPage';
+                $ret .= 'Pre';
+            }
+            $ret .= ',';
+            if ($this->curPage < $this->totalPage) {
+                $ret .= '<a href="'.$this->getPageUrl($this->curPage + 1).'">Next</a>';
+            } else {
+                $ret .= 'Next';
+            }
+            $ret .= ',';
+            if ($this->curPage == $this->totalPage) {
+                $ret .= 'Last';
+            } else {
+                $ret .= '<a href="'.$this->getPageUrl($this->totalPage).'">Last</a>';
             }
             $ret .= ',';
             $ret .= "Total $this->totalNum,Page $this->curPage/$this->totalPage";

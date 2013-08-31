@@ -22,7 +22,7 @@ Class MainForum extends MainBase {
     public function forumList() {
         self::$cmd = 'forumList';
         /* init */
-        self::$title = "Forum List";
+        self::$title = "All Forums";
         /* verify */
         /* acl */
         /* do */
