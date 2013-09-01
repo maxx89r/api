@@ -28,8 +28,8 @@ if (app_ios_id == '-1')
 }
 else
 {
-    var app_ios_url = 'https://itunes.apple.com/us/app/id'+app_ios_id;
-    var app_ios_hd_url = 'https://itunes.apple.com/us/app/id'+app_ios_hd_id;
+    var app_ios_url = 'https://itunes.apple.com/us/app/id'+app_ios_id+'?mt=8';
+    var app_ios_hd_url = 'https://itunes.apple.com/us/app/id'+app_ios_hd_id+'?mt=8';
 }
 
 // compatibility code
