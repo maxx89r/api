@@ -42,7 +42,7 @@ Abstract Class MbqBaseActGetTopic extends MbqBaseAct {
                     break;
                     case 'ANN':     /* returns "Announcement" topics.TODO */
                     $this->data = $oMbqRdEtForum->returnApiDataForum($oMbqEtForum);
-                    $this->data['total_topic_num'] = 0;
+                    $this->data['total_topic_num'] = (int) 0;
                     $this->data['topics'] = array();
                     break;
                     default:        /* returns standard topics */

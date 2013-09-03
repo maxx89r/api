@@ -34,7 +34,7 @@ Abstract Class MbqBaseActGetSubscribedTopic extends MbqBaseAct {
         if ($oMbqAclEtForumTopic->canAclGetSubscribedTopic()) {     //acl judge
             $oMbqRdEtForumTopic = MbqMain::$oClk->newObj('MbqRdEtForumTopic');
             $oMbqDataPage = $oMbqRdEtForumTopic->getObjsMbqEtForumTopic(MbqMain::$oCurMbqEtUser->userId->oriValue, array('case' => 'subscribed', 'oMbqDataPage' => $oMbqDataPage));
-            $this->data['total_topic_num'] = $oMbqDataPage->totalNum;
+            $this->data['total_topic_num'] = (int) $oMbqDataPage->totalNum;
             $this->data['topics'] = $oMbqRdEtForumTopic->returnApiArrDataForumTopic($oMbqDataPage->datas);
         } else {
             MbqError::alert('', '', '', MBQ_ERR_APP);
