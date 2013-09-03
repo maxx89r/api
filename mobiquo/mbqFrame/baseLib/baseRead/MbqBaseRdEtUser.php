@@ -62,7 +62,7 @@ Abstract Class MbqBaseRdEtUser extends MbqBaseRd {
             $data['can_whosonline'] = (boolean) MbqBaseFdt::getFdt('MbqFdtUser.MbqEtUser.canWhosonline.default');
         }
         if ($oMbqEtUser->canUploadAvatar->hasSetOriValue()) {
-            $data['can_upload_avatar'] = (string) $oMbqEtUser->canUploadAvatar->oriValue;
+            $data['can_upload_avatar'] = (boolean) $oMbqEtUser->canUploadAvatar->oriValue;
         } else {
             $data['can_upload_avatar'] = (boolean) MbqBaseFdt::getFdt('MbqFdtUser.MbqEtUser.canUploadAvatar.default');
         }

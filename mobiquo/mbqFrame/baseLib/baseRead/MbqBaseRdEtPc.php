@@ -66,7 +66,7 @@ Abstract Class MbqBaseRdEtPc extends MbqBaseRd {
             $data['can_close'] = (boolean) MbqBaseFdt::getFdt('MbqFdtPc.MbqEtPc.canClose.default');
         }
         if ($oMbqEtPc->isClosed->hasSetOriValue()) {
-            $data['is_closed'] = (string) $oMbqEtPc->isClosed->oriValue;
+            $data['is_closed'] = (boolean) $oMbqEtPc->isClosed->oriValue;
         }
         if ($oMbqEtPc->deleteMode->hasSetOriValue()) {
             $data['delete_mode'] = (int) $oMbqEtPc->deleteMode->oriValue;
