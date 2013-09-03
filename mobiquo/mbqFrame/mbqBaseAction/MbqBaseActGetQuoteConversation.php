@@ -32,7 +32,7 @@ Abstract Class MbqBaseActGetQuoteConversation extends MbqBaseAct {
                 $oMbqEtPcMsg = $objsMbqEtPcMsg[0];
                 $oMbqAclEtPcMsg = MbqMain::$oClk->newObj('MbqAclEtPcMsg');
                 if ($oMbqAclEtPcMsg->canAclGetQuoteConversation($oMbqEtPcMsg, $oMbqEtPc)) {
-                    $this->data['text_body'] = $oMbqRdEtPcMsg->getQuoteConversation($oMbqEtPcMsg);
+                    $this->data['text_body'] = (string) $oMbqRdEtPcMsg->getQuoteConversation($oMbqEtPcMsg);
                 } else {
                     MbqError::alert('', '', '', MBQ_ERR_APP);
                 }
