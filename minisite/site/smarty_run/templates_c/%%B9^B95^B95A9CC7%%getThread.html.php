@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2013-08-31 10:33:03
+<?php /* Smarty version 2.6.27, created on 2013-09-13 13:42:43
          compiled from getThread.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'tplEchoUrl', 'getThread.html', 9, false),array('modifier', 'escape', 'getThread.html', 9, false),array('modifier', 'date_format', 'getThread.html', 31, false),)), $this); ?>
@@ -13,7 +13,7 @@ unset($_smarty_tpl_vars);
 		<ul>
 		  <li>
 		    <a href="<?php echo smarty_function_tplEchoUrl(array('mainName' => 'MainForum.php','cmd' => 'forumList'), $this);?>
-" style="display:inline-block;">All Forums</a><?php if ($this->_tpl_vars['data']['navi']): ?><?php $_from = $this->_tpl_vars['data']['navi']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+" style="display:inline-block;font-size:16px;">All Forums</a><?php if ($this->_tpl_vars['data']['navi']): ?><?php $_from = $this->_tpl_vars['data']['navi']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['oNaviMnEtForum']):
 ?><a href="#" style="display:inline-block;">&gt;</a><a href="<?php echo smarty_function_tplEchoUrl(array('mainName' => 'MainTopic.php','cmd' => 'threadList','vName' => 'fid','vValue' => $this->_tpl_vars['oNaviMnEtForum']->forumId->oriValue), $this);?>
 " style="display:inline-block;"><?php echo ((is_array($_tmp=$this->_tpl_vars['oNaviMnEtForum']->forumName->oriValue)) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
@@ -24,7 +24,7 @@ unset($_smarty_tpl_vars);
 	 <div id="Body">
 		<div id="Content">
 		  <div class="Tabs HeadingTabs DiscussionTabs FirstPage">
-   <div class="SubTab"><?php echo ((is_array($_tmp=$this->_tpl_vars['data']['topic']->topicTitle->oriValue)) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
+   <div class="SubTab" style="font-size:16px;"><?php echo ((is_array($_tmp=$this->_tpl_vars['data']['topic']->topicTitle->oriValue)) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
 </div>
 </div>
 <ul class="DataList MessageList Discussion FirstPage">

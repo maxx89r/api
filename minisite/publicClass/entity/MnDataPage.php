@@ -30,6 +30,7 @@ Class MnDataPage extends MbqDataPage {
      * echo page
      */
     public function echoPage() {
+        /*
         if ($this->totalPage > 1) {
             $ret = '<div style="width:100%;text-align:right;">';
             if ($this->curPage == 1) {
@@ -57,6 +58,48 @@ Class MnDataPage extends MbqDataPage {
             }
             $ret .= ',';
             $ret .= "Total $this->totalNum,Page $this->curPage/$this->totalPage";
+            $ret .= '</div>';
+            echo $ret;
+        }
+        */
+        
+        if ($this->totalPage > 1) {
+            $ret = '<div style="width:100%;text-align:right;font-size:15px;">';
+            if ($this->curPage > 1) {
+                $ret .= '<a href="'.$this->getPageUrl($this->curPage - 1).'">&laquo;</a>&nbsp;&nbsp;';
+            } else {
+                $ret .= '&laquo;&nbsp;&nbsp;';
+            }
+            
+            $linksNumPerLine = 10;
+            $currentLineNum = ceil($this->curPage / $linksNumPerLine);
+            $pageNums = array();
+            for ($i = 1; $i <= 10; $i ++) {
+                $pageNum = $linksNumPerLine * ($currentLineNum - 1) + $i;
+                if ($pageNum >= 1 && $pageNum <= $this->totalPage) {
+                    if (($this->curPage % $linksNumPerLine == 1) && ($pageNum % $linksNumPerLine == 1) && ($pageNum - 1) >= 1) {
+                        $pageNums[] = $pageNum - 1;
+                    }
+                    $pageNums[] = $pageNum;
+                    if (($this->curPage % $linksNumPerLine == 0) && ($pageNum % $linksNumPerLine == 0) && ($pageNum + 1) <= $this->totalPage) {
+                        $pageNums[] = $pageNum + 1;
+                    }
+                } else {
+                    break;
+                }
+            }
+            foreach ($pageNums as $p) {
+                if ($p == $this->curPage)
+                    $ret .= '<a href="'.$this->getPageUrl($p).'"><b>'.$p.'</b></a>&nbsp;&nbsp;';
+                else
+                    $ret .= '<a href="'.$this->getPageUrl($p).'">'.$p.'</a>&nbsp;&nbsp;';
+            }
+            
+            if ($this->curPage < $this->totalPage) {
+                $ret .= '<a href="'.$this->getPageUrl($this->curPage + 1).'">&raquo;</a>&nbsp;&nbsp;';
+            } else {
+                $ret .= '&raquo;&nbsp;&nbsp;';
+            }
             $ret .= '</div>';
             echo $ret;
         }

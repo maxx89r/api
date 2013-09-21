@@ -5,7 +5,7 @@
 <div id="Frame">
     <div class="Banner">
 		<ul>
-		  <li><a href="{tplEchoUrl mainName='MainForum.php' cmd='forumList'}" class="">All Forums</a></li>
+		  <li><a href="{tplEchoUrl mainName='MainForum.php' cmd='forumList'}" class="" style="font-size:16px;">All Forums</a></li>
 		  
 		  
 		  
@@ -17,14 +17,14 @@
 <ul class="DataList CategoryList">
     {foreach from=$objsMnEtForum item=oMnEtForum}
     <li class="Item Depth1 Unread">
-               <div class="ItemContent Category Unread"><a href="{tplEchoUrl mainName='MainTopic.php' cmd='threadList' vName='fid' vValue=$oMnEtForum->forumId->oriValue}" class="Title">{$oMnEtForum->forumName->oriValue|escape:"html"}</a><div class="CategoryDescription">{$oMnEtForum->description->oriValue|escape:"html"}</div><div class="Meta">
+               <div class="ItemContent Category Unread"><a href="{tplEchoUrl mainName='MainTopic.php' cmd='threadList' vName='fid' vValue=$oMnEtForum->forumId->oriValue}" class="Title" style="font-size:16px;">{$oMnEtForum->forumName->oriValue|escape:"html"}</a><div class="CategoryDescription">{$oMnEtForum->description->oriValue|escape:"html"}</div><div class="Meta">
                      <span class="DiscussionCount">{$oMnEtForum->totalTopicNum->oriValue} discussions</span>
                      </div>
                </div>
     </li>
                {foreach from=$oMnEtForum->objsSubMnEtForum item=oLv2MnEtForum}
     <li class="Item Depth2 Read">
-               <div class="ItemContent Category Read"><a href="{tplEchoUrl mainName='MainTopic.php' cmd='threadList' vName='fid' vValue=$oLv2MnEtForum->forumId->oriValue}" class="Title">{$oLv2MnEtForum->forumName->oriValue|escape:"html"}</a><div class="CategoryDescription">{$oLv2MnEtForum->description->oriValue|escape:"html"}</div><div class="Meta">
+               <div class="ItemContent Category Read"><a href="{tplEchoUrl mainName='MainTopic.php' cmd='threadList' vName='fid' vValue=$oLv2MnEtForum->forumId->oriValue}" class="Title" style="font-size:16px;">{$oLv2MnEtForum->forumName->oriValue|escape:"html"}</a><div class="CategoryDescription">{$oLv2MnEtForum->description->oriValue|escape:"html"}</div><div class="Meta">
                      <span class="DiscussionCount">{$oLv2MnEtForum->totalTopicNum->oriValue} discussions</span>
                      {if $oLv2MnEtForum->objsSubMnEtForum}
                      <span class="ChildCategories"><b>Child Categories:</b> 

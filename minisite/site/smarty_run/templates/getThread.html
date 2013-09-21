@@ -6,14 +6,14 @@
 	 <div class="Banner">
 		<ul>
 		  <li>
-		    <a href="{tplEchoUrl mainName='MainForum.php' cmd='forumList'}" style="display:inline-block;">All Forums</a>{if $data.navi}{foreach from=$data.navi item=oNaviMnEtForum}<a href="#" style="display:inline-block;">&gt;</a><a href="{tplEchoUrl mainName='MainTopic.php' cmd='threadList' vName='fid' vValue=$oNaviMnEtForum->forumId->oriValue}" style="display:inline-block;">{$oNaviMnEtForum->forumName->oriValue|escape:"html"}</a>{/foreach}{/if}
+		    <a href="{tplEchoUrl mainName='MainForum.php' cmd='forumList'}" style="display:inline-block;font-size:16px;">All Forums</a>{if $data.navi}{foreach from=$data.navi item=oNaviMnEtForum}<a href="#" style="display:inline-block;">&gt;</a><a href="{tplEchoUrl mainName='MainTopic.php' cmd='threadList' vName='fid' vValue=$oNaviMnEtForum->forumId->oriValue}" style="display:inline-block;">{$oNaviMnEtForum->forumName->oriValue|escape:"html"}</a>{/foreach}{/if}
 		  </li>
 		</ul>
 	 </div>
 	 <div id="Body">
 		<div id="Content">
 		  <div class="Tabs HeadingTabs DiscussionTabs FirstPage">
-   <div class="SubTab">{$data.topic->topicTitle->oriValue|escape:html}</div>
+   <div class="SubTab" style="font-size:16px;">{$data.topic->topicTitle->oriValue|escape:html}</div>
 </div>
 <ul class="DataList MessageList Discussion FirstPage">
 {foreach from=$data.posts item=oMnEtForumPost}

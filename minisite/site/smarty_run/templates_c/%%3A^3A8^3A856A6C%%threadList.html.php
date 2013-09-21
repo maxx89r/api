@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2013-08-31 06:12:17
+<?php /* Smarty version 2.6.27, created on 2013-09-13 13:41:02
          compiled from threadList.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'tplEchoUrl', 'threadList.html', 8, false),array('modifier', 'escape', 'threadList.html', 23, false),array('modifier', 'date_format', 'threadList.html', 27, false),)), $this); ?>
@@ -12,7 +12,7 @@ unset($_smarty_tpl_vars);
     <div class="Banner">
 		<ul>
 		  <li><a href="<?php echo smarty_function_tplEchoUrl(array('mainName' => 'MainForum.php','cmd' => 'forumList'), $this);?>
-" class="">All Forums</a></li>
+" class="" style="font-size:16px;">All Forums</a></li>
 		  
 		  
 		  
@@ -29,11 +29,11 @@ unset($_smarty_tpl_vars);
       <a title="<?php echo $this->_tpl_vars['oMnEtForumTopic']->oAuthorMnEtUser->getDisplayName(); ?>
 " href="#" class="ProfileLink"><img src="<?php echo $this->_tpl_vars['oMnEtForumTopic']->oAuthorMnEtUser->iconUrl->oriValue; ?>
 " alt="<?php echo $this->_tpl_vars['oMnEtForumTopic']->oAuthorMnEtUser->getDisplayName(); ?>
-" class="ProfilePhotoMedium" /></a>
+" class="ProfilePhotoMedium" style="overflow:hidden" /></a>
       <?php endif; ?>
       <div class="ItemContent Discussion">
       <a href="<?php echo smarty_function_tplEchoUrl(array('mainName' => 'MainTopic.php','cmd' => 'getThread','vName' => 'tid','vValue' => $this->_tpl_vars['oMnEtForumTopic']->topicId->oriValue), $this);?>
-" class="Title"><?php echo ((is_array($_tmp=$this->_tpl_vars['oMnEtForumTopic']->topicTitle->oriValue)) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
+" class="Title" style="font-size:15px;"><?php echo ((is_array($_tmp=$this->_tpl_vars['oMnEtForumTopic']->topicTitle->oriValue)) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
 </a>            <div class="Meta">
         <?php if ($this->_tpl_vars['oMnEtForumTopic']->oAuthorMnEtUser): ?>
          <span class="Author"><?php echo ((is_array($_tmp=$this->_tpl_vars['oMnEtForumTopic']->oAuthorMnEtUser->userName->oriValue)) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
