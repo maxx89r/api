@@ -10,7 +10,9 @@ $tapatalkPluginApiConfig = array(
     'nativeSiteUrl' => '',
     /* api script file url */
     //'url' => 'http://www.xxx.com/vanilla_2-0-18-8/mobiquo/tapatalk.php'
-    'url' => ''
+    'url' => '',
+    /* api config */
+    'apiConfig' => NULL
 );
 
 ?>

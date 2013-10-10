@@ -117,7 +117,12 @@ Class MnEtForumPostInit Extends AppDo {
         $retStr = preg_replace('/\[quote\]/i', '<br />&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;', $retStr);  //convert quote bbcode
         $retStr = preg_replace('/\[\/quote\]/i', '<br />&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;', $retStr);  //convert quote bbcode
         //convert smileys
-        $retStr = $this->convertSmileysForVanilla2EmotifyPlugin($retStr);
+        //TODO for different type site
+        if (MainBase::apiIsVanilla2Site()) {
+            $retStr = $this->convertSmileysForVanilla2EmotifyPlugin($retStr);
+        } elseif (MainBase::apiIsVbulletin3Site()) {
+            $retStr = $this->convertSmileysForVbulletin3($retStr);
+        }
         return $retStr;
     }
     
@@ -231,6 +236,16 @@ Class MnEtForumPostInit Extends AppDo {
         $retStr = preg_replace('/ \:ar\! /i', '<img src='.$url.'pirate.gif />', $retStr);
         $retStr = preg_replace('/ \[\.\.\] /i', '<img src='.$url.'transformer.gif />', $retStr);
         return $retStr;
+    }
+    
+    /**
+     * convert smileys for vBulletin 3
+     *
+     * @param  String  $str
+     * @return  String
+     */
+    private function convertSmileysForVbulletin3($str) {    //TODO
+        return $str;
     }
     
 }

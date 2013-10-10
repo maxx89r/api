@@ -39,18 +39,60 @@ Abstract Class MainBase extends MainApp {
         self::$oClk->includeClass('MnDataPage');
         
         global $tapatalkPluginApiConfig;
-        /* culculate $tapatalkPluginApiConfig */
+        /* get config through api and culculate $tapatalkPluginApiConfig */
         if (!$tapatalkPluginApiConfig['nativeSiteUrl']) {
-            $tapatalkPluginApiConfig['nativeSiteUrl'] = preg_replace('/(.*?)mobiquo\/minisite\/site/i', '$1', self::$oCf->currProtocol.'://'.MPF_C_MAIN_HOMEDOMAIN.MPF_C_PREURL);
-        }
-        if (!$tapatalkPluginApiConfig['nativeSitePcModeUrl']) {
-            $tapatalkPluginApiConfig['nativeSitePcModeUrl'] = $tapatalkPluginApiConfig['nativeSiteUrl'].'profile/nomobile';
+            $tapatalkPluginApiConfig['nativeSiteUrl'] = preg_replace('/(.*?)mobiquo\/minisite\/site/i', '$1', self::$oCf->currProtocol.'://'.MPF_C_MAIN_HOMEDOMAIN.MPF_C_PREURL); //!!!
         }
         if (!$tapatalkPluginApiConfig['url']) {
             $tapatalkPluginApiConfig['url'] = $tapatalkPluginApiConfig['nativeSiteUrl'].'mobiquo/tapatalk.php';
         }
-        self::$tapatalkPluginApiConfig = $tapatalkPluginApiConfig;
+        self::$tapatalkPluginApiConfig = & $tapatalkPluginApiConfig; //!!!
+        $oMnCommon = MainApp::$oClk->newObj('MnCommon');
+        $apiParam['get'] = array(
+            'do' => 'config'
+        );
+        $data = $oMnCommon->callApi($apiParam);
+        if ($oMnCommon->callApiSuccess($data)) {
+            $data = json_decode($data);
+            if (property_exists($data, 'version') && $data->version) {
+                $tapatalkPluginApiConfig['apiConfig'] = $data;
+            } else {
+                Error::alert('needApiVersion', __METHOD__ . ',line:' . __LINE__ . '.' . "Can not find api version.", ERR_TOP);
+            }
+        } else {
+            Error::alert(MPF_SITE_API_ERROR, __METHOD__ . ',line:' . __LINE__ . '.' . $oMnCommon->getApiErrorStr($data), ERR_TOP);
+        }
+        if (!$tapatalkPluginApiConfig['nativeSitePcModeUrl']) {
+            //TODO for different type site
+            if (self::apiIsVanilla2Site()) {
+                $tapatalkPluginApiConfig['nativeSitePcModeUrl'] = $tapatalkPluginApiConfig['nativeSiteUrl'].'profile/nomobile';
+            } elseif (self::apiIsVbulletin3Site()) {
+                //
+            } else {
+                Error::alert('unknownTypeSite', __METHOD__ . ',line:' . __LINE__ . '.' . "Unknown type site.", ERR_TOP);
+            }
+        }
         self::assign('tapatalkPluginApiConfig', self::$tapatalkPluginApiConfig);
+    }
+    
+    /**
+     * judge api is vanilla 2 site
+     *
+     * @return  Boolean
+     */
+    public function apiIsVanilla2Site() {
+        $arr = explode("_", self::$tapatalkPluginApiConfig['apiConfig']->version);
+        return (($arr[0] === 'vn20') ? true : false);
+    }
+    
+    /**
+     * judge api is vBulletin 3 site
+     *
+     * @return  Boolean
+     */
+    public function apiIsVbulletin3Site() {
+        $arr = explode("_", self::$tapatalkPluginApiConfig['apiConfig']->version);
+        return (($arr[0] === 'vb3x') ? true : false);
     }
     
     /**

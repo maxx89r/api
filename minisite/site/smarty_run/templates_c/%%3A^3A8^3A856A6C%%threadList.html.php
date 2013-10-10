@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2013-09-13 13:41:02
+<?php /* Smarty version 2.6.27, created on 2013-10-10 20:58:38
          compiled from threadList.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'tplEchoUrl', 'threadList.html', 8, false),array('modifier', 'escape', 'threadList.html', 23, false),array('modifier', 'date_format', 'threadList.html', 27, false),)), $this); ?>
@@ -53,8 +53,8 @@ unset($_smarty_tpl_vars);
 	 </div>
 	 <div id="Foot">
 		<div class="FootMenu">
-        <span><a href="<?php echo $this->_tpl_vars['tapatalkPluginApiConfig']['nativeSitePcModeUrl']; ?>
-" class="">Full Site</a></span>
+        <span><?php if ($this->_tpl_vars['tapatalkPluginApiConfig']['nativeSitePcModeUrl']): ?><a href="<?php echo $this->_tpl_vars['tapatalkPluginApiConfig']['nativeSitePcModeUrl']; ?>
+" class="">Full Site</a><?php endif; ?></span>
 		</div>
 		<div>
 		  <a href="http://tapatalk.com/"><span>Powered by Tapatalk</span></a>
